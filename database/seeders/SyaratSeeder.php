@@ -17,7 +17,7 @@ class SyaratSeeder extends Seeder
     { DB::table('syarat_dan_ketentuan')->insert([
         'judul' => 'Syarat dan Ketentuan',
         'subjudul' => 'Langkah Pasti Menuju Baitullah',
-        'gambar1' => 'assets/images/blog/img-7.jpg',
+        'gambar1' => 'assets/images/syarat-dan-ketentuan/img-7.jpg',
         'judul1' => 'Persyaratan Umrah dan Haji',
         'isi1' => '<p>Persyaratan yang harus di siapkan oleh calon jama ah antara lain adalah :</p>
                     <ul>
@@ -26,7 +26,7 @@ class SyaratSeeder extends Seeder
                         <li>Vaksin meningitis dan atau sesuai ketentuan yang berlaku</li>
                         <li>Surat mahram bagi perempuan <45 tahun, umrah sendiri tanpa suami/ saudara laki-laki/ bapak kandung </li>
                     </ul>',
-        'gambar2' => 'assets/images/blog/img-7.jpg',
+        'gambar2' => 'assets/images/syarat-dan-ketentuan/img-7.jpg',
         'judul2' => 'Ketentuan Biaya',
         'isi2' => '<p>Untuk biaya yang sudah tercantum dalam website dan pamflet belum termasuk :</p>
                     <ul>
@@ -35,7 +35,7 @@ class SyaratSeeder extends Seeder
                         <li>Pengeluaran pribadi : laundry, telepon hotel, kelebihan bagasi, dsb.</li>
                         <li>Vaksin meningitis dan atau biaya kesehatan lainnya</li>
                     </ul>',
-        'gambar3' => 'assets/images/blog/img-7.jpg',
+        'gambar3' => 'assets/images/syarat-dan-ketentuan/img-7.jpg',
         'judul3' => 'Ketentuan Pembatalan',
         'isi3' => '<p>Apabila terjadi pembatalan maka ketentuan yang berlaku adalah :</p>
                     <ul>

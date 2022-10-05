@@ -28,6 +28,8 @@ class ProdukSeeder extends Seeder
             'hotel' => 'Setaraf',
             'maskapai' => 'Saudi Airlines',
             'kategori_paket' => 'Umrah',
+            'is_tampil_di_beranda' => 'ya',
+            'is_tampil_di_halaman_produk' => 'tidak',
         ],
     );
 
@@ -43,6 +45,8 @@ class ProdukSeeder extends Seeder
         'hotel' => 'Setaraf',
         'maskapai' => 'Saudi Airlines',
         'kategori_paket' => 'Umrah',
+        'is_tampil_di_beranda' => 'ya',
+        'is_tampil_di_halaman_produk' => 'ya'
     ],
 );
 
@@ -58,6 +62,8 @@ DB::table('produks')->insert([
     'hotel' => 'Setaraf',
     'maskapai' => 'Saudi Airlines',
     'kategori_paket' => 'Haji',
+    'is_tampil_di_beranda' => 'tidak',
+    'is_tampil_di_halaman_produk' => 'ya'
 ],
 );
     }

@@ -18,7 +18,7 @@ class PostController extends Controller
     }
 
     public function index(MitraMarketing $mitra){
-        $post = Post::latest();
+        $post = Post::where('is_tampil_di_halaman_artikel', 'ya')->latest();
 
         if(request('search')){
             $post->where('judul', 'like', '%' . request('search') . '%')
@@ -27,13 +27,13 @@ class PostController extends Controller
         } 
         
         $result = $post->get();
-
         // dd($result);
         return view('artikel', [
             "title" => "Semua Artikel",
             "active" => 'artikel',
             "kategori" => CategoryPost::all(),
             "artikel" => $result,
+            "artikel_terbaru" => $result,
             "identitas" => IdentitasPerusahaan::first(),
             "mitra" => $mitra,
         ]);

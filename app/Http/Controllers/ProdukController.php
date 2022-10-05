@@ -21,7 +21,7 @@ class ProdukController extends Controller
     public function index(MitraMarketing $mitra){
 
         $data = [
-            'produk' => Produk::all(),
+            'produk' => Produk::where('is_tampil_di_halaman_produk', 'ya')->get(),
             'identitas' => IdentitasPerusahaan::first(),
             'mitra' => $mitra
         ];

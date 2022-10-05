@@ -15,10 +15,18 @@ class GaleriModel extends Model
     }
 
     public function dataFoto(){
-        return DB::table('galeri')->where('kategori_galeri', 'foto')->get();
+        return DB::table('galeri')->where('kategori_galeri', 'foto')->where('is_tampil_di_galeri', 'ya')->get();
     }
 
     public function dataVideo(){
-        return DB::table('galeri')->where('kategori_galeri', 'video')->get();
+        return DB::table('galeri')->where('kategori_galeri', 'video')->where('is_tampil_di_galeri', 'ya')->get();
+    }
+
+    public function dataFotoBeranda(){
+        return DB::table('galeri')->where('kategori_galeri', 'foto')->where('is_tampil_di_beranda', 'ya')->get();
+    }
+
+    public function dataVideoBeranda(){
+        return DB::table('galeri')->where('kategori_galeri', 'video')->where('is_tampil_di_beranda', 'ya')->get();
     }
 }

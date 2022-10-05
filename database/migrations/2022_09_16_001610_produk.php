@@ -27,6 +27,8 @@ return new class extends Migration
             $table->string('maskapai');
             $table->timestamps();
             $table->string('kategori_paket');
+            $table->string('is_tampil_di_beranda');
+            $table->string('is_tampil_di_halaman_produk');
         });
     }
 

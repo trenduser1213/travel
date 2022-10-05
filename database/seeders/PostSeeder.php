@@ -24,6 +24,8 @@ class PostSeeder extends Seeder
             'kategori' => 'saudi',
             'written_by' => 'M.Arifin',
             'body' => 'akwkwdksndakansdknksadnksnksndknaskdnksndkasnd',
+            'is_tampil_di_beranda' => 'tidak',
+            'is_tampil_di_halaman_artikel' => 'ya'
         ],
     );
 
@@ -36,6 +38,8 @@ class PostSeeder extends Seeder
             'kategori' => 'saudi',
             'written_by' => 'M.Arifin',
             'body' => 'akwkwdksndakansdknksadnksnksndknaskdnksndkasnd',
+            'is_tampil_di_beranda' => 'ya',
+            'is_tampil_di_halaman_artikel' => 'ya'
         ],
     );
 
@@ -48,6 +52,8 @@ class PostSeeder extends Seeder
             'kategori' => 'saudi',
             'written_by' => 'M.Arifin',
             'body' => 'akwkwdksndakansdknksadnksnksndknaskdnksndkasnd',
+            'is_tampil_di_beranda' => 'ya',
+            'is_tampil_di_halaman_artikel' => 'tidak'
         ],
     );
     }

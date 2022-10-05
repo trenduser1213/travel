@@ -134,129 +134,78 @@
             </div>
             <div class="service-wrap">
                 <div class="row">
-                    <div class="col-lg-4 col-md-4 col-sm-6 custom-grid col-12">
-                        <div class="post post-text-wrap">
-                            <div class="service-single-img">
-                                <img src="assets/images/produk/2021-Milad-safari-tour.jpg"
-                                    style="height:auto;"alt="">
-                            </div>
-                            <div class="service-text">
-                                <h2><a href="service-single.html">Paket Milad</a></h2>
-                                <br>
-                                <div class="entry-bottom">
-                                    <p style="font-size: small"><i class="fa fa-calendar fa-sm"></i>
-                                        Tanggal Berangkat</p>
-                                    <p style="font-size: small;" class="text-right">23 Okt 2022</p>
+
+                    @foreach ($produk as $produk)
+                        <div class="col-lg-4 col-md-4 col-sm-6 custom-grid col-12">
+                            <div class="post post-text-wrap">
+                                <div class="service-single-img">
+                                    <img src="{{ asset('assets/') }}../../{{ $produk->gambar }}"
+                                        style="height:auto;"alt="{{ $produk->slug }}">
                                 </div>
-                                <div class="entry-bottom">
-                                    <p style="font-size: small"><i class="fa fa-user fa-sm"></i> Total
-                                        Seat</p>
-                                    <p style="font-size: small;" class="text-right">75 pax</p>
-                                </div>
-                                <div class="entry-bottom">
-                                    <p style="font-size: small"><i class="fa fa-map-marker fa-sm"></i>
-                                        Berangkat Dari</p>
-                                    <p style="font-size: small;" class="text-right">JAKARTA</p>
-                                </div>
-                                <div class="entry-bottom">
-                                    <p style="font-size: small"><i class="fa fa-plane fa-sm"></i> Maskapai
-                                    </p>
-                                    <p style="font-size: small;" class="text-right">Saudia Airlines</p>
-                                </div>
-                            </div>
-                            <div class="container">
-                                <div class="entry-bottom">
-                                    <a href="#" class="read-more">Detail..</a>
-                                    <div class="blog-thumb-text">
-                                        <span>Daftar</span>
+                                <div class="service-text">
+                                    <div class="product-badge">
+                                        @if ($produk->kategori_paket == 'Haji')
+                                            <div class="text-haji">
+                                                <span>{{ $produk->kategori_paket }}</span>
+                                            </div>
+                                        @else
+                                            <div class="text-umrah">
+                                                <span>{{ $produk->kategori_paket }}</span>
+                                            </div>
+                                        @endif
+
+                                    </div>
+                                    <h2><a href="service-single.html">{{ $produk->nama }}</a></h2>
+                                    <br>
+                                    <div class="entry-bottom">
+                                        <p style="font-size: small"><i class="fa fa-calendar fa-sm"></i> Berangkat
+                                        </p>
+                                        <p style="font-size: small;" class="text-right">
+                                            {{ $produk->tgl_berangkat }}</p>
+                                    </div>
+                                    <div class="entry-bottom">
+                                        <p style="font-size: small"><i class="fa fa-clock-o fa-sm"></i> Durasi</p>
+                                        <p style="font-size: small;" class="text-right">{{ $produk->durasi }}
+                                        </p>
+                                    </div>
+                                    <div class="entry-bottom">
+                                        <p style="font-size: small"><i class="fa fa-user fa-sm"></i> Total Seat</p>
+                                        <p style="font-size: small;" class="text-right">{{ $produk->total_seat }}
+                                        </p>
+                                    </div>
+                                    <div class="entry-bottom">
+                                        <p style="font-size: small"><i class="fa fa-map-marker fa-sm"></i>
+                                            Berangkat Dari
+                                        </p>
+                                        <p style="font-size: small;" class="text-right">
+                                            {{ $produk->berangkat_dari }}
+                                        </p>
+                                    </div>
+                                    <div class="entry-bottom">
+                                        <p style="font-size: small"><i class="fa fa-hotel fa-sm"></i> Hotel</p>
+                                        <p style="font-size: small;" class="text-right">{{ $produk->hotel }}
+                                        </p>
+                                    </div>
+                                    <div class="entry-bottom">
+                                        <p style="font-size: small"><i class="fa fa-plane fa-sm"></i> Maskapai</p>
+                                        <p style="font-size: small;" class="text-right">{{ $produk->maskapai }}
+                                        </p>
                                     </div>
                                 </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-4 col-sm-6 custom-grid col-12">
-                        <div class="post post-text-wrap">
-                            <div class="service-single-img">
-                                <img src="assets/images/produk/Aulia-13-Hari.jpg" style="height:auto;"alt="">
-                            </div>
-                            <div class="service-text">
-                                <h2><a href="service-single.html">Paket Milad</a></h2>
-                                <br>
-                                <div class="entry-bottom">
-                                    <p style="font-size: small"><i class="fa fa-calendar fa-sm"></i>
-                                        Tanggal Berangkat</p>
-                                    <p style="font-size: small;" class="text-right">23 Okt 2022</p>
-                                </div>
-                                <div class="entry-bottom">
-                                    <p style="font-size: small"><i class="fa fa-user fa-sm"></i> Total
-                                        Seat</p>
-                                    <p style="font-size: small;" class="text-right">75 pax</p>
-                                </div>
-                                <div class="entry-bottom">
-                                    <p style="font-size: small"><i class="fa fa-map-marker fa-sm"></i>
-                                        Berangkat Dari</p>
-                                    <p style="font-size: small;" class="text-right">JAKARTA</p>
-                                </div>
-                                <div class="entry-bottom">
-                                    <p style="font-size: small"><i class="fa fa-plane fa-sm"></i> Maskapai
-                                    </p>
-                                    <p style="font-size: small;" class="text-right">Saudia Airlines</p>
-                                </div>
-                            </div>
-                            <div class="container">
-                                <div class="entry-bottom">
-                                    <a href="#" class="read-more">Detail..</a>
-                                    <div class="blog-thumb-text">
-                                        <span>Daftar</span>
+                                <div class="container">
+                                    <div class="entry-bottom">
+                                        {{-- <a href="#" class="read-more">Detail..</a> --}}
+                                        <div class="blog-thumb-text" style="margin: auto;">
+                                            <a
+                                                href="/{{ $mitra->username }}/daftar/{{ $produk->slug }}"><span>Daftar</span></a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
+                            </div>
                         </div>
-                    </div>
+                    @endforeach
 
-                    <div class="col-lg-4 col-md-4 col-sm-6 custom-grid col-12">
-                        <div class="post post-text-wrap">
-                            <div class="service-single-img">
-                                <img src="assets/images/produk/Badal-Haji.jpg" style="height:auto;"alt="">
-                            </div>
-                            <div class="service-text">
-                                <h2><a href="service-single.html">Paket Milad</a></h2>
-                                <br>
-                                <div class="entry-bottom">
-                                    <p style="font-size: small"><i class="fa fa-calendar fa-sm"></i>
-                                        Tanggal Berangkat</p>
-                                    <p style="font-size: small;" class="text-right">23 Okt 2022</p>
-                                </div>
-                                <div class="entry-bottom">
-                                    <p style="font-size: small"><i class="fa fa-user fa-sm"></i> Total
-                                        Seat</p>
-                                    <p style="font-size: small;" class="text-right">75 pax</p>
-                                </div>
-                                <div class="entry-bottom">
-                                    <p style="font-size: small"><i class="fa fa-map-marker fa-sm"></i>
-                                        Berangkat Dari</p>
-                                    <p style="font-size: small;" class="text-right">JAKARTA</p>
-                                </div>
-                                <div class="entry-bottom">
-                                    <p style="font-size: small"><i class="fa fa-plane fa-sm"></i> Maskapai
-                                    </p>
-                                    <p style="font-size: small;" class="text-right">Saudia Airlines</p>
-                                </div>
-                            </div>
-                            <div class="container">
-                                <div class="entry-bottom">
-                                    <a href="#" class="read-more">Detail..</a>
-                                    <div class="blog-thumb-text">
-                                        <span>Daftar</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -278,78 +227,32 @@
             </div>
 
             <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-6 custom-grid col-12">
-                    <div class="widget profile-widget">
+                @foreach ($testimoni as $testimoni)
+                    <div class="col-lg-4 col-md-4 col-sm-6 custom-grid col-12">
+                        <div class="widget profile-widget">
 
-                        <div class="profile-img">
-                            <div class="post-bloquote">
+                            <div class="profile-img">
+                                <div class="post-bloquote">
+                                </div>
+                                <img src="{{ asset('assets/') }}../../{{ $testimoni->gambar }}" alt="">
+                                <p>{{ $testimoni->testimoni }}</p>
                             </div>
-                            <img src="assets/images/testimonials/Eri Cahyadi.jpeg" alt="">
-                            <p>"Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                Lorem Ipsum has been the industry's standard dummy text ever since the
-                                1500s"</p>
-                        </div>
-                        <div class="pro-social">
-                            <ul>
-                                <li>
-                                    <h3>Eri Cahyadi</h3>
-                                </li>
-                                <li>
-                                    <p>Walikota Surabaya</p>
-                                </li>
-                            </ul>
+                            <div class="pro-social">
+                                <ul>
+                                    <li>
+                                        <h3>{{ $testimoni->nama }}</h3>
+                                    </li>
+                                    @if ($testimoni->jabatan != null)
+                                        <li>
+                                            <p>{{ $testimoni->jabatan }}</p>
+                                        </li>
+                                    @else
+                                    @endif
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-lg-4 col-md-4 col-sm-6 custom-grid col-12">
-                    <div class="widget profile-widget">
-
-                        <div class="profile-img">
-                            <div class="post-bloquote">
-                            </div>
-                            <img src="assets/images/testimonials/Eri Cahyadi.jpeg" alt="">
-                            <p>"Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                Lorem Ipsum has been the industry's standard dummy text ever since the
-                                1500s"</p>
-                        </div>
-                        <div class="pro-social">
-                            <ul>
-                                <li>
-                                    <h3>Eri Cahyadi</h3>
-                                </li>
-                                <li>
-                                    <p>Walikota Surabaya</p>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-4 col-sm-6 custom-grid col-12">
-                    <div class="widget profile-widget">
-
-                        <div class="profile-img">
-                            <div class="post-bloquote">
-                            </div>
-                            <img src="assets/images/testimonials/Eri Cahyadi.jpeg" alt="">
-                            <p>"Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                Lorem Ipsum has been the industry's standard dummy text ever since the
-                                1500s"</p>
-                        </div>
-                        <div class="pro-social">
-                            <ul>
-                                <li>
-                                    <h3>Eri Cahyadi</h3>
-                                </li>
-                                <li>
-                                    <p>Walikota Surabaya</p>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
+                @endforeach
             </div>
         </div>
     </section>
@@ -371,36 +274,35 @@
             <div class="wpo-about-wrap">
                 <div class="service-wrap">
                     <div class="row">
-                        <div class="col-lg-4 col-md-4 col-sm-6 custom-grid col-12">
-                            <div class="service-single-item">
-                                <div class="service-single-img">
-                                    <img src="assets/images/gallery/Manasik-Safari-Tour.jpg" alt="">
-                                </div>
-                                <div class="service-text">
-                                    <h2>Manasik</h2>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-6 custom-grid col-12">
-                            <div class="service-single-item">
-                                <div class="service-single-img">
-                                    <img src="assets/images/gallery/Pembekalan-Sebelum-Keberang.jpg" alt="">
-                                </div>
-                                <div class="service-text">
-                                    <h2><a href="service-single.html">Pembekalan</a></h2>
+                        @foreach ($video as $video)
+                            <div class="col-lg-4 col-md-4 col-sm-6 custom-grid col-12">
+                                <div class="service-single-item">
+                                    <div class="service-single-img">
+                                        <div class="h_iframe">
+                                            {!! $video->link !!}
+                                        </div>
+                                    </div>
+                                    <div class="service-text">
+                                        <h2>{{ $video->judul }}</h2>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-6 custom-grid col-12">
-                            <div class="service-single-item">
-                                <div class="service-single-img">
-                                    <img src="assets/images/gallery/Proses-Bagasi.jpg" alt="">
-                                </div>
-                                <div class="service-text">
-                                    <h2><a href="service-single.html">Proses Bagasi</a></h2>
+                        @endforeach
+                    </div>
+                    <div class="row">
+                        @foreach ($foto as $foto)
+                            <div class="col-lg-4 col-md-4 col-sm-6 custom-grid col-12">
+                                <div class="service-single-item">
+                                    <div class="service-single-img">
+                                        <img src="{{ asset('assets/') }}../../{{ $foto->link }}"
+                                            alt="{{ $foto->judul }}">
+                                    </div>
+                                    <div class="service-text">
+                                        <h2>{{ $foto->judul }}</h2>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -420,57 +322,25 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4 col-sm-12 col-12 custom-grid">
-                    <div class="wpo-event-item">
-                        <div class="wpo-event-text">
-                            <center><img src="assets/images/artikel/kesabaran dan kesadaran.jpeg" alt=""
-                                    style="padding-bottom:20px;"></center>
-                            <h2 style="display:block">Kesabaran & Kesadaran Sebagai Tamu Allah adalah Awal
-                                Mencapai Kemabruran</h2>
-                            <ul>
-                                <li><i class="fa fa-calendar" aria-hidden="true"></i> 24 Agustus 2022</li>
-                                <li><i class="fa fa-user"></i>M. Arifin</li>
-                            </ul>
-                            <p>Salah satu tips utama yang harus dimiliki setiap orang yang berumrah adalah
-                                sabar. Kesabaran ini harus dimiliki ketika di perjalanan, .....</p>
-                            <a href="event-single.html">Baca Selengkapnya...</a>
+                @foreach ($artikel as $artikel)
+                    <div class="col-md-4 col-sm-12 col-12 custom-grid">
+                        <div class="wpo-event-item">
+                            <div class="wpo-event-text">
+                                <center><img src="{{ asset('assets/') }}../../{{ $artikel->gambar }}"></center> <br>
+                                <h2 style="display:block">{{ $artikel->judul }}</h2>
+                                <ul>
+                                    <li><i class="fa fa-calendar" aria-hidden="true"></i> {{ $artikel->published_at }}
+                                    </li>
+                                    <li><i class="fa fa-user"></i>{{ $artikel->written_by }}</li>
+                                </ul>
+                                <p>{!! $artikel->excerpt !!}</p>
+                                <a
+                                    href="{{ route('tes.nama', ['post' => $artikel->slug, 'mitra' => $mitra->username]) }}">Baca
+                                    Selengkapnya...</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4 col-sm-12 col-12 custom-grid">
-                    <div class="wpo-event-item">
-                        <div class="wpo-event-text">
-                            <center><img src="assets/images/artikel/kesabaran dan kesadaran.jpeg" alt=""
-                                    style="padding-bottom:20px;"></center>
-                            <h2 style="display:block">Kesabaran & Kesadaran Sebagai Tamu Allah adalah Awal
-                                Mencapai Kemabruran</h2>
-                            <ul>
-                                <li><i class="fa fa-calendar" aria-hidden="true"></i> 24 Agustus 2022</li>
-                                <li><i class="fa fa-user"></i>M. Arifin</li>
-                            </ul>
-                            <p>Salah satu tips utama yang harus dimiliki setiap orang yang berumrah adalah
-                                sabar. Kesabaran ini harus dimiliki ketika di perjalanan, .....</p>
-                            <a href="event-single.html">Baca Selengkapnya...</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-12 col-12 custom-grid">
-                    <div class="wpo-event-item">
-                        <div class="wpo-event-text">
-                            <center><img src="assets/images/artikel/kesabaran dan kesadaran.jpeg" alt=""
-                                    style="padding-bottom:20px;"></center>
-                            <h2 style="display:block">Kesabaran & Kesadaran Sebagai Tamu Allah adalah Awal
-                                Mencapai Kemabruran</h2>
-                            <ul>
-                                <li><i class="fa fa-calendar" aria-hidden="true"></i> 24 Agustus 2022</li>
-                                <li><i class="fa fa-user"></i>M. Arifin</li>
-                            </ul>
-                            <p>Salah satu tips utama yang harus dimiliki setiap orang yang berumrah adalah
-                                sabar. Kesabaran ini harus dimiliki ketika di perjalanan, .....</p>
-                            <a href="event-single.html">Baca Selengkapnya...</a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>

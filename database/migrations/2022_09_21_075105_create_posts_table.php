@@ -24,6 +24,8 @@ return new class extends Migration
             $table->text('excerpt');
             $table->text('body');
             $table->timestamp('published_at');
+            $table->string('is_tampil_di_beranda');
+            $table->string('is_tampil_di_halaman_artikel');
             $table->timestamps();
         });
     }

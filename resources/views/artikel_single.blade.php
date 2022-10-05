@@ -11,11 +11,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="wpo-breadcumb-wrap">
-                        <h2>Latest News</h2>
-                        <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li><span>Blog</span></li>
-                        </ul>
+                        <h2>Artikel</h2>
                     </div>
                 </div>
             </div>

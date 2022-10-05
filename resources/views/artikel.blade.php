@@ -52,26 +52,6 @@
                                 @else
                                     <h2>Artikel tidak di temukan!</h2>
                                 @endif
-
-
-                                {{-- {{ $artikel->links() }} --}}
-                                {{-- <div class="pagination-wrapper pagination-wrapper-left">
-                                            <ul class="pg-pagination">
-                                                <li>
-                                                    <a href="#" aria-label="Previous">
-                                                        <i class="fi ti-angle-left"></i>
-                                                    </a>
-                                                </li>
-                                                <li class="active"><a href="#">1</a></li>
-                                                <li><a href="#">2</a></li>
-                                                <li><a href="#">3</a></li>
-                                                <li>
-                                                    <a href="#" aria-label="Next">
-                                                        <i class="fi ti-angle-right"></i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div> --}}
                             </div>
                         </div>
                         <div class="col col-md-4">
@@ -94,38 +74,21 @@
                                     </ul>
                                 </div>
                                 <div class="widget recent-post-widget">
-                                    <h3>Recent posts</h3>
+                                    <h3>Artikel Terbaru</h3>
                                     <div class="posts">
-                                        <div class="post">
-                                            <div class="img-holder">
-                                                <img src="assets/images/artikel/1.jpg" alt>
-                                            </div>
-                                            <div class="details">
-                                                <h4><a href="#">HALAL BIHALAL RAJUT PERSAUDARAAN</a></h4>
-                                                <span class="date">22 Sep 2022</span>
-                                            </div>
-                                        </div>
+                                        @foreach ($artikel_terbaru as $artikel)
+                                            <div class="post">
+                                                <div class="img-holder">
+                                                    <img src="{{ asset('assets/') }}../../{{ $artikel->gambar }}"
+                                                        alt="{{ $artikel->slug }}">
 
-                                        <div class="post">
-                                            <div class="img-holder">
-                                                <img src="assets/images/artikel/1.jpg" alt>
+                                                </div>
+                                                <div class="details">
+                                                    <h4><a href="#">{{ $artikel->judul }}</a></h4>
+                                                    <span class="date">{{ $artikel->published_at }}</span>
+                                                </div>
                                             </div>
-                                            <div class="details">
-                                                <h4><a href="#">HALAL BIHALAL RAJUT PERSAUDARAAN</a></h4>
-                                                <span class="date">22 Sep 2022</span>
-                                            </div>
-                                        </div>
-
-                                        <div class="post">
-                                            <div class="img-holder">
-                                                <img src="assets/images/artikel/1.jpg" alt>
-                                            </div>
-                                            <div class="details">
-                                                <h4><a href="#">HALAL BIHALAL RAJUT PERSAUDARAAN</a></h4>
-                                                <span class="date">22 Sep 2022</span>
-                                            </div>
-                                        </div>
-
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
