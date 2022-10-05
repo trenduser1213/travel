@@ -28,8 +28,12 @@ class DatabaseSeeder extends Seeder
             IndoRegionRegencySeeder::class,
             IndoRegionDistrictSeeder::class,
             MitraMarketingSeeder::class,
+            AsosiasiSeeder::class,
+            SliderSeeder::class,
+            TestimoniSeeder::class,
+            MengapaKamiSeeder::class,
+            FAQSeeder::class,
         ]);
-            
         }
     }
 }

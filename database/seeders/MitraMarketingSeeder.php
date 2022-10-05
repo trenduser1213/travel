@@ -19,15 +19,15 @@ class MitraMarketingSeeder extends Seeder
     public function run()
     {
         DB::table('mitra_marketings')->insert([
-            'nama' => '',
-            'username' => Str::random('5'),
-            'hp' => '', 
-            'wa' => '',
-            'alamat' => '',
-            'kota' => '',
-            'provinsi' => '',
-            'jabatan' => '',
-            'status' => '', 
+            'nama' => 'Safari',
+            'username' => 'admin',
+            'hp' => '123456789090', 
+            'wa' => '123456789090',
+            'alamat' => 'qwertyuiop',
+            'kota' => 'qwertyuiop',
+            'provinsi' => '1234567890',
+            'jabatan' => 'qwert',
+            'status' => '1', 
         ]);
 
         DB::table('mitra_marketings')->insert([

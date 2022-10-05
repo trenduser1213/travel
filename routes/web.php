@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\AdminDashboard;
 use App\Http\Controllers\SyaratController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\GaleriController;
@@ -66,3 +67,8 @@ Route::get('provinces', 'DependentDropdownController@provinces')->name('province
 Route::get('cities', 'DependentDropdownController@cities')->name('cities');
 Route::get('districts', 'DependentDropdownController@districts')->name('districts');
 Route::get('villages', 'DependentDropdownController@villages')->name('villages');
+
+
+
+//Routing Admin
+Route::get('admin', [AdminDashboard::class, 'index']);

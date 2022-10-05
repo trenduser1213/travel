@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('f_a_q_s', function (Blueprint $table) {
             $table->id();
+            $table->string('pertanyaan');
+            $table->string('jawaban');
+            $table->string('is_tampil');
             $table->timestamps();
         });
     }

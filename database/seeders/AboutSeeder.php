@@ -15,13 +15,14 @@ class AboutSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('about')->insert([
+        DB::table('abouts')->insert([
             'judul' => 'Tentang Kami',
             'subjudul' => 'PT. Safari Global Perkasa',
             'motto' => 'Langkah Pasti Menuju Baitullah',
             'submotto' => 'Umrah Sekaligus Bersedekah',
             'thumbnail' => 'assets/images/gallery/Safari.jpeg',
-            'link_video' => '<iframe src="https://www.youtube.com/embed/HDASx9ovpC8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+            'link_video_iframe' => '<iframe src="https://www.youtube.com/embed/HDASx9ovpC8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+            'link_video_embed' => 'https://www.youtube.com/embed/HDASx9ovpC8',
             'teks_sejajar_video' => '<p>Berawal dari kepedulian terhadap anak yatim dan kaum dhuafa yang kurang mendapatkan pendidikan yang layak dan memadai, beberapa dosen dari Universitas Airlangga dan Universitas Islam Negeri Surabaya (IAIN Sunan Ampel) tergerak hatinya untuk mendirikan usaha yang profitnya di darmabaktikan untuk membiayai pendidikan anak yatim dan kaum dhuafa. Gagasan dan cita-cita yang mulia tersebut diikrarkan di depan Ka bah (Baitullah) saat mereka menunaikan ibadah Haji.</p>',
             'teks_di_bawah_video' =>'<p> Akhirnya pada tahun 2008, gagasan dan cita-cita mulia tersebut oleh Bapak Muhammad Asfar
             selaku penggagas utama diwujudkan dalam bentuk konkrit berupa pendirian PT. Safari
@@ -87,6 +88,7 @@ class AboutSeeder extends Seeder
                     Pengabdian Kepada Allah”.</p>
             </li>
         </ol>',
+        'teks_sejajar_video_di_beranda'=> 'Keuntungan perusahaan ini sepenuhnya diinfaqkan untuk Pondok Pesantren Idhotun Nasyi in di Desa Sugihwaras, Kalitengah Lamongan Jawa Timur, sehingga dapat memberikan pendidikan gratis kepada para anak yatim dan kaum dhuafa.',
 
         ],
     );

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('nama');
             $table->string('nama_gedung_kantor');
             $table->string('alamat');
+            $table->text('gmaps');
             $table->string('no_hp_1');
             $table->string('no_hp_2')->nullable();
             $table->string('no_telepon_1');

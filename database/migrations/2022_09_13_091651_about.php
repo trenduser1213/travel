@@ -13,16 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('about', function (Blueprint $table) {
+        Schema::create('abouts', function (Blueprint $table) {
             $table->id();
             $table->string('judul');
             $table->string('subjudul');
             $table->string('thumbnail');
-            $table->text('link_video');
+            $table->text('link_video_iframe');
+            $table->text('link_video_embed');
             $table->string('motto');
             $table->string('submotto');
             $table->text('teks_sejajar_video');
             $table->text('teks_di_bawah_video');
+            $table->text('teks_sejajar_video_di_beranda');
             $table->timestamps();
         });
     }

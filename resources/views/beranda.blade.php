@@ -9,80 +9,47 @@
 
     <section class="hero hero-style-1">
         <div class="hero-slider">
-            <div class="slide">
-                <div class="container">
-                    <img src="assets/images/slider/slide1.jpeg" alt class="slider-bg">
-                    <div class="row">
-                        <div class="col col-md-8 col-md-offset-2 slide-caption">
-                            <div class="slide-top">
-                                <span>“Mengerjakan haji adalah kewajiban manusia terhadap Allah, yaitu
-                                    (bagi) orang yang sanggup mengadakan perjalanan ke Baitullah,
-                                    Barangsiapa mengingkari (kewajiban haji), maka sesungguhnya Allah Maha
-                                    Kaya (tidak memerlukan sesuatu) dari semesta alam”</span>
-                            </div>
-                            <div class="slide-title">
-                                <h2>-HR. Bukhari Muslim-</h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="slide">
-                <div class="container">
-                    <img src="assets/images/slider/slide2.jpg" alt class="slider-bg">
-                    <div class="row">
-                        <div class="col col-md-8 col-md-offset-2 slide-caption">
-                            <div class="slide-top">
-                                <span>“Mengerjakan haji adalah kewajiban manusia terhadap Allah, yaitu
-                                    (bagi) orang yang sanggup mengadakan perjalanan ke Baitullah,
-                                    Barangsiapa mengingkari (kewajiban haji), maka sesungguhnya Allah Maha
-                                    Kaya (tidak memerlukan sesuatu) dari semesta alam”</span>
-                            </div>
-                            <div class="slide-title">
-                                <h2>-HR. Bukhari Muslim-</h2>
+            @foreach ($slider as $slider)
+                <div class="slide">
+                    <div class="container">
+                        <img src="{{ asset('assets/') }}../../{{ $slider->gambar }}" alt="{{ $slider->gambar }}"
+                            class="slider-bg">
+                        <div class="row">
+                            <div class="col col-md-8 col-md-offset-2 slide-caption">
+                                <div class="slide-top">
+                                    <span>{!! $slider->teks1 !!}</span>
+                                </div>
+                                <div class="slide-title">
+                                    <h2>{!! $slider->teks2 !!}</h2>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="slide">
-                <div class="container">
-                    <img src="assets/images/slider/slide3.jpg" alt class="slider-bg">
-                    <div class="row">
-                        <div class="col col-md-8 col-md-offset-2 slide-caption">
-                            <div class="slide-top">
-                                <span>“Mengerjakan haji adalah kewajiban manusia terhadap Allah, yaitu
-                                    (bagi) orang yang sanggup mengadakan perjalanan ke Baitullah,
-                                    Barangsiapa mengingkari (kewajiban haji), maka sesungguhnya Allah Maha
-                                    Kaya (tidak memerlukan sesuatu) dari semesta alam”</span>
-                            </div>
-                            <div class="slide-title">
-                                <h2>-HR. Bukhari Muslim-</h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </section>
     <!-- end of hero slider -->
 
     <!-- about-area start -->
+
     <div class="wpo-about-area-3 section-padding">
         <div class="container">
             <div class="wpo-about-wrap">
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-12">
                         <div class="wpo-blog-content">
-                            <div class="post format-video">
+                            <div class="post format-video" style="margin-bottom: 20px;">
                                 <!-- <center><img src="assets/images/logo-safari-ka'bah.png" alt="" style="height: 400px;"></center> -->
                                 <center>
                                     <div class="entry-media video-holder">
-                                        <img src="assets/images/gallery/Safari.jpeg" alt>
-                                        <a href="https://www.youtube.com/embed/HDASx9ovpC8" class="video-btn"
-                                            data-type="iframe">
-                                            <i class="fi flaticon-play-button-2"></i>
-                                        </a>
+                                        {{-- <img src="{{ $about->thumbnail }}" alt> --}}
+                                        {{-- <a href="https://www.youtube.com/embed/HDASx9ovpC8" class="video-btn"
+                                                        data-type="iframe">
+                                                        <i class="fi flaticon-play-button-2"></i> </a> --}}
+                                        <div class="h_iframe" style="height: 360px">
+                                            {!! $about->link_video_iframe !!}
+                                        </div>
                                     </div>
                                 </center>
 
@@ -93,24 +60,21 @@
                     <div class="col-lg-6 col-md-6 colsm-12">
                         <div class="wpo-about-text">
                             <div class="wpo-section-title">
-                                <span>Umrah Sekaligus Bersedekah</span>
-                                <h2>Langkah Pasti Menuju Baitullah</h2>
+                                <span>{{ $about->submotto }}</span>
+                                <h2>{{ $about->motto }}</h2>
                             </div>
-                            <p>Keuntungan perusahaan ini sepenuhnya diinfaqkan untuk Pondok Pesantren
-                                Idhotun Nasyi'in di Desa Sugihwaras, Kalitengah Lamongan Jawa Timur,
-                                sehingga dapat memberikan pendidikan gratis kepada para anak yatim dan kaum
-                                dhuafa.</p>
+                            {!! $about->teks_sejajar_video_di_beranda !!}
                             <div class="btns">
-                                <a href="about.html" class="theme-btn" tabindex="0">Baca
+                                <a href="/{{ $mitra->username }}/about" class="theme-btn" tabindex="0">Baca
                                     Selengkapnya</a>
                                 <ul>
                                     <li class="video-holder">
-                                        <a href="https://www.youtube.com/embed/LTqRm53QjI0" class="video-btn"
-                                            data-type="iframe" tabindex="0"></a>
+                                        <a href="{!! $about->link_video_embed !!}" class="video-btn" data-type="iframe"
+                                            tabindex="0"></a>
                                     </li>
                                     <li class="video-text">
-                                        <a href="https://www.youtube.com/embed/LTqRm53QjI0" class="video-btn"
-                                            data-type="iframe" tabindex="0">
+                                        <a href="{!! $about->link_video_embed !!}" class="video-btn" data-type="iframe"
+                                            tabindex="0">
                                             Lihat Video Kami
                                         </a>
                                     </li>
@@ -136,82 +100,20 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-6 custom-grid col-12">
-                    <div class="wpo-event-item">
-                        <div class="wpo-event-text" style="height: 300px;">
-                            <center><i class="fi flaticon-business-and-finance" style="color: #062265;"></i>
-                                <h2>Insya Allah Berkah</h2>
-                                <p>InsyaAllah Umrah & Haji anda semakin berkah karena secara tidak langsung
-                                    berinfaq kepada yatim piatu dan fakir miskin di Pondok Pesantren</p>
-                            </center>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="col-lg-4 col-md-4 col-sm-6 custom-grid col-12">
-                    <div class="wpo-event-item">
-                        <div class="wpo-event-text" style="height: 300px;">
-                            <center><i class="ti-medall" style="color: #062265; font-size: 50px;"></i>
-                                <br><br>
-                                <h2>Berizin Resmi</h2>
-                                <p>Kami telah memiliki izin resmi sebagai travel haji dan umrah dari
-                                    Kementerian Agama Republik Indonesia</p>
-                        </div>
-                        </center>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-4 col-sm-6 custom-grid col-12">
-                    <div class="wpo-event-item">
-                        <div class="wpo-event-text" style="height: 300px;">
-                            <center><i class="ti-user" style="color: #062265; font-size: 50px;"></i>
-                                <br><br>
-                                <h2>Amanah dan Profesional</h2>
-                                <p>Kami memiliki pembimbing calon jama'ah yang amanah serta profesional pada
-                                    bidangnya.</p>
-                            </center>
+                @foreach ($why_us as $item)
+                    <div class="col-lg-4 col-md-4 col-sm-6 custom-grid col-12">
+                        <div class="wpo-event-item">
+                            <div class="wpo-event-text" style="height: 320px;">
+                                <center><i class="{{ $item->icon }}" style="color: #062265; font-size: 50px;"></i>
+                                    <br><br>
+                                    <h2>{{ $item->judul }}</h2>
+                                    <p>{{ $item->deskripsi }}</p>
+                                </center>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-lg-4 col-md-4 col-sm-6 custom-grid col-12">
-                    <div class="wpo-event-item">
-                        <div class="wpo-event-text" style="height: 300px;">
-                            <center><i class="ti-thumb-up" style="color: #062265; font-size: 50px;"></i>
-                                <br> <br>
-                                <h2>Komplit</h2>
-                                <p>Pembekalan tata cara ibadah yang komplit baik teori maupun praktek untuk
-                                    memastikan jamaah umrah melaksanakan ibadah dengan sempurna.</p>
-                            </center>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-4 col-sm-6 custom-grid col-12">
-                    <div class="wpo-event-item">
-                        <div class="wpo-event-text" style="height: 300px;">
-                            <center><i class="ti-wallet" style="color: #062265; font-size: 50px;"></i>
-                                <br><br>
-                                <h2>Kepastian Harga</h2>
-                                <p>Kami memastikan tidak ada tambahan biaya lagi selain yang sudah tercantum
-                                    di daftar harga brosur/pamflet.</p>
-                            </center>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-4 col-sm-6 custom-grid col-12">
-                    <div class="wpo-event-item">
-                        <div class="wpo-event-text" style="height: 300px;">
-                            <center><i class="ti-heart" style="color: #062265; font-size: 50px;"></i>
-                                <br><br>
-                                <h2>Sepenuh Hati</h2>
-                                <p>Kami melayani dengan sepenuh hati, dengan motto : “ Melayani Tamu Allah
-                                    adalah Pengabdian Kepada Allah”</p>
-                            </center>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
@@ -586,59 +488,15 @@
                         </div>
                     </div>
                 </div>
-                <!-- <div class="row no-gutters sponsors-wrap clearfix wow fadeInUp"> -->
                 <div class="sponsors">
-
-                    <div class="col-lg-3 col-md-4 col-xs-6">
-                        <div class="sponsor-logo" data-aos="zoom-in">
-                            <img src="assets/images/use-asosiasi/mandiri_syariah.png" alt="">
+                    @foreach ($asosiasi as $asosiasi)
+                        <div class="col-lg-3 col-md-4 col-xs-6">
+                            <div class="sponsor-logo" data-aos="zoom-in">
+                                <img src="{{ asset('assets/') }}../../{{ $asosiasi->logo }}"
+                                    alt="{{ $asosiasi->nama }}">
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 col-xs-6">
-                        <div class="sponsor-logo" data-aos="zoom-in">
-                            <img src="assets/images/use-asosiasi/asita.png" alt="">
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 col-xs-6">
-                        <div class="sponsor-logo" data-aos="zoom-in">
-                            <img src="assets/images/use-asosiasi/kemenag.png" alt="">
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 col-xs-6">
-                        <div class="sponsor-logo" data-aos="zoom-in">
-                            <img src="assets/images/use-asosiasi/pesona_indonesia.png" alt="">
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 col-xs-6">
-                        <div class="sponsor-logo" data-aos="zoom-in">
-                            <img src="assets/images/use-asosiasi/mandiri_syariah.png" alt="">
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 col-xs-6">
-                        <div class="sponsor-logo" data-aos="zoom-in">
-                            <img src="assets/images/use-asosiasi/asita.png" alt="">
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 col-xs-6">
-                        <div class="sponsor-logo" data-aos="zoom-in">
-                            <img src="assets/images/use-asosiasi/kemenag.png" alt="">
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 col-xs-6">
-                        <div class="sponsor-logo" data-aos="zoom-in">
-                            <img src="assets/images/use-asosiasi/pesona_indonesia.png" alt="">
-                        </div>
-                    </div>
-
-
-                    <!-- </div> -->
+                    @endforeach
                 </div>
             </div>
     </section>
@@ -660,41 +518,21 @@
 
                 <ul class="faq-list" data-aos="fade-up">
                     <ul class="faq-list">
-                        <li>
-                            <div data-bs-toggle="collapse" class="collapsed question" href="#faq1">
-                                Mengapa Memilih Kami?<i class="ti ti-angle-down icon-show"></i><i
-                                    class="ti ti-angle-up icon-close"></i>
-                            </div>
-                            <div id="faq1" class="collapse" data-bs-parent=".faq-list">
-                                <p>
-                                    Penyedia Layanan Umrah & Haji yang Amanah dan Profesional.
-                                </p>
-                            </div>
-                        </li>
 
-                        <li>
-                            <div data-bs-toggle="collapse" class="collapsed question" href="#faq2">
-                                Mengapa Memilih Kami?<i class="ti ti-angle-down icon-show"></i><i
-                                    class="ti ti-angle-up icon-close"></i>
-                            </div>
-                            <div id="faq2" class="collapse" data-bs-parent=".faq-list">
-                                <p>
-                                    Penyedia Layanan Umrah & Haji yang Amanah dan Profesional.
-                                </p>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div data-bs-toggle="collapse" class="collapsed question" href="#faq3">
-                                Mengapa Memilih Kami?<i class="ti ti-angle-down icon-show"></i><i
-                                    class="ti ti-angle-up icon-close"></i>
-                            </div>
-                            <div id="faq3" class="collapse" data-bs-parent=".faq-list">
-                                <p>
-                                    Penyedia Layanan Umrah & Haji yang Amanah dan Profesional.
-                                </p>
-                            </div>
-                        </li>
+                        @foreach ($faq as $faq)
+                            <li>
+                                <div data-bs-toggle="collapse" class="collapsed question"
+                                    href="#faq{{ $faq->id }}">
+                                    {{ $faq->pertanyaan }}<i class="ti ti-angle-down icon-show"></i><i
+                                        class="ti ti-angle-up icon-close"></i>
+                                </div>
+                                <div id="faq{{ $faq->id }}" class="collapse" data-bs-parent=".faq-list">
+                                    <p>
+                                        {{ $faq->jawaban }}
+                                    </p>
+                                </div>
+                            </li>
+                        @endforeach
                     </ul>
 
             </div>

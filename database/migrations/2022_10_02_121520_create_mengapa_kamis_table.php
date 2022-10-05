@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('mengapa_kamis', function (Blueprint $table) {
             $table->id();
+            $table->string('icon');
+            $table->string('judul');
+            $table->string('deskripsi');
+            $table->string('is_tampil');
             $table->timestamps();
         });
     }

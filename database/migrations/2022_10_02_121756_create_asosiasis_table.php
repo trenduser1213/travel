@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('asosiasis', function (Blueprint $table) {
             $table->id();
+            $table->string('nama');
+            $table->string('logo');
+            $table->string('is_tampil'); 
             $table->timestamps();
         });
     }

@@ -38,7 +38,7 @@
                                                         data-type="iframe">
                                                         <i class="fi flaticon-play-button-2"></i> </a> --}}
                                         <div class="h_iframe" style="height: 360px">
-                                            {!! $about->link_video !!}
+                                            {!! $about->link_video_iframe !!}
                                         </div>
                                     </div>
                                 </center>
