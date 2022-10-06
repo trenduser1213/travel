@@ -10,11 +10,13 @@ use App\Http\Controllers\KontakJamaahController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\DataJamaah;
 use App\Http\Controllers\beranda;
+use App\Http\Controllers\KategoriArtikelController;
 use App\Models\CategoryPost;
 use App\Models\KontakJamaah;
 use App\Models\Post;
 use App\Models\Produk;
 use App\Models\MitraMarketing;
+use App\Models\kategoriArtikel;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,3 +74,6 @@ Route::get('villages', 'DependentDropdownController@villages')->name('villages')
 
 //Routing Admin
 Route::get('admin', [AdminDashboard::class, 'index']);
+//Routing admin Artikel
+Route::resource('/adminArtikel',KategoriArtikelController::class);
+
