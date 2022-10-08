@@ -11,6 +11,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\DataJamaah;
 use App\Http\Controllers\beranda;
 use App\Http\Controllers\KategoriArtikelController;
+use App\Http\Controllers\SyaratKetentuansController;
 use App\Models\CategoryPost;
 use App\Models\KontakJamaah;
 use App\Models\Post;
@@ -75,5 +76,7 @@ Route::get('villages', 'DependentDropdownController@villages')->name('villages')
 //Routing Admin
 Route::get('admin', [AdminDashboard::class, 'index']);
 //Routing admin Artikel
-Route::resource('/adminArtikel',KategoriArtikelController::class);
+Route::resource('/CategoryPost',KategoriArtikelController::class);
 
+//Routing admin Syarat & Ketentuan
+Route::resource('/adminKetentuan',SyaratKetentuansController::class);

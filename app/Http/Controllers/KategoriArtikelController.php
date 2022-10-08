@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\kategoriArtikel;
+use App\Models\CategoryPost;
 use Illuminate\Http\Request;
 
 class KategoriArtikelController extends Controller
@@ -14,7 +14,7 @@ class KategoriArtikelController extends Controller
      */
     public function index()
     {
-        $kategoris = kategoriArtikel::orderBy('id_kategori')->get();
+        $kategoris = CategoryPost::orderBy('id')->get();
         return view('admin.artikel.index')->with('kategoris',$kategoris);
         // dd($kategoris);
     }
@@ -37,20 +37,22 @@ class KategoriArtikelController extends Controller
      */
     public function store(Request $request)
     {
-        $tambahKategori = kategoriArtikel::create(['nama_kategori_artikel'=>$request->nama_kategori]);
-        $kategoris = kategoriArtikel::orderBy('id_kategori')->get();
-        return view('admin.artikel.index')->with('kategoris',$kategoris);
+        $tambahKategori = CategoryPost::create([
+            'nama'=>$request->nama_kategori,
+            'slug'=>$request->slug,
+        ]);
+        return redirect('/CategoryPost')->with('success', 'telah tersimpan!');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\kategoriArtikel  $kategoriArtikel
+     * @param  \App\Models\CategoryPost  $CategoryPost
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $kategori = kategoriArtikel::find($id);
+        $kategori = CategoryPost::find($id);
 
         return response()->json($kategori);
     }
@@ -58,10 +60,10 @@ class KategoriArtikelController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\kategoriArtikel  $kategoriArtikel
+     * @param  \App\Models\CategoryPost  $CategoryPost
      * @return \Illuminate\Http\Response
      */
-    public function edit(kategoriArtikel $kategoriArtikel)
+    public function edit(CategoryPost $CategoryPost)
     {
         //
     }
@@ -70,32 +72,33 @@ class KategoriArtikelController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\kategoriArtikel  $kategoriArtikel
+     * @param  \App\Models\CategoryPost  $CategoryPost
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $kategori = kategoriArtikel::find($id);
-        $kategori->nama_kategori_artikel = $request->nama_kategori;
+        $kategori = CategoryPost::find($id);
+        $kategori->nama = $request->nama_kategori;
+        $kategori->slug = $request->slug;
         $kategori->update();
         // $kategori->update($request->except(['_token','submit']));
         // dd($kategori) ;
         // dd($id);
         // $id->update(['nama_kategori_artikel'=>$request->nama_kategori]);
-        // $kategoris = kategoriArtikel::orderBy('id_kategori')->get();
-        return redirect('/adminArtikel')->with('success', 'telah tersimpan!');
+        // $kategoris = CategoryPost::orderBy('id_kategori')->get();
+        return redirect('/CategoryPost')->with('success', 'telah tersimpan!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\kategoriArtikel  $kategoriArtikel
+     * @param  \App\Models\CategoryPost  $CategoryPost
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $kategori = kategoriArtikel::find($id);
+        $kategori = CategoryPost::find($id);
         $kategori->delete();
-        return redirect('/adminArtikel');
+        return response(null, 204);
     }
 }

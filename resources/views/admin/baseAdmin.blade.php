@@ -32,6 +32,7 @@
         });
     </script>
 
+    
     <!-- CSS Files -->
     <link rel="stylesheet" href="{{ asset('assets/') }}../../admin-assets/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('assets/') }}../../admin-assets/assets/css/atlantis.css">
@@ -391,7 +392,7 @@
                             <div class="collapse" id="forms">
                                 <ul class="nav nav-collapse">
                                     <li>
-                                        <a href="{{ route('adminArtikel.index') }}">
+                                        <a href="{{ route('CategoryPost.index') }}">
                                             <span class="sub-item">Kategori Article</span>
                                         </a>
                                     </li>
@@ -422,6 +423,12 @@
                                     </li>
                                 </ul>
                             </div>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route("adminKetentuan.index")}}">
+                                <i class="fas fa-file-signature"></i>
+                                <p>Syarat dan ketentuan</p>
+                            </a>
                         </li>
                         <li class="nav-item active">
                             <a data-toggle="collapse" href="#dashboard" class="collapsed" aria-expanded="false">
@@ -1542,6 +1549,8 @@
 
     <!-- Atlantis JS -->
     <script src="{{ asset('assets/') }}../../admin-assets/assets/js/atlantis.min.js"></script>
+
+    {{-- Summernote --}}
 
     <!-- Atlantis DEMO methods, don't include it in your project! -->
     <script src="{{ asset('assets/') }}../../admin-assets/assets/js/setting-demo.js"></script>

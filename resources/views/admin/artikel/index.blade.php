@@ -6,7 +6,7 @@
             <div class="card-header">
                 <div class="d-flex align-items-center">
                     <h4 class="card-title">Add Row</h4>
-                    <button class="btn btn-primary btn-round ml-auto" onclick="addKategori('{{route('adminArtikel.store')}}')" data-toggle="modal" data-target="">
+                    <button class="btn btn-primary btn-round ml-auto" onclick="addKategori('{{route('CategoryPost.store')}}')" data-toggle="modal" data-target="">
                         <i class="fa fa-plus"></i>
                         Kategori Artikel
                     </button>
@@ -41,6 +41,18 @@
                                                 @enderror
                                         </div>
                                     </div>
+                                    <div class="form-group row">
+                                        <label for="slug" class="col-md-2 col-md-offset-1 control-label">slug</label>
+                                        <div class="col-md-8">
+                                            <input type="text" name="slug" id="slug" class="form-control" required autofocus>
+                                            <span class="help-block with-errors"></span>
+                                                @error('slug')
+                                                    <div class="alert alert-danger mt-2">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="modal-footer border-0">
                                     <button type="submit" id="addRowButton" class="btn btn-primary">Add</button>
@@ -57,21 +69,23 @@
                             <tr>
                                 <th width="10%">no</th>
                                 <th>Kategori</th>
+                                <th>Slug</th>
                                 <th width="10%"><i class="fa fa-gear"></i>action</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody><?php $n=0; ?>
                             @foreach ($kategoris as $kategori)
                                 
                                 <tr>
-                                    <td>1</td>
-                                    <td>{{ $kategori->nama_kategori_artikel }}</td>
+                                    <td>{{++$n}}</td>
+                                    <td>{{ $kategori->nama}}</td>
+                                    <td>{{ $kategori->slug}}</td>
                                     <td>
                                         <div class="form-button-action">
-                                            <button onclick="editForm('{{route('adminArtikel.update',$kategori->id_kategori)}}')" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
+                                            <button onclick="editForm('{{route('CategoryPost.update',$kategori->id)}}')" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
                                                 <i class="fa fa-edit"></i>
                                             </button>
-                                            <button onclick="hapusData('{{route('adminArtikel.destroy',$kategori->id_kategori)}}')" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
+                                            <button onclick="hapusData('{{route('CategoryPost.destroy',$kategori->id)}}')" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
                                                 <i class="fa fa-times"></i>
                                             </button>
                                         </div>
@@ -83,11 +97,17 @@
                             <tr>
                                 <th width="10%">no</th>
                                 <th>Kategori</th>
+                                <th>Slug</th>
                                 <th width="10%"><i class="fa fa-gear"></i>action</th>
                             </tr>
                         </tfoot>
                     </table>
                 </div>
+{{-- 
+                <form method="post">
+                    <textarea id="summernote" name="editordata"></textarea>
+                  </form> --}}
+
 
                 {{-- <div class="table-responsive">
                     <table id="add-row" class="display table table-striped table-hover" >
@@ -265,6 +285,19 @@
         </div>
     </div>
 </div>
+{{-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet"> --}}
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+<script>
+    $('#summernote').summernote({
+        placeholder: 'Atlantis',
+        fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New'],
+        tabsize: 2,
+        height: 300
+    });
+</script>
 <script>
     function addKategori(url) {
         $("#RowModal").modal('show');
@@ -283,7 +316,8 @@
         $('#RowModal [name=nama_kategori]').focus();
         $.get(url)
           .done((response)=>{
-            $('#RowModal [name=nama_kategori]').val(response.nama_kategori_artikel);
+            $('#RowModal [name=nama_kategori]').val(response.nama);
+            $('#RowModal [name=slug]').val(response.slug);
           })
           .fail((errors)=>{
               alert("Data Tidak Muncul");
@@ -297,7 +331,7 @@
         })
         .done((response)=>{
             alert('sukses menghapus');
-            window.location.href='/adminArtikel';
+            window.location.href='/CategoryPost';
         })
         .fail((errors)=>{
           alert('Tidak Terhapus'); 
