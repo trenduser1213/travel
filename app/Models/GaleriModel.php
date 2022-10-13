@@ -14,6 +14,14 @@ class GaleriModel extends Model
         return DB::table('galeri')->get();
     }
 
+    public function allDataFoto(){
+        return DB::table('galeri')->where('kategori_galeri', 'foto')->get();
+    }
+
+    public function allDataVideo(){
+        return DB::table('galeri')->where('kategori_galeri', 'video')->get();
+    }
+
     public function dataFoto(){
         return DB::table('galeri')->where('kategori_galeri', 'foto')->where('is_tampil_di_galeri', 'ya')->get();
     }
