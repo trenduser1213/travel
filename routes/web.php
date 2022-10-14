@@ -12,12 +12,15 @@ use App\Http\Controllers\DataJamaah;
 use App\Http\Controllers\beranda;
 use App\Http\Controllers\KategoriArtikelController;
 use App\Http\Controllers\SyaratKetentuansController;
+use App\Http\Controllers\ProductAdminController;
+use App\Models\ProdukAdmin;
 use App\Models\CategoryPost;
 use App\Models\KontakJamaah;
 use App\Models\Post;
 use App\Models\Produk;
 use App\Models\MitraMarketing;
 use App\Models\kategoriArtikel;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -80,3 +83,6 @@ Route::resource('/CategoryPost',KategoriArtikelController::class);
 
 //Routing admin Syarat & Ketentuan
 Route::resource('/adminKetentuan',SyaratKetentuansController::class);
+
+//Routing admin Product
+Route::resource('/adminProduct',ProductAdminController::class);
