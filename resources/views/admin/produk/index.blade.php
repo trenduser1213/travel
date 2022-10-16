@@ -1,215 +1,276 @@
 @extends('admin.baseAdmin')
+
+@section('title')
+    Data Produk
+@endsection
+
 @section('body')
-<div class="row">
-    <div class="col-md-12">
-        <div class="card">
-            <div class="card-header">
-                <div class="d-flex align-items-center">
-                    <h4 class="card-title">Add Row</h4>
-                    <button class="btn btn-primary btn-round ml-auto" onclick="addKategori('{{route('CategoryPost.store')}}')" data-toggle="modal" data-target="">
-                        <i class="fa fa-plus"></i>
-                        Kategori Artikel
-                    </button>
-                </div>
-            </div>
-            <div class="card-body">
-                <!-- Modal -->
-                <div class="modal fade" id="RowModal" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <form action="" method="post">
-                                @csrf
-                                @method('post')
-                                <div class="modal-header border-0">
-                                    <h5 class="modal-title">
-                                        
-                                    </h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="form-group row">
-                                        <label for="nama_kategori" class="col-md-2 col-md-offset-1 control-label">kategori</label>
-                                        <div class="col-md-8">
-                                            <input type="text" name="nama_kategori" id="nama_kategori" class="form-control" required autofocus>
-                                            <span class="help-block with-errors"></span>
-                                                @error('nama_kategori')
-                                                    <div class="alert alert-danger mt-2">
-                                                        {{ $message }}
-                                                    </div>
-                                                @enderror
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="slug" class="col-md-2 col-md-offset-1 control-label">slug</label>
-                                        <div class="col-md-8">
-                                            <input type="text" name="slug" id="slug" class="form-control" required autofocus>
-                                            <span class="help-block with-errors"></span>
-                                                @error('slug')
-                                                    <div class="alert alert-danger mt-2">
-                                                        {{ $message }}
-                                                    </div>
-                                                @enderror
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal-footer border-0">
-                                    <button type="submit" id="addRowButton" class="btn btn-primary">Add</button>
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                </div>
-                            </form>
-                        </div>
+    <H1>Admin Produk</H1>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="d-flex align-items-center">
+                        <h4 class="card-title">Data Produk</h4>
+                        <a href="{{ route('adminProduk.create') }}"><button class="btn btn-primary btn-round ml-auto">
+                                <i class="fa fa-plus"></i>
+                                Tambah Produk
+                            </button></a>
+
                     </div>
                 </div>
+                <div class="card-body">
 
-                <div class="box-body table-responsive">
-                    <table id="tableProduct" class="table table-bordered table-striped">
-                        <thead>
-                            <tr>
-                                <th width="">no</th>
-                                <th>produk</th>
-                                <th>Slug</th>                                
-                                <th>gambar</th>
-                                <th>harga</th>
-                                <th>tanggal berangkat</th>
-                                <th>durasi</th>
-                                <th>total seat</th>
-                                <th>berangkat dari</th>
-                                <th>hotel</th>
-                                <th>maskapai</th>
-                                <th>tampil di beranda</th>
-                                <th>tampil di hal produk</th>
-                                <th width=""><i class="fa fa-gear"></i>action</th>
-                            </tr>
-                        </thead>
-                        <tbody><?php $n=0; ?>
-                            @foreach ($produks as $produk)
-                                
+                    <div class="box-body table-responsive">
+                        <table id="tableFoto" class="table table-bordered table-striped">
+                            <thead>
                                 <tr>
-                                    <td>{{++$n}}</td>
-                                    <td>{{ $produk->nama}}</td>
-                                    <td>{{ $produk->slug}}</td>
-                                    <td>{{ $produk->gambar}}</td>
-                                    <td>{{ $produk->harga}}</td>
-                                    <td>{{ $produk->tgl_berangkat}}</td>
-                                    <td>{{ $produk->durasi}}</td>
-                                    <td>{{ $produk->total_seat}}</td>
-                                    <td>{{ $produk->berangkat_dari}}</td>
-                                    <td>{{ $produk->hotel}}</td>
-                                    <td>{{ $produk->maskapai}}</td>
-                                    <td>{{ $produk->is_tampil_di_beranda}}</td>
-                                    <td>{{ $produk->is_tampil_di_halaman_produk}}</td>
-                                    <td>
-                                        <div class="form-button-action">
-                                            <button onclick="editForm('{{route('CategoryPost.update',$produk->id)}}')" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
-                                                <i class="fa fa-edit"></i>
-                                            </button>
-                                            <button onclick="hapusData('{{route('CategoryPost.destroy',$produk->id)}}')" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
-                                                <i class="fa fa-times"></i>
-                                            </button>
-                                        </div>
-                                    </td>
+                                    <th width="5%">No</th>
+                                    <th>Nama</th>
+                                    <th>Kode Produk</th>
+                                    <th>Brosur</th>
+                                    <th width="10%">Tampil di Beranda</th>
+                                    <th width="10%">Tampil di Halaman Produk</th>
+                                    <th width="10%">Aksi</th>
                                 </tr>
-                            @endforeach
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <th width="">no</th>
-                                <th>produk</th>
-                                <th>Slug</th>                                
-                                <th>gambar</th>
-                                <th>harga</th>
-                                <th>tanggal berangkat</th>
-                                <th>durasi</th>
-                                <th>total seat</th>
-                                <th>berangkat dari</th>
-                                <th>hotel</th>
-                                <th>maskapai</th>
-                                <th>tampil di beranda</th>
-                                <th>tampil di hal produk</th>
-                                <th width=""><i class="fa fa-gear"></i>action</th>
-                            </tr>
-                        </tfoot>
-                    </table>
+                            </thead>
+                            <tbody><?php $n = 1; ?>
+                                @foreach ($produk as $produk)
+                                    <tr>
+                                        <td>{{ $n++ }}</td>
+                                        <td>{{ $produk->nama }}</td>
+                                        <td>{{ $produk->slug }}</td>
+                                        <td><img src="{{ $produk->gambar }}" alt="{{ $produk->nama }}"
+                                                style="max-height: 400%;" class="mb-2 mt-2"></td>
+                                        <td>
+                                            @if ($produk->is_tampil_di_beranda != 'ya')
+                                                <center><i class="fa fa-times" style="color: brown"></i></center>
+                                            @else
+                                                <center><i class="fa fa-check" style="color: green"></i></center>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if ($produk->is_tampil_di_halaman_produk != 'ya')
+                                                <center><i class="fa fa-times" style="color: brown"></i></center>
+                                            @else
+                                                <center><i class="fa fa-check" style="color: green"></i></center>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-info btn-sm" style="margin: 5px" data-toggle="modal"
+                                                data-target="#ModalProdukDetail-{{ $produk->id }}">
+                                                <span class="btn-label">
+                                                    <i class="fa fa-info" style="font-size:10px "></i>
+                                                </span>
+                                                Detail
+                                            </button>
+                                            <a href="{{ route('adminProduk.edit', $produk->id) }}"><button
+                                                    class="btn btn-success btn-sm" style="margin: 5px">
+                                                    <span class="btn-label">
+                                                        <i class="fa fa-edit" style="font-size:10px"></i>
+                                                    </span>
+                                                    Edit
+                                                </button></a>
+
+                                            <button class="btn btn-danger btn-sm" style="margin: 5px" data-toggle="modal"
+                                                data-target="#ModalProdukHapus-{{ $produk->id }}">
+                                                <span class="btn-label">
+                                                    <i class="fa fa-trash" style="font-size:10px"></i>
+                                                </span>
+                                                Hapus
+                                            </button>
+                                        </td>
+                                    </tr>
+
+                                    {{-- Modal Produk Detail --}}
+                                    <div class="modal fade" id="ModalProdukDetail-{{ $produk->id }}" tabindex="-1"
+                                        role="dialog" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content" style="width: 120%">
+
+                                                <div class="modal-header border-0">
+                                                    <h5 class="modal-title">
+                                                        Detail Produk
+                                                    </h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-9">
+                                                        <div class="modal-body">
+
+                                                            <div class="form-group row" style="margin-bottom: -15px">
+                                                                <label for="Nama" class="col-md-4">Nama
+                                                                    Produk</label>
+                                                                <div class="col-md-8">
+                                                                    <span>{{ $produk->nama }}</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row" style="margin-bottom: -15px">
+                                                                <label for="Nama" class="col-md-4">Kategori
+                                                                    Produk</label>
+                                                                <div class="col-md-8">
+                                                                    <span>{{ $produk->kategori_paket }}</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row" style="margin-bottom: -15px">
+                                                                <label for="Kode" class="col-md-4">Kode
+                                                                    Produk</label>
+                                                                <div class="col-md-8">
+                                                                    <span>{{ $produk->slug }}</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row" style="margin-bottom: -15px">
+                                                                <label for="Harga"
+                                                                    class="col-md-4 col-md-offset-1 control-label">Harga
+                                                                    Produk</label>
+                                                                <div class="col-md-8">
+                                                                    <span>{{ $produk->harga }}</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row" style="margin-bottom: -15px">
+                                                                <label for="Nama"
+                                                                    class="col-md-4 col-md-offset-1 control-label">Tanggal
+                                                                    Berangkat
+                                                                </label>
+                                                                <div class="col-md-8">
+                                                                    <span>{{ $produk->tgl_berangkat }}</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row" style="margin-bottom: -15px">
+                                                                <label for="Nama"
+                                                                    class="col-md-4 col-md-offset-1 control-label">Durasi</label>
+                                                                <div class="col-md-8">
+                                                                    <span>{{ $produk->durasi }}</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row"style="margin-bottom: -15px">
+                                                                <label for="Nama"
+                                                                    class="col-md-4 col-md-offset-1 control-label">Total
+                                                                    Seat</label>
+                                                                <div class="col-md-8">
+                                                                    <span>{{ $produk->total_seat }}</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row" style="margin-bottom: -15px">
+                                                                <label for="Nama"
+                                                                    class="col-md-4 col-md-offset-1 control-label">Berangkat
+                                                                    Dari</label>
+                                                                <div class="col-md-8">
+                                                                    <span>{{ $produk->berangkat_dari }}</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row" style="margin-bottom: -15px">
+                                                                <label for="Nama"
+                                                                    class="col-md-4 col-md-offset-1 control-label">Hotel</label>
+                                                                <div class="col-md-8">
+                                                                    <span>{{ $produk->hotel }}</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row" style="margin-bottom: -15px">
+                                                                <label for="Nama"
+                                                                    class="col-md-4 col-md-offset-1 control-label">Maskapai</label>
+                                                                <div class="col-md-8">
+                                                                    <span>{{ $produk->maskapai }}</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <div class="form-group row"
+                                                            style="margin-bottom: -15px; margin-left:-280px">
+                                                            <center><img src="{{ $produk->gambar }}"
+                                                                    alt="{{ $produk->nama }}" style="max-width:50%">
+                                                            </center>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="modal-footer border-0">
+                                                    <button type="button" class="btn btn-danger"
+                                                        data-dismiss="modal">Tutup</button>
+                                                </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Modal Hapus-->
+                                    <div class="modal fade" id="ModalProdukHapus-{{ $produk->id }}" tabindex="-1"
+                                        role="dialog" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+
+                                                <div class="modal-header border-0">
+                                                    <h5 class="modal-title">
+                                                        Anda Yakin ingin menghapus produk {{ $produk->nama }}?
+                                                    </h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                </div>
+                                                <div class="modal-footer border-0">
+                                                    <button onclick="hapusData('{{ route('adminProduk.destroy', $produk->id) }}')" 
+                                                        type="" id="addRowButton"
+                                                        class="btn btn-primary">Hapus</button>
+                                                    <button type="button" class="btn btn-danger"
+                                                        data-dismiss="modal">Tutup</button>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-{{-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet"> --}}
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-<script>
-    $('#summernote').summernote({
-        placeholder: 'Atlantis',
-        fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New'],
-        tabsize: 2,
-        height: 300
-    });
-</script>
-<script>
-    function addKategori(url) {
-        $("#RowModal").modal('show');
-        $("#RowModal .modal-title").text('Tambah kategori');
-        $('#RowModal form')[0].reset();
-        $('#RowModal form').attr('action', url);
-        $('#RowModal [name=_method]').val('post');
-        $('#RowModal [name=nama_kategori]').focus();
-    }
-    function editForm(url){
-        $("#RowModal").modal('show');
-        $("#RowModal .modal-title").text('Edit kategori');
-        $('#RowModal form')[0].reset();
-        $('#RowModal form').attr('action', url);
-        $('#RowModal [name=_method]').val('put');
-        $('#RowModal [name=nama_kategori]').focus();
-        $.get(url)
-          .done((response)=>{
-            $('#RowModal [name=nama_kategori]').val(response.nama);
-            $('#RowModal [name=slug]').val(response.slug);
-          })
-          .fail((errors)=>{
-              alert("Data Tidak Muncul");
-          });
-    }
-    function hapusData(url){
-      if(confirm('Yakin Hapus Kategori')){
-        $.post(url,{
-         '_token' : $('[name=csrf-token').attr('content'),
-         '_method' : 'delete'
-        })
-        .done((response)=>{
-            alert('sukses menghapus');
-            window.location.href='/CategoryPost';
-        })
-        .fail((errors)=>{
-          alert('Tidak Terhapus'); 
-          return;
+    {{-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet"> --}}
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script>
+        let table;
+
+        $(function() {
+            table = $('#tableFoto').DataTable({
+                paging: true,
+                lengthChange: true,
+                searching: true,
+                ordering: true,
+                info: true,
+                autoWidth: false,
+                // 
+            });
         });
-      }
-    }
 
-</script>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script>
-    let table;
-
-$(function() {
-    table = $('#tableProduct').DataTable({
-        paging: true
-        , lengthChange : true
-        , searching : true
-        , ordering : true
-        , info : true
-        , autoWidth : false,
-        // 
-    });
-});
-</script>
-
+        function hapusData(url) {
+            // if (confirm('Yakin Hapus Kategori')) {
+                $.post(url, {
+                        '_token': $('[name=csrf-token').attr('content'),
+                        '_method': 'delete'
+                    })
+                    .done((response) => {
+                        alert('sukses menghapus');
+                        window.location.href = '/adminProduk';
+                    })
+                    .fail((errors) => {
+                        alert('Tidak Terhapus');
+                        return;
+                    });
+            // }
+        }
+    </script>
+    
 @endsection

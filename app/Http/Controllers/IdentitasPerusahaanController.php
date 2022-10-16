@@ -8,6 +8,7 @@ class IdentitasPerusahaanController extends Controller
 {
 
     public function show(IdentitasPerusahaan $identity){
+
         
     }
 }

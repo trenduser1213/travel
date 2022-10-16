@@ -455,8 +455,6 @@
         <!-- end wpo-news-letter-section -->
     </div>
 
-    <!-- Start Modal Pop-Up -->
-
     <!-- Start Modal WhatsApp -->
     <div class="modal fade" id="ModalWA" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
