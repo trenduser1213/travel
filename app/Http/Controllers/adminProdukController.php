@@ -102,7 +102,7 @@ class adminProdukController extends Controller
         ]);
         // dd($request->date)
         $image = $request->file('gambar');
-        $destinationPath = 'assets/images/syarat-dan-ketentuan';
+        $destinationPath = 'assets/images/produk';
         $profileImage = date('YmdHis') . uniqid()."." . $image->getClientOriginalExtension();
         $namePath=$image->move($destinationPath, $profileImage);
         // $request->gambar1 = $namePath;
