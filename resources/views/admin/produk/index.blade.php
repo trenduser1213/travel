@@ -216,7 +216,8 @@
                                                 <div class="modal-body">
                                                 </div>
                                                 <div class="modal-footer border-0">
-                                                    <button type="submit" id="addRowButton"
+                                                    <button onclick="hapusData('{{ route('adminProduk.destroy', $produk->id) }}')" 
+                                                        type="" id="addRowButton"
                                                         class="btn btn-primary">Hapus</button>
                                                     <button type="button" class="btn btn-danger"
                                                         data-dismiss="modal">Tutup</button>
@@ -252,5 +253,24 @@
                 // 
             });
         });
+
+
+        function hapusData(url) {
+            // if (confirm('Yakin Hapus Kategori')) {
+                $.post(url, {
+                        '_token': $('[name=csrf-token').attr('content'),
+                        '_method': 'delete'
+                    })
+                    .done((response) => {
+                        alert('sukses menghapus');
+                        window.location.href = '/adminProduk';
+                    })
+                    .fail((errors) => {
+                        alert('Tidak Terhapus');
+                        return;
+                    });
+            // }
+        }
     </script>
+    
 @endsection

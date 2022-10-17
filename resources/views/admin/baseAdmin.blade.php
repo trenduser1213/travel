@@ -161,6 +161,12 @@
                                 <p>Syarat dan ketentuan</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ route('adminProduk.index') }}">
+                                <i class="fas fa fa-box"></i>
+                                <p>Produk</p>
+                            </a>
+                        </li>
                         <li class="nav-item active">
                             <a data-toggle="collapse" href="#dashboard" class="collapsed" aria-expanded="false">
                                 <i class="fas fa-home"></i>
