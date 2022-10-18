@@ -22,10 +22,7 @@ class adminProdukController extends Controller
         $data = [
             'produk' => Produk::where('id', $id)->first()
         ];
-
-        // dd($id);
-        // dd($produk);
-        // dd($data);
+        
         return view('admin.produk.edit', $data);
     }
 

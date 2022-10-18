@@ -15,9 +15,15 @@ use App\Http\Controllers\IdentitasPerusahaanController;
 use App\Http\Controllers\KategoriArtikelController;
 use App\Http\Controllers\SyaratKetentuansController;
 use App\Http\Controllers\adminProdukController;
+<<<<<<< HEAD
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\LoginController;
 
+=======
+use App\Http\Controllers\adminGaleriVideoController;
+use App\Http\Controllers\adminGaleriFotoController;
+use App\Http\Controllers\adminTestimoniController;
+>>>>>>> 5c425e638c966fefa759bc078042e74e84fc6310
 use App\Models\CategoryPost;
 use App\Models\KontakJamaah;
 use App\Models\Post;
@@ -109,8 +115,17 @@ Route::resource('/adminIdentitasPerusahaan', adminIdentitasPerusahaanController:
 //Routing Admin Gallery
 Route::resource('/adminGaleri', adminGaleriController::class);
 
+//Routing Admin Gallery untuk Foto
+Route::resource('/adminGaleriFoto', adminGaleriFotoController::class);
+
+//Routing Admin Gallery untuk Video
+Route::resource('/adminGaleriVideo', adminGaleriVideoController::class);
+
 //Routing Admin Produk
 Route::resource('/adminProduk', adminProdukController::class);
+
+//Routing Admin Testimoni
+Route::resource('/adminTestimoni', adminTestimoniController::class);
 
 
     //All the routes that belongs to the group goes here

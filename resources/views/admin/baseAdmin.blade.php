@@ -68,7 +68,7 @@
 
             <!-- Navbar Header -->
             <nav class="navbar navbar-header navbar-expand-lg" data-background-color="blue2">
-
+                <button class="btn btn-info ml-auto"><i class="fa fa-sign-out"></i> Logout</button>
             </nav>
             <!-- End Navbar -->
         </div>
@@ -1316,7 +1316,7 @@
             fillColor: 'rgba(255, 165, 52, .14)'
         });
     </script>
-
+    <script src="https://kit.fontawesome.com/9a9fb1d908.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
         $(document).ready(function(e) {
 

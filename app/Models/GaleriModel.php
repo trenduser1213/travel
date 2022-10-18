@@ -37,4 +37,12 @@ class GaleriModel extends Model
     public function dataVideoBeranda(){
         return DB::table('galeri')->where('kategori_galeri', 'video')->where('is_tampil_di_beranda', 'ya')->get();
     }
+
+    public function thisFoto($id){
+        return DB::table('galeri')->where('id', $id)->first();
+    }
+
+    public function thisVideo($id){
+        return DB::table('galeri')->where('id', $id)->first();
+    }
 }

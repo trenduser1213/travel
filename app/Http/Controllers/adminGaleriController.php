@@ -17,4 +17,12 @@ class adminGaleriController extends Controller
         ];
         return view('admin.galeri.index', $data);
     }
+
+    public function createGambar(){
+        return view('admin.galeri.addGambar');
+    }
+
+    public function createVideo(){
+        return view('admin.galeri.addVideo');
+    }
 }
