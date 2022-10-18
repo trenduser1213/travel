@@ -13,10 +13,12 @@
                 <div class="card-header">
                     <div class="d-flex align-items-center">
                         <h4 class="card-title">Data Foto</h4>
-                        <button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#ModalFoto">
-                            <i class="fa fa-plus"></i>
-                            Tambah Foto
-                        </button>
+                        <a href="{{ route('adminGaleriFoto.create') }}"><button class="btn btn-primary btn-round float-right"
+                                style="float: right;">
+                                <i class="fa fa-plus"></i>
+                                Tambah Foto
+                            </button></a>
+
                     </div>
                 </div>
                 <div class="card-body">
@@ -132,13 +134,15 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <button class="btn btn-success btn-sm">
-                                                <span class="btn-label">
-                                                    <i class="fa fa-edit" style="font-size:10px"></i>
-                                                </span>
-                                                Edit
-                                            </button>
-                                            <button class="btn btn-danger btn-sm">
+                                            <a href="{{ route('adminGaleriFoto.edit', $foto->id) }}"><button
+                                                    class="btn btn-success btn-sm" style="margin: 5px">
+                                                    <span class="btn-label">
+                                                        <i class="fa fa-edit" style="font-size:10px"></i>
+                                                    </span>
+                                                    Edit
+                                                </button></a>
+                                            <button class="btn btn-danger btn-sm" style="margin: 5px" data-toggle="modal"
+                                                data-target="#ModalFotoHapus-{{ $foto->id }}">
                                                 <span class="btn-label">
                                                     <i class="fa fa-trash" style="font-size:10px"></i>
                                                 </span>
@@ -146,6 +150,35 @@
                                             </button>
                                         </td>
                                     </tr>
+                                    <!-- Modal Hapus-->
+                                    <div class="modal fade" id="ModalFotoHapus-{{ $foto->id }}" tabindex="-1"
+                                        role="dialog" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+
+                                                <div class="modal-header border-0">
+                                                    <h5 class="modal-title">
+                                                        Anda Yakin ingin menghapus Foto {{ $foto->judul }}?
+                                                    </h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                </div>
+                                                <div class="modal-footer border-0">
+                                                    <button
+                                                        onclick="hapusData('{{ route('adminGaleriFoto.destroy', $foto->id) }}')"
+                                                        type="" id="addRowButton"
+                                                        class="btn btn-primary">Hapus</button>
+                                                    <button type="button" class="btn btn-danger"
+                                                        data-dismiss="modal">Tutup</button>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
                                 @endforeach
                             </tbody>
                         </table>
@@ -161,93 +194,17 @@
                             <i class="fa fa-plus"></i>
                             Tambah Video
                         </button> --}}
-                        <a href=""></a>
-                        <button class="btn btn-primary btn-round ml-auto">
-                            <i class="fa fa-plus"></i>
-                            Tambah Video
-                        </button>
+                        <a href="{{ route('adminGaleriVideo.create') }}"><button
+                                class="btn btn-primary btn-round ml-auto">
+                                <i class="fa fa-plus"></i>
+                                Tambah Video
+                            </button></a>
+
                     </div>
                 </div>
                 <div class="card-body">
-                    <!-- Modal -->
-                    <div class="modal fade" id="ModalVideo" tabindex="-1" role="dialog" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <form action="" method="post">
-                                    @csrf
-                                    @method('post')
-                                    <div class="modal-header border-0">
-                                        <h5 class="modal-title">
-                                            Tambah Video
-                                        </h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="form-group row">
-                                            <label for="judul" class="col-md-4 col-md-offset-1 control-label">Judul
-                                                Video</label>
-                                            <div class="col-md-8">
-                                                <input type="text" name="judul" id="judul" class="form-control"
-                                                    required autofocus>
-                                                <span class="help-block with-errors"></span>
-                                                @error('judul')
-                                                    <div class="alert alert-danger mt-2">
-                                                        {{ $message }}
-                                                    </div>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="foto"
-                                                class="col-md-4 col-md-offset-1 control-label">Video</label>
-                                            <div class="col-md-8">
-                                                <input type="text" name="iframe" id="iframe" class="form-control"
-                                                    required autofocus>
-                                                <span class="help-block with-errors"></span>
-                                                @error('foto')
-                                                    <div class="alert alert-danger mt-2">
-                                                        {{ $message }}
-                                                    </div>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="judul" class="col-md-4 col-md-offset-1 control-label">Tampilkan
-                                                di Beranda?</label>
-                                            <div class="col-md-8">
-                                                <select class="form-control" name="is_beranda" id="is_beranda">
-                                                    <option value="-" disabled selected>Pilih</option>
-                                                    <option value="ya">Ya</option>
-                                                    <option value="tidak">Tidak</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="judul" class="col-md-4 col-md-offset-1 control-label">Tampilkan
-                                                di Galeri?</label>
-                                            <div class="col-md-8">
-                                                <select class="form-control" name="is_galeri" id="is_galeri">
-                                                    <option value="-" disabled selected>Pilih</option>
-                                                    <option value="ya">Ya</option>
-                                                    <option value="tidak">Tidak</option>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <div class="modal-footer border-0">
-                                        <button type="submit" id="addRowButton" class="btn btn-primary">Tambah</button>
-                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-
                     <div class="box-body table-responsive">
-                        <table id="tableFoto" class="table table-bordered table-striped">
+                        <table id="tableVideo" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <th width="5%">no</th>
@@ -284,13 +241,15 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <button class="btn btn-success btn-sm">
-                                                <span class="btn-label">
-                                                    <i class="fa fa-edit" style="font-size:10px"></i>
-                                                </span>
-                                                Edit
-                                            </button>
-                                            <button class="btn btn-danger btn-sm">
+                                            <a href="{{ route('adminGaleriVideo.edit', $video->id) }}"><button
+                                                    class="btn btn-success btn-sm" style="margin: 5px">
+                                                    <span class="btn-label">
+                                                        <i class="fa fa-edit" style="font-size:10px"></i>
+                                                    </span>
+                                                    Edit
+                                                </button></a>
+                                            <button class="btn btn-danger btn-sm" data-toggle="modal"
+                                                data-target="#ModalVideoHapus-{{ $video->id }}">
                                                 <span class="btn-label">
                                                     <i class="fa fa-trash" style="font-size:10px"></i>
                                                 </span>
@@ -298,6 +257,35 @@
                                             </button>
                                         </td>
                                     </tr>
+
+                                    <div class="modal fade" id="ModalVideoHapus-{{ $video->id }}" tabindex="-1"
+                                        role="dialog" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+
+                                                <div class="modal-header border-0">
+                                                    <h5 class="modal-title">
+                                                        Anda Yakin ingin menghapus video {{ $video->judul }}?
+                                                    </h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                </div>
+                                                <div class="modal-footer border-0">
+                                                    <button
+                                                        onclick="hapusData('{{ route('adminGaleriVideo.destroy', $video->id) }}')"
+                                                        type="" id="addRowButton"
+                                                        class="btn btn-primary">Hapus</button>
+                                                    <button type="button" class="btn btn-danger"
+                                                        data-dismiss="modal">Tutup</button>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
                                 @endforeach
                             </tbody>
                         </table>
@@ -316,6 +304,18 @@
 
         $(function() {
             table = $('#tableFoto').DataTable({
+                paging: true,
+                lengthChange: true,
+                searching: true,
+                ordering: true,
+                info: true,
+                autoWidth: false,
+                // 
+            });
+        });
+
+        $(function() {
+            table = $('#tableVideo').DataTable({
                 paging: true,
                 lengthChange: true,
                 searching: true,

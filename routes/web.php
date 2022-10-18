@@ -15,6 +15,8 @@ use App\Http\Controllers\IdentitasPerusahaanController;
 use App\Http\Controllers\KategoriArtikelController;
 use App\Http\Controllers\SyaratKetentuansController;
 use App\Http\Controllers\adminProdukController;
+use App\Http\Controllers\adminGaleriVideoController;
+use App\Http\Controllers\adminGaleriFotoController;
 use App\Models\CategoryPost;
 use App\Models\KontakJamaah;
 use App\Models\Post;
@@ -96,6 +98,12 @@ Route::resource('/adminIdentitasPerusahaan', adminIdentitasPerusahaanController:
 
 //Routing Admin Gallery
 Route::resource('/adminGaleri', adminGaleriController::class);
+
+//Routing Admin Gallery untuk Foto
+Route::resource('/adminGaleriFoto', adminGaleriFotoController::class);
+
+//Routing Admin Gallery untuk Video
+Route::resource('/adminGaleriVideo', adminGaleriVideoController::class);
 
 //Routing Admin Produk
 Route::resource('/adminProduk', adminProdukController::class);
