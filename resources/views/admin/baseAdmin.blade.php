@@ -68,7 +68,11 @@
 
             <!-- Navbar Header -->
             <nav class="navbar navbar-header navbar-expand-lg" data-background-color="blue2">
-                <button class="btn btn-info ml-auto"><i class="fa fa-sign-out"></i> Logout</button>
+                <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();" class="btn btn-info ml-auto"><i class="fa fa-sign-out"></i> Logout</a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
             </nav>
             <!-- End Navbar -->
         </div>
