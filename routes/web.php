@@ -17,6 +17,7 @@ use App\Http\Controllers\SyaratKetentuansController;
 use App\Http\Controllers\adminProdukController;
 use App\Http\Controllers\adminGaleriVideoController;
 use App\Http\Controllers\adminGaleriFotoController;
+use App\Http\Controllers\adminTestimoniController;
 use App\Models\CategoryPost;
 use App\Models\KontakJamaah;
 use App\Models\Post;
@@ -107,6 +108,9 @@ Route::resource('/adminGaleriVideo', adminGaleriVideoController::class);
 
 //Routing Admin Produk
 Route::resource('/adminProduk', adminProdukController::class);
+
+//Routing Admin Testimoni
+Route::resource('/adminTestimoni', adminTestimoniController::class);
 
 
 

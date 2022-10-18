@@ -68,7 +68,6 @@
 
                             <div class="col-md-6">
 
-
                                 <div class="form-group">
                                     <label for="old">Foto Sebelumnya</label> <br>
                                     <img src="{{ '/assets' }}../../../{{ $foto->link }}" alt="{{ $foto->judul }}"
