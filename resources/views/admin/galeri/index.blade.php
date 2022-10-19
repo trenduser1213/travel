@@ -13,8 +13,8 @@
                 <div class="card-header">
                     <div class="d-flex align-items-center">
                         <h4 class="card-title">Data Foto</h4>
-                        <a href="{{ route('adminGaleriFoto.create') }}"><button class="btn btn-primary btn-round float-right"
-                                style="float: right;">
+                        <a href="{{ route('adminGaleriFoto.create') }}" style="margin-left:auto"><button
+                                class="btn btn-primary btn-round float-right">
                                 <i class="fa fa-plus"></i>
                                 Tambah Foto
                             </button></a>
@@ -194,7 +194,7 @@
                             <i class="fa fa-plus"></i>
                             Tambah Video
                         </button> --}}
-                        <a href="{{ route('adminGaleriVideo.create') }}"><button
+                        <a href="{{ route('adminGaleriVideo.create') }}" style="margin-left:auto"><button
                                 class="btn btn-primary btn-round ml-auto">
                                 <i class="fa fa-plus"></i>
                                 Tambah Video
