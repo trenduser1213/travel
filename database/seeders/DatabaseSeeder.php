@@ -33,6 +33,7 @@ class DatabaseSeeder extends Seeder
             TestimoniSeeder::class,
             MengapaKamiSeeder::class,
             FAQSeeder::class,
+            userseeder::class,
         ]);
         }
     }

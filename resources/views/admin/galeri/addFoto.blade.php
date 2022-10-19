@@ -31,6 +31,9 @@
                                     <label for="judul">Judul</label>
                                     <input type="text" class="form-control" id="judul" name="judul"
                                         placeholder="Masukkan Judul Foto" value="" required>
+                                    @error('judul')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="link">File Foto</label>
@@ -57,6 +60,9 @@
                                         <option value="ya">Ya</option>
                                         <option value="tidak">Tidak</option>
                                     </select>
+                                    @error('is_tampil_di_beranda')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="judul" class="col-md-4 col-md-offset-1 control-label">Tampilkan
@@ -67,6 +73,9 @@
                                         <option value="ya">Ya</option>
                                         <option value="tidak">Tidak</option>
                                     </select>
+                                    @error('is_tampil_di_galeri')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
 
 

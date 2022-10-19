@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\GaleriModel;
+// use RealRashid\SweetAlert\Facades\Alert;
+
 
 class adminGaleriVideoController extends Controller
 {
@@ -40,7 +42,30 @@ class adminGaleriVideoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'judul' => 'required',
+            'is_tampil_di_beranda'=> 'required',
+            'is_tampil_di_galeri' =>'required',
+            'link' => 'required' 
+        ]);
+        // $image = $request->file('link');
+        // $destinationPath = 'assets/images/gallery';
+        // $profileImage = date('YmdHis') . uniqid()."." . $image->getClientOriginalExtension();
+        // $namePath=$image->move($destinationPath, $profileImage);
+
+        $kategori_galeri = "video";
+        $input = new GaleriModel();
+        $input->judul = $request->judul;
+        $input->kategori_galeri = $kategori_galeri ;
+        $input->is_tampil_di_beranda= $request->is_tampil_di_beranda ;
+        $input->is_tampil_di_galeri = $request->is_tampil_di_galeri ;
+        $input->link = $request->link;
+        $input->save();
+        // Alert::success('Congrats', 'You\'ve Successfully Registered');
+        return redirect()->route('adminGaleri.index')
+        
+        ->with('success','Video berhasil ditambahkan ! ');
+        // ->alert()->question('QuestionAlert','Lorem ipsum dolor sit amet.');
     }
 
     /**
@@ -78,7 +103,22 @@ class adminGaleriVideoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = GaleriModel::find($id);
+        if(isset($request->judul)){
+            $input->judul = $request->judul;
+        }        
+        if(isset($request->is_tampil_di_beranda)){
+            $input->is_tampil_di_beranda =$request->is_tampil_di_beranda;
+        }        
+        if(isset($request->is_tampil_di_galeri)){
+            $input->is_tampil_di_galeri=$request->is_tampil_di_galeri;
+        }
+        if (isset($request->link)) {
+            $input->link = $request->link;
+        }
+        $input->update();
+        return redirect()->route('adminGaleri.index');
+
     }
 
     /**
@@ -89,6 +129,8 @@ class adminGaleriVideoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $input = GaleriModel::find($id);
+        $input->delete();
+        return redirect()->route('adminGaleri.index');
     }
 }

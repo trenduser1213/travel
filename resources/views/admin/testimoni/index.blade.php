@@ -168,7 +168,7 @@
                                                 </div>
                                                 <div class="modal-footer border-0">
                                                     <button
-                                                        onclick="hapusData('{{ route('adminGaleriFoto.destroy', $testimoni->id) }}')"
+                                                        onclick="hapusData('{{ route('adminTestimoni.destroy', $testimoni->id) }}')"
                                                         type="" id="addRowButton"
                                                         class="btn btn-primary">Hapus</button>
                                                     <button type="button" class="btn btn-danger"
@@ -206,5 +206,21 @@
                 // 
             });
         });
+        function hapusData(url) {
+            // if (confirm('Yakin Hapus Kategori')) {
+            $.post(url, {
+                    '_token': $('[name=csrf-token').attr('content'),
+                    '_method': 'delete'
+                })
+                .done((response) => {
+                    alert('sukses menghapus');
+                    window.location.href = '/adminTestimoni';
+                })
+                .fail((errors) => {
+                    alert('Tidak Terhapus');
+                    return;
+                });
+            // }
+        }
     </script>
 @endsection

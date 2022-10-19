@@ -68,7 +68,11 @@
 
             <!-- Navbar Header -->
             <nav class="navbar navbar-header navbar-expand-lg" data-background-color="blue2">
-                <button class="btn btn-info ml-auto"><i class="fa fa-sign-out"></i> Logout</button>
+                <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();" class="btn btn-info ml-auto"><i class="fa fa-sign-out"></i> Logout</a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
             </nav>
             <!-- End Navbar -->
         </div>
@@ -154,6 +158,18 @@
                                     </li>
                                 </ul>
                             </div>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('adminGaleri.index') }}">
+                                <i class="fas fa-file-signature"></i>
+                                <p>Galeri</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('adminTestimoni.index') }}">
+                                <i class="fas fa-file-signature"></i>
+                                <p>Testimoni</p>
+                            </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('adminKetentuan.index') }}">
