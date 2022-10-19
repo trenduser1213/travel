@@ -28,7 +28,7 @@ Galeri Admin
             <div class="card-header">
                 <div class="d-flex align-items-center">
                     <h4 class="card-title">Data Foto</h4>
-                    <a href="{{ route('adminGaleriFoto.create') }}"><button class="btn btn-primary btn-round float-right" style="float: right;">
+                    <a href="{{ route('adminGaleriFoto.create') }}" class="ml-auto"><button class="btn btn-primary btn-round ml-auto" style="float: right;">
                             <i class="fa fa-plus"></i>
                             Tambah Foto
                         </button></a>
@@ -122,11 +122,12 @@ Galeri Admin
                             <i class="fa fa-plus"></i>
                             Tambah Video
                         </button> --}}
-                    <a href="{{ route('adminGaleriVideo.create') }}"><button class="btn btn-primary btn-round ml-auto">
-                            <i class="fa fa-plus"></i>
-                            Tambah Video
-                        </button></a>
 
+                        <a href="{{ route('adminGaleriVideo.create') }}" style="margin-left:auto"><button
+                                class="btn btn-primary btn-round ml-auto">
+                                <i class="fa fa-plus"></i>
+                                Tambah Video
+                            </button></a>
                 </div>
             </div>
             <div class="card-body">

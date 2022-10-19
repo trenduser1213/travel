@@ -13,7 +13,8 @@
                 <div class="card-header">
                     <div class="d-flex align-items-center">
                         <h4 class="card-title">Data Produk</h4>
-                        <a href="{{ route('adminProduk.create') }}"><button class="btn btn-primary btn-round ml-auto">
+                        <a href="{{ route('adminProduk.create') }}" style="margin-left:auto"><button
+                                class="btn btn-primary btn-round ml-auto">
                                 <i class="fa fa-plus"></i>
                                 Tambah Produk
                             </button></a>

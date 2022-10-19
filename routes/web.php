@@ -21,6 +21,8 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\adminGaleriVideoController;
 use App\Http\Controllers\adminGaleriFotoController;
 use App\Http\Controllers\adminTestimoniController;
+use App\Http\Controllers\adminAsosiasiController;
+use App\Http\Controllers\adminFAQController;    
 use App\Models\CategoryPost;
 use App\Models\KontakJamaah;
 use App\Models\Post;
@@ -92,6 +94,14 @@ Route::post('/getkabupaten', [DataJamaah::class, 'getkabupaten'])->name('getkabu
 //Routing Admin
 Route::get('admin', [AdminDashboard::class, 'index']);
 //Routing admin Artikel
+
+//Routing Admin Asosiasi
+Route::resource('/adminAsosiasi', adminAsosiasiController::class);
+
+//Routing Admin FAQ
+Route::resource('/adminFAQ', adminFAQController::class);
+
+
 
 
 
