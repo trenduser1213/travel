@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('is_tampil_di_beranda');
             $table->string('is_tampil_di_galeri');
             $table->string('kategori_galeri');
+            $table->timestamps();
         }
     );
     }

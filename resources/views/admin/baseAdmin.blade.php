@@ -160,6 +160,12 @@
                             </div>
                         </li>
                         <li class="nav-item">
+                            <a href="{{ route('adminGaleri.index') }}">
+                                <i class="fas fa-file-signature"></i>
+                                <p>Galeri</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{ route('adminKetentuan.index') }}">
                                 <i class="fas fa-file-signature"></i>
                                 <p>Syarat dan ketentuan</p>

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 class GaleriModel extends Model
 {
     use HasFactory;
+    protected $table ="galeri";
 
     public function allData(){
         return DB::table('galeri')->get();

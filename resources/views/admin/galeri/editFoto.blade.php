@@ -18,9 +18,9 @@
 
     <div class="row">
         <div class="col-md-12">
-            <form action="{{ route('adminGaleriFoto.store') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('adminGaleriFoto.update',$foto->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
-                @method('post')
+                @method('PUT')
                 {{ csrf_field() }}
 
                 <div class="card">
@@ -76,11 +76,11 @@
                                 <div class="form-group">
                                     <label for="link">Foto Baru</label>
                                     <input type="file"
-                                        class="form-control file-input @error('link') is-invalid @enderror"
+                                        class="form-control file-input"
                                         accept=".jfif,.jpg,.jpeg,.png,.gif" id="image" name="link">
-                                    @error('link')
+                                    {{-- @error('link')
                                         <div class="alert alert-danger">{{ $message }}</div>
-                                    @enderror
+                                    @enderror --}}
                                 </div>
                                 <img id="preview-image-before-upload" alt="preview image"
                                     style="max-height:250px; margin-left:30px;">
