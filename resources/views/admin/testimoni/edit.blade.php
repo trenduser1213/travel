@@ -18,9 +18,9 @@
 
     <div class="row">
         <div class="col-md-12">
-            <form action="{{ route('adminGaleriFoto.store') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('adminTestimoni.update',$testimoni->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
-                @method('post')
+                @method('PUT')
                 {{ csrf_field() }}
 
                 <div class="card">

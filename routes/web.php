@@ -103,26 +103,26 @@ Route::group(['middleware' => 'auth'], function()
 {
     Route::resource('/CategoryPost',KategoriArtikelController::class);
 
-//Routing admin Syarat & Ketentuan
-Route::resource('/adminKetentuan',SyaratKetentuansController::class);
+    //Routing admin Syarat & Ketentuan
+    Route::resource('/adminKetentuan',SyaratKetentuansController::class);
 
-//Routing Admin Identitas Perusahaan 
-Route::resource('/adminIdentitasPerusahaan', adminIdentitasPerusahaanController::class);
+    //Routing Admin Identitas Perusahaan 
+    Route::resource('/adminIdentitasPerusahaan', adminIdentitasPerusahaanController::class);
 
-//Routing Admin Gallery
-Route::resource('/adminGaleri', adminGaleriController::class);
+    //Routing Admin Gallery
+    Route::resource('/adminGaleri', adminGaleriController::class);
 
-//Routing Admin Gallery untuk Foto
-Route::resource('/adminGaleriFoto', adminGaleriFotoController::class);
+    //Routing Admin Gallery untuk Foto
+    Route::resource('/adminGaleriFoto', adminGaleriFotoController::class);
 
-//Routing Admin Gallery untuk Video
-Route::resource('/adminGaleriVideo', adminGaleriVideoController::class);
+    //Routing Admin Gallery untuk Video
+    Route::resource('/adminGaleriVideo', adminGaleriVideoController::class);
 
-//Routing Admin Produk
-Route::resource('/adminProduk', adminProdukController::class);
+    //Routing Admin Produk
+    Route::resource('/adminProduk', adminProdukController::class);
 
-//Routing Admin Testimoni
-Route::resource('/adminTestimoni', adminTestimoniController::class);
+    //Routing Admin Testimoni
+    Route::resource('/adminTestimoni', adminTestimoniController::class);
 
 
     //All the routes that belongs to the group goes here

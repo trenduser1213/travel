@@ -166,6 +166,12 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="{{ route('adminTestimoni.index') }}">
+                                <i class="fas fa-file-signature"></i>
+                                <p>Testimoni</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{ route('adminKetentuan.index') }}">
                                 <i class="fas fa-file-signature"></i>
                                 <p>Syarat dan ketentuan</p>
