@@ -3,7 +3,7 @@
 @section('title')
     Tambah Asosiasi
 @endsection
-
+ 
 @section('body')
     <div class="page-header">
         <h4 class="page-title">Tambah Asosiasi</h4>
@@ -11,7 +11,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <form action="{{ route('adminGaleriFoto.store') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('adminAsosiasi.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('post')
                 {{ csrf_field() }}

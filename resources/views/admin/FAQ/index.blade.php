@@ -89,7 +89,7 @@
                                                 </div>
                                                 <div class="modal-footer border-0">
                                                     <button
-                                                        onclick="hapusData('{{ route('adminGaleriFoto.destroy', $FAQ->id) }}')"
+                                                        onclick="hapusData('{{ route('adminFAQ.destroy', $FAQ->id) }}')"
                                                         type="" id="addRowButton"
                                                         class="btn btn-primary">Hapus</button>
                                                     <button type="button" class="btn btn-danger"
@@ -113,6 +113,11 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.all.min.js"></script>
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
+    <script>
+        
+    </script>
     <script>
         let table;
 
@@ -127,5 +132,25 @@
                 // 
             });
         });
+        function hapusData(url) {
+            // if (confirm('Yakin Hapus Kategori')) {
+            $.post(url, {
+                    '_token': $('[name=csrf-token').attr('content'),
+                    '_method': 'delete'
+                })
+                .done((response) => {
+                    Swal.fire(
+                    'Sukses',
+                    'Sukses Menghapus',
+                    'success'
+                    )
+                    window.location.href = '/adminFAQ';
+                })
+                .fail((errors) => {
+                    alert('Tidak Terhapus');
+                    return;
+                });
+            // }
+        }
     </script>
 @endsection

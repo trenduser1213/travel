@@ -18,9 +18,9 @@
 
     <div class="row">
         <div class="col-md-12">
-            <form action="{{ route('adminGaleriFoto.store') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('adminAsosiasi.update',$asosiasi->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
-                @method('post')
+                @method('PUT')
                 {{ csrf_field() }}
 
                 <div class="card">
@@ -45,7 +45,7 @@
                                     <select class="form-control" name="is_tampil" id="is_tampil" required>
 
                                         <option value="-" disabled selected>Pilih</option>
-                                        @if ($asosiasi->is_tampil === 'tidak')
+                                        @if ($asosiasi->is_tampil == 'tidak')
                                             <option value="ya">Ya</option>
                                             <option value="tidak" selected>Tidak</option>
                                         @else
