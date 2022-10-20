@@ -15,13 +15,17 @@
 
     <!-- Fonts and icons -->
     <script src="{{ asset('assets/') }}../../admin-assets/assets/js/plugin/webfont/webfont.min.js"></script>
+    <link href="{{ asset('assets/') }}../../assets/css/themify-icons.css" rel="stylesheet">
+    <link href="{{ asset('assets/') }}../../assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="{{ asset('assets/') }}../../assets/css/flaticon.css" rel="stylesheet">
+
     <script>
         WebFont.load({
             google: {
                 "families": ["Lato:300,400,700,900"]
             },
             custom: {
-                "families": ["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands",
+                "families": [, "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands",
                     "simple-line-icons"
                 ],
                 urls: ['{{ asset('assets/') }}../../admin-assets/assets/css/fonts.min.css']
@@ -68,8 +72,10 @@
 
             <!-- Navbar Header -->
             <nav class="navbar navbar-header navbar-expand-lg" data-background-color="blue2">
-                <a href="{{ route('logout') }}" onclick="event.preventDefault();
-                document.getElementById('logout-form').submit();" class="btn btn-info ml-auto"><i class="fa fa-sign-out"></i> Logout</a>
+                <a href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();"
+                    class="btn btn-info ml-auto"><i class="fa fa-sign-out"></i> Logout</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                     @csrf
                 </form>
@@ -309,10 +315,6 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="components/flaticons.html">
-                                            <span class="sub-item">Flaticons</span>
-                                        </a>
-                                    </li>
                                     <li>
                                         <a href="components/typography.html">
                                             <span class="sub-item">Typography</span>

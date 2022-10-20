@@ -18,7 +18,7 @@ class userseeder extends Seeder
     {
         DB::table('users')->insert([
             'name' => 'safari admin',
-            'email' => 'safari@admin.admin',
+            'email' => 'safariglobalperkasa.pt@gmail.com',
             'password' => Hash::make('adminSafari'),
         ]);
     }
