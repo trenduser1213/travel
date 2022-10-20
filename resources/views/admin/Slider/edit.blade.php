@@ -10,9 +10,9 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <form action="{{ route('adminSlider.store') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('adminSlider.update',$Slider->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
-                @method('post')
+                @method('PUT')
                 {{ csrf_field() }}
 
                 <div class="card">
@@ -49,7 +49,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="judul">Sub-title</label>
-                                    <textarea name="teks2" id="teks2" rows="3" class="form-control" placeholder="Masukkan Sub-tittle" required>{{ $Slider->teks1 }}</textarea>
+                                    <textarea name="teks2" id="teks2" rows="3" class="form-control" placeholder="Masukkan Sub-tittle" required>{{ $Slider->teks2 }}</textarea>
                                     @error('teks2')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
