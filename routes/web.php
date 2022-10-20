@@ -22,7 +22,10 @@ use App\Http\Controllers\adminGaleriVideoController;
 use App\Http\Controllers\adminGaleriFotoController;
 use App\Http\Controllers\adminTestimoniController;
 use App\Http\Controllers\adminAsosiasiController;
-use App\Http\Controllers\adminFAQController;    
+use App\Http\Controllers\adminFAQController;  
+use App\Http\Controllers\adminSliderController;
+use App\Http\Controllers\adminMengapaKamiController;
+
 use App\Models\CategoryPost;
 use App\Models\KontakJamaah;
 use App\Models\Post;
@@ -100,15 +103,13 @@ Route::resource('/adminAsosiasi', adminAsosiasiController::class);
 
 //Routing Admin FAQ
 Route::resource('/adminFAQ', adminFAQController::class);
-
-
-
-
+    
 
 // Auth::routes();
 Route::get('/login', [LoginController::class,'show'])->name('show');
 Route::post('/login', [LoginController::class,'login'])->name('login');
 Route::post('/logout',[LoginController::class,'logout'])->name('logout');
+
 Route::group(['middleware' => 'auth'], function()
 {
     Route::resource('/CategoryPost',KategoriArtikelController::class);
@@ -133,6 +134,16 @@ Route::group(['middleware' => 'auth'], function()
 
     //Routing Admin Testimoni
     Route::resource('/adminTestimoni', adminTestimoniController::class);
+
+    //Routing Admin Slider
+    Route::resource('/adminSlider', adminSliderController::class);
+
+    //Routing Admin MengapaKami
+    Route::resource('/adminMengapaKami', adminMengapaKamiController::class);
+    Route::get('/adminMengapaKami/icon', [adminMengapaKamiController::class, 'icon']
+    )->name('adminMengapaKami.icon');
+
+
 
 
     //All the routes that belongs to the group goes here

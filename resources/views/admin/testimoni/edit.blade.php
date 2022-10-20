@@ -18,7 +18,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <form action="{{ route('adminTestimoni.update',$testimoni->id) }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('adminTestimoni.update', $testimoni->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 {{ csrf_field() }}
@@ -41,7 +41,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="old">Foto Sebelumnya</label> <br>
+                                            <label for="old">Foto Sekarang</label> <br>
                                             <img src="{{ '/assets' }}../../../{{ $testimoni->gambar }}"
                                                 alt="{{ $testimoni->nama }}" style="max-width: 100%; border :1px black">
                                         </div>
