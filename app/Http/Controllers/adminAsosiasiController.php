@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Asosiasi;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class adminAsosiasiController extends Controller
 {
@@ -39,7 +40,24 @@ class adminAsosiasiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'nama' => 'required',
+            'is_tampil'=> 'required',
+            'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048' 
+        ]);
+
+        $image = $request->file('logo');
+        $destinationPath = 'assets/images/use-asosiasi';
+        $profileImage = date('YmdHis') . uniqid()."." . $image->getClientOriginalExtension();
+        $namePath=$image->move($destinationPath, $profileImage);
+
+        $input = new Asosiasi;
+        $input->nama = $request->nama;
+        $input->is_tampil = $request->is_tampil ;
+        $input->logo = $namePath ;
+        $input->save();
+        Alert::success('Success', 'Sukses menambahkan asosiasi');
+        return redirect()->route('adminAsosiasi.index');
     }
 
     /**
@@ -74,7 +92,24 @@ class adminAsosiasiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = Asosiasi::find($id);
+        if(isset($request->nama)){
+            $input->nama = $request->nama;
+        }        
+        if(isset($request->is_tampil)){
+            $input->is_tampil =$request->is_tampil;
+        }        
+        if ($request->file('logo')) {
+            $image = $request->file('logo');
+            $destinationPath = 'assets/images/asu-asosiasi';
+            $profileImage = date('YmdHis') . uniqid()."." . $image->getClientOriginalExtension();
+            $namePath=$image->move($destinationPath, $profileImage);
+            $input->logo = $namePath ;
+        }
+        $input->update();
+        Alert::success('Success', 'Sukses edit');
+        return redirect()->route('adminAsosiasi.index');
+
     }
 
     /**
@@ -85,6 +120,9 @@ class adminAsosiasiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $input = Asosiasi::find($id);
+        $input->delete();
+        Alert::success('Success', 'Sukses hapus ');
+        return redirect()->route('adminAsosiasi.index');
     }
 }

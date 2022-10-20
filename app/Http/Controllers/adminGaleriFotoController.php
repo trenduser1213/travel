@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\GaleriModel;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class adminGaleriFotoController extends Controller
 {
@@ -59,7 +60,7 @@ class adminGaleriFotoController extends Controller
         $input->is_tampil_di_galeri = $request->is_tampil_di_galeri ;
         $input->link = $namePath ;
         $input->save();
-
+        Alert::success('Success', 'Sukses menambahkan galeri foto ');
         return redirect()->route('adminGaleri.index');
     }
 
@@ -115,6 +116,7 @@ class adminGaleriFotoController extends Controller
             $input->link = $namePath ;
         }
         $input->update();
+        Alert::success('Success', 'Sukses edit galeri foto ');
         return redirect()->route('adminGaleri.index');
 
     }
@@ -129,6 +131,7 @@ class adminGaleriFotoController extends Controller
     {
         $input = GaleriModel::find($id);
         $input->delete();
+        Alert::success('Success', 'Sukses hapus galeri foto ');
         return redirect()->route('adminGaleri.index');
     }
 }

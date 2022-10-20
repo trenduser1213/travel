@@ -95,11 +95,6 @@ Route::post('/getkabupaten', [DataJamaah::class, 'getkabupaten'])->name('getkabu
 Route::get('admin', [AdminDashboard::class, 'index']);
 //Routing admin Artikel
 
-//Routing Admin Asosiasi
-Route::resource('/adminAsosiasi', adminAsosiasiController::class);
-
-//Routing Admin FAQ
-Route::resource('/adminFAQ', adminFAQController::class);
 
 
 
@@ -112,29 +107,34 @@ Route::post('/logout',[LoginController::class,'logout'])->name('logout');
 Route::group(['middleware' => 'auth'], function()
 {
     Route::resource('/CategoryPost',KategoriArtikelController::class);
-
+    
     //Routing admin Syarat & Ketentuan
     Route::resource('/adminKetentuan',SyaratKetentuansController::class);
-
+    
     //Routing Admin Identitas Perusahaan 
     Route::resource('/adminIdentitasPerusahaan', adminIdentitasPerusahaanController::class);
-
+    
     //Routing Admin Gallery
     Route::resource('/adminGaleri', adminGaleriController::class);
-
+    
     //Routing Admin Gallery untuk Foto
     Route::resource('/adminGaleriFoto', adminGaleriFotoController::class);
-
+    
     //Routing Admin Gallery untuk Video
     Route::resource('/adminGaleriVideo', adminGaleriVideoController::class);
-
+    
     //Routing Admin Produk
     Route::resource('/adminProduk', adminProdukController::class);
-
+    
     //Routing Admin Testimoni
     Route::resource('/adminTestimoni', adminTestimoniController::class);
-
-
+    
+    //Routing Admin Asosiasi
+    Route::resource('/adminAsosiasi', adminAsosiasiController::class);
+    
+    //Routing Admin FAQ
+    Route::resource('/adminFAQ', adminFAQController::class);
+    
     //All the routes that belongs to the group goes here
     // Route::get('dashboard', function() {} );
 });

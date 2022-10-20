@@ -42,6 +42,7 @@
 </head>
 
 <body>
+    @include('sweetalert::alert')
     <div class="wrapper">
         <div class="main-header">
             <!-- Logo Header -->
@@ -181,6 +182,18 @@
                             <a href="{{ route('adminProduk.index') }}">
                                 <i class="fas fa fa-box"></i>
                                 <p>Produk</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('adminAsosiasi.index') }}">
+                                <i class="fas fa fa-box"></i>
+                                <p>Asosiasi</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('adminFAQ.index') }}">
+                                <i class="fas fa fa-box"></i>
+                                <p>FAQ</p>
                             </a>
                         </li>
                         <li class="nav-item active">

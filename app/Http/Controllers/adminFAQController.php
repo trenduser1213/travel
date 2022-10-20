@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\FAQ;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class adminFAQController extends Controller
 {
@@ -39,7 +40,18 @@ class adminFAQController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'pertanyaan' => 'required',
+            'jawaban'=> 'required',
+            'is_tampil' =>'required',
+        ]);
+        $input = new FAQ();
+        $input->pertanyaan = $request->pertanyaan;
+        $input->jawaban= $request->jawaban ;
+        $input->is_tampil = $request->is_tampil ;
+        $input->save();
+        Alert::success('Success', 'Sukses menambahkan FAQ');
+        return redirect()->route('adminFAQ.index');
     }
 
     /**
@@ -75,7 +87,19 @@ class adminFAQController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = FAQ::find($id);
+        if(isset($request->pertanyaan)){
+            $input->pertanyaan = $request->pertanyaan;
+        }        
+        if(isset($request->jawaban)){
+            $input->jawaban =$request->jawaban;
+        }        
+        if(isset($request->is_tampil)){
+            $input->is_tampil=$request->is_tampil;
+        }
+        $input->update();
+        Alert::success('Success', 'Sukses edit FAQ ');
+        return redirect()->route('adminFAQ.index');
     }
 
     /**
@@ -86,6 +110,9 @@ class adminFAQController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $input = FAQ::find($id);
+        $input->delete();
+        Alert::success('Success', 'Sukses hapus FAQ');
+        return redirect()->route('adminFAQ.index');
     }
 }
