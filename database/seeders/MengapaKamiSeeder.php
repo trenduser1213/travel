@@ -17,7 +17,7 @@ class MengapaKamiSeeder extends Seeder
     {
 
         DB::table('mengapa_kamis')->insert([
-            'icon' => 'fi flaticon-business-and-finance',
+            'icon' => 'fas fa-hand-holding-usd',
             'judul' => 'Insya Allah Berkah',
             'deskripsi' => 'InsyaAllah Umrah & Haji anda semakin berkah karena secara tidak langsung
             berinfaq kepada yatim piatu dan fakir miskin di Pondok Pesantren',
@@ -26,7 +26,7 @@ class MengapaKamiSeeder extends Seeder
         );
 
         DB::table('mengapa_kamis')->insert([
-            'icon' => 'ti-medall',
+            'icon' => 'far fa-heart',
             'judul' => 'Berizin Resmi',
             'deskripsi' => 'Kami telah memiliki izin resmi sebagai travel haji dan umrah dari
             Kementerian Agama Republik Indonesia',
@@ -35,7 +35,7 @@ class MengapaKamiSeeder extends Seeder
         );
 
         DB::table('mengapa_kamis')->insert([
-            'icon' => 'ti-user',
+            'icon' => 'fas fa-user-tie',
             'judul' => 'Amanah dan Profesional',
             'deskripsi' => 'Kami memiliki pembimbing calon jamaah yang amanah serta profesional pada
             bidangnya.',
@@ -44,7 +44,7 @@ class MengapaKamiSeeder extends Seeder
         );
 
         DB::table('mengapa_kamis')->insert([
-            'icon' => 'ti-thumb-up',
+            'icon' => 'far fa-thumbs-up',
             'judul' => 'Komplit',
             'deskripsi' => 'Pembekalan tata cara ibadah yang komplit baik teori maupun praktek untuk
             memastikan jamaah umrah melaksanakan ibadah dengan sempurna',
@@ -53,7 +53,7 @@ class MengapaKamiSeeder extends Seeder
         );
 
         DB::table('mengapa_kamis')->insert([
-            'icon' => 'ti-wallet',
+            'icon' => 'fas fa-wallet',
             'judul' => 'Kepastian Harga',
             'deskripsi' => 'Kami memastikan tidak ada tambahan biaya lagi selain yang sudah tercantum
             di daftar harga brosur/pamflet.',
@@ -62,15 +62,12 @@ class MengapaKamiSeeder extends Seeder
         );
 
         DB::table('mengapa_kamis')->insert([
-            'icon' => 'ti-heart',
+            'icon' => 'far fa-heart',
             'judul' => 'Sepenuh Hati',
             'deskripsi' => 'Kami melayani dengan sepenuh hati, dengan motto : “ Melayani Tamu Allah
             adalah Pengabdian Kepada Allah”.',
             'is_tampil' => 'ya',
         ],
         );
-
-
-
     }
 }

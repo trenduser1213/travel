@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\MengapaKami;
+use App\Models\Slider;
 
-class adminMengapaKamiController extends Controller
+class adminSliderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,9 @@ class adminMengapaKamiController extends Controller
     public function index()
     {
         $data = [
-            'MengapaKami' => MengapaKami::all()     
+            'Slider' => Slider::all()     
         ];
-        return view('admin.MengapaKami.index', $data);
+        return view('admin.Slider.index', $data);
     }
 
     /**
@@ -28,7 +28,7 @@ class adminMengapaKamiController extends Controller
     public function create()
     {
      
-        return view('admin.MengapaKami.add');
+        return view('admin.Slider.add');
     }
 
     /**
@@ -61,11 +61,10 @@ class adminMengapaKamiController extends Controller
      */
     public function edit($id)
         {   $data = [
-            'MengapaKami' => MengapaKami::find($id)
+            'Slider' => Slider::find($id)
         ];
-        return view('admin.MengapaKami.edit', $data);
+        return view('admin.Slider.edit', $data);
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -87,11 +86,5 @@ class adminMengapaKamiController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    
-    public function icon()
-    {
-        return view('admin.MengapaKami.icons');
     }
 }
