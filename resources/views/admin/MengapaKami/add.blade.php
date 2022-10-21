@@ -11,7 +11,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <form action="{{ route('adminGaleriFoto.store') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('adminMengapaKami.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('post')
                 {{ csrf_field() }}
@@ -20,6 +20,11 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="judul">judul</label>
+                                    <input type="text" class="form-control" id="judul" name="judul"
+                                        placeholder="Masukkan Kode Icon" value="" required>
+                                </div>
                                 <div class="form-group">
                                     <label for="icon">Icon</label>
                                     <input type="text" class="form-control" id="icon" name="icon"
@@ -30,7 +35,7 @@
                                         kode icon?
                                         <ul>
                                             <li>Klik halaman daftar icon, atau melalui <strong><a
-                                                        href="{{ route('adminMengapaKami.icon') }}">link
+                                                        href="{{ url('/icon/icons') }}">link
                                                         ini</a></strong></li>
                                             <li>Salin kode icon yang sesuai dengan yang anda butuhkan</li>
                                             <li>Tempel pada kolom kode icon di atas</li>

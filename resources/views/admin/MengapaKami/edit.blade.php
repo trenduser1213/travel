@@ -18,9 +18,9 @@
 
     <div class="row">
         <div class="col-md-12">
-            <form action="{{ route('adminGaleriFoto.store') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('adminMengapaKami.update',$MengapaKami->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
-                @method('post')
+                @method('PUT')
                 {{ csrf_field() }}
 
                 <div class="card">
@@ -28,24 +28,36 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="nama">Nama</label>
-                                    <input type="text" class="form-control" id="nama" name="nama"
-                                        placeholder="Masukkan Nama Asosiasi" value="{{ $asosiasi->nama }}" required>
+                                    <label for="judul">judul</label>
+                                    <input type="text" class="form-control" id="judul" name="judul"
+                                        placeholder="Masukkan Nama Asosiasi" value="{{ $MengapaKami->judul }}" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="icon">icon</label>
+                                    <input type="text" class="form-control" id="icon" name="icon"
+                                        placeholder="Masukkan Nama Asosiasi" value="{{ $MengapaKami->icon }}" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="old">Logo Sekarang</label> <br>
-                                    <center><img src="{{ '/assets' }}../../../{{ $asosiasi->logo }}"
-                                            alt="{{ $asosiasi->nama }}" style="max-width: 50%; border :1px black"></center>
+                                    <center><img src="{{ '/assets' }}../../../{{ $MengapaKami->icon }}"
+                                            alt="{{ $MengapaKami->icon }}" style="max-width: 50%; border :1px black"></center>
                                 </div>
                             </div>
                             <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="teks1">Deskripsi</label>
+                                    <textarea name="teks1" id="teks1" rows="3" class="form-control" placeholder="Masukkan Deskripsi" required>{{ $MengapaKami->deskripsi }}</textarea>
+                                    @error('teks1')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
                                 <div class="form-group">
                                     <label for="judul">Tampilkan
                                         di Beranda?</label>
                                     <select class="form-control" name="is_tampil" id="is_tampil" required>
 
                                         <option value="-" disabled selected>Pilih</option>
-                                        @if ($asosiasi->is_tampil === 'tidak')
+                                        @if ($MengapaKami->is_tampil === 'tidak')
                                             <option value="ya">Ya</option>
                                             <option value="tidak" selected>Tidak</option>
                                         @else
@@ -54,11 +66,11 @@
                                         @endif
                                     </select>
                                 </div>
-                                <div class="form-group">
-                                    <label for="logo">Ganti Logo</label>
+                                {{-- <div class="form-group">
+                                    <label for="icon">Ganti Logo</label>
                                     <input type="file"
-                                        class="form-control file-input @error('logo') is-invalid @enderror"
-                                        accept=".jfif,.jpg,.jpeg,.png,.gif" id="image" name="logo">
+                                        class="form-control file-input @error('icon') is-invalid @enderror"
+                                        accept=".jfif,.jpg,.jpeg,.png,.gif" id="image" name="icon">
                                     <center>
                                         <img id="preview-image-before-upload" alt="preview image"
                                             style="max-width:50%; margin-top:10px">
@@ -71,10 +83,10 @@
                                             <li>Background Logo sudah di hapus</li>
                                         </ul>
                                     </small>
-                                    @error('logo')
+                                    @error('icon')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
-                                </div>
+                                </div> --}}
 
                             </div>
                         </div>

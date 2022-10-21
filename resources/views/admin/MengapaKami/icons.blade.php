@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Fontawesome - Atlantis Bootstrap 4 Admin Dashboard</title>
     <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
-    <link rel="icon" href="../../assets/img/icon.ico" type="image/x-icon" />
+    <link rel="icon" href="{{ asset('assets/') }}../../assets/img/icon.ico" type="image/x-icon" />
 
     <!-- Fonts and icons -->
-    <script src="../../assets/js/plugin/webfont/webfont.min.js"></script>
+    <script src="{{ asset('assets/') }}../../assets/js/plugin/webfont/webfont.min.js"></script>
     <script>
         WebFont.load({
             google: {
@@ -18,7 +18,7 @@
                 "families": ["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands",
                     "simple-line-icons"
                 ],
-                urls: ['../../assets/css/fonts.min.css']
+                urls: ['{{ asset('assets/') }}../../assets/css/fonts.min.css']
             },
             active: function() {
                 sessionStorage.fonts = true;
@@ -27,10 +27,10 @@
     </script>
 
     <!-- CSS Files -->
-    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../assets/css/atlantis.css">
+    <link rel="stylesheet" href="{{ asset('assets/') }}../../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/') }}../../assets/css/atlantis.css">
     <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link rel="stylesheet" href="../../assets/css/demo.css">
+    <link rel="stylesheet" href="{{ asset('assets/') }}../../assets/css/demo.css">
 </head>
 
 <body>
@@ -127,19 +127,19 @@
                                         <span class="category-title mt-0">Contacts</span>
                                         <div class="avatar-group">
                                             <div class="avatar">
-                                                <img src="../../assets/img/jm_denis.jpg" alt="..."
+                                                <img src="{{ asset('assets/') }}../../assets/img/jm_denis.jpg" alt="..."
                                                     class="avatar-img rounded-circle border border-white">
                                             </div>
                                             <div class="avatar">
-                                                <img src="../../assets/img/chadengle.jpg" alt="..."
+                                                <img src="{{ asset('assets/') }}../../assets/img/chadengle.jpg" alt="..."
                                                     class="avatar-img rounded-circle border border-white">
                                             </div>
                                             <div class="avatar">
-                                                <img src="../../assets/img/mlane.jpg" alt="..."
+                                                <img src="{{ asset('assets/') }}../../assets/img/mlane.jpg" alt="..."
                                                     class="avatar-img rounded-circle border border-white">
                                             </div>
                                             <div class="avatar">
-                                                <img src="../../assets/img/talha.jpg" alt="..."
+                                                <img src="{{ asset('assets/') }}../../assets/img/talha.jpg" alt="..."
                                                     class="avatar-img rounded-circle border border-white">
                                             </div>
                                             <div class="avatar">
@@ -151,7 +151,7 @@
                                             <div class="user">
                                                 <a href="#">
                                                     <div class="avatar avatar-online">
-                                                        <img src="../../assets/img/jm_denis.jpg" alt="..."
+                                                        <img src="{{ asset('assets/') }}../../assets/img/jm_denis.jpg" alt="..."
                                                             class="avatar-img rounded-circle border border-white">
                                                     </div>
                                                     <div class="user-data">
@@ -163,7 +163,7 @@
                                             <div class="user">
                                                 <a href="#">
                                                     <div class="avatar avatar-offline">
-                                                        <img src="../../assets/img/chadengle.jpg" alt="..."
+                                                        <img src="{{ asset('assets/') }}../../assets/img/chadengle.jpg" alt="..."
                                                             class="avatar-img rounded-circle border border-white">
                                                     </div>
                                                     <div class="user-data">
@@ -175,7 +175,7 @@
                                             <div class="user">
                                                 <a href="#">
                                                     <div class="avatar avatar-offline">
-                                                        <img src="../../assets/img/mlane.jpg" alt="..."
+                                                        <img src="{{ asset('assets/') }}../../assets/img/mlane.jpg" alt="..."
                                                             class="avatar-img rounded-circle border border-white">
                                                     </div>
                                                     <div class="user-data">
@@ -191,7 +191,7 @@
                                             <div class="user">
                                                 <a href="#">
                                                     <div class="avatar avatar-online">
-                                                        <img src="../../assets/img/jm_denis.jpg" alt="..."
+                                                        <img src="{{ asset('assets/') }}../../assets/img/jm_denis.jpg" alt="..."
                                                             class="avatar-img rounded-circle border border-white">
                                                     </div>
                                                     <div class="user-data2">
@@ -203,7 +203,7 @@
                                             <div class="user">
                                                 <a href="#">
                                                     <div class="avatar avatar-offline">
-                                                        <img src="../../assets/img/chadengle.jpg" alt="..."
+                                                        <img src="{{ asset('assets/') }}../../assets/img/chadengle.jpg" alt="..."
                                                             class="avatar-img rounded-circle border border-white">
                                                     </div>
                                                     <div class="user-data2">
@@ -215,7 +215,7 @@
                                             <div class="user">
                                                 <a href="#">
                                                     <div class="avatar avatar-away">
-                                                        <img src="../../assets/img/talha.jpg" alt="..."
+                                                        <img src="{{ asset('assets/') }}../../assets/img/talha.jpg" alt="..."
                                                             class="avatar-img rounded-circle border border-white">
                                                     </div>
                                                     <div class="user-data2">
@@ -233,7 +233,7 @@
                             <div class="messages-title">
                                 <div class="user">
                                     <div class="avatar avatar-offline float-right ml-2">
-                                        <img src="../../assets/img/chadengle.jpg" alt="..."
+                                        <img src="{{ asset('assets/') }}../../assets/img/chadengle.jpg" alt="..."
                                             class="avatar-img rounded-circle border border-white">
                                     </div>
                                     <span class="name">Chad</span>
@@ -247,7 +247,7 @@
                                 <div class="message-content-wrapper">
                                     <div class="message message-in">
                                         <div class="avatar avatar-sm">
-                                            <img src="../../assets/img/chadengle.jpg" alt="..."
+                                            <img src="{{ asset('assets/') }}../../assets/img/chadengle.jpg" alt="..."
                                                 class="avatar-img rounded-circle border border-white">
                                         </div>
                                         <div class="message-body">
@@ -279,7 +279,7 @@
                                 <div class="message-content-wrapper">
                                     <div class="message message-in">
                                         <div class="avatar avatar-sm">
-                                            <img src="../../assets/img/chadengle.jpg" alt="..."
+                                            <img src="{{ asset('assets/') }}../../assets/img/chadengle.jpg" alt="..."
                                                 class="avatar-img rounded-circle border border-white">
                                         </div>
                                         <div class="message-body">
@@ -313,7 +313,7 @@
                                 <div class="message-content-wrapper">
                                     <div class="message message-in">
                                         <div class="avatar avatar-sm">
-                                            <img src="../../assets/img/chadengle.jpg" alt="..."
+                                            <img src="{{ asset('assets/') }}../../assets/img/chadengle.jpg" alt="..."
                                                 class="avatar-img rounded-circle border border-white">
                                         </div>
                                         <div class="message-body">
@@ -611,20 +611,20 @@
         <!-- End Custom template -->
     </div>
     <!--   Core JS Files   -->
-    <script src="../../assets/js/core/jquery.3.2.1.min.js"></script>
-    <script src="../../assets/js/core/popper.min.js"></script>
-    <script src="../../assets/js/core/bootstrap.min.js"></script>
+    <script src="{{ asset('assets/') }}../../assets/js/core/jquery.3.2.1.min.js"></script>
+    <script src="{{ asset('assets/') }}../../assets/js/core/popper.min.js"></script>
+    <script src="{{ asset('assets/') }}../../assets/js/core/bootstrap.min.js"></script>
     <!-- jQuery UI -->
-    <script src="../../assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
-    <script src="../../assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+    <script src="{{ asset('assets/') }}../../assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+    <script src="{{ asset('assets/') }}../../assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
     <!-- Bootstrap Toggle -->
-    <script src="../../assets/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js"></script>
+    <script src="{{ asset('assets/') }}../../assets/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js"></script>
     <!-- jQuery Scrollbar -->
-    <script src="../../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+    <script src="{{ asset('assets/') }}../../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
     <!-- Atlantis JS -->
-    <script src="../../assets/js/atlantis.min.js"></script>
+    <script src="{{ asset('assets/') }}../../assets/js/atlantis.min.js"></script>
     <!-- Atlantis DEMO methods, don't include it in your project! -->
-    <script src="../../assets/js/setting-demo2.js"></script>
+    <script src="{{ asset('assets/') }}../../assets/js/setting-demo2.js"></script>
     <script>
         var iconClass = ['fas fa-address-book', 'fas fa-address-card', 'fas fa-adjust', 'fas fa-air-freshener',
             'fas fa-align-center', 'fas fa-align-justify', 'fas fa-align-left', 'fas fa-align-right',

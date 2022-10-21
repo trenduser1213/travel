@@ -96,7 +96,7 @@
                                                 </div>
                                                 <div class="modal-footer border-0">
                                                     <button
-                                                        onclick="hapusData('{{ route('adminGaleriFoto.destroy', $MengapaKami->id) }}')"
+                                                        onclick="hapusData('{{ route('adminMengapaKami.destroy', $MengapaKami->id) }}')"
                                                         type="" id="addRowButton"
                                                         class="btn btn-primary">Hapus</button>
                                                     <button type="button" class="btn btn-danger"
@@ -134,5 +134,25 @@
                 // 
             });
         });
+        function hapusData(url) {
+            // if (confirm('Yakin Hapus Kategori')) {
+            $.post(url, {
+                    '_token': $('[name=csrf-token').attr('content'),
+                    '_method': 'delete'
+                })
+                .done((response) => {
+                    Swal.fire(
+                    'Sukses',
+                    'Sukses Menghapus',
+                    'success'
+                    )
+                    window.location.href = '/adminMengapaKami';
+                })
+                .fail((errors) => {
+                    alert('Tidak Terhapus');
+                    return;
+                });
+            // }
+        }
     </script>
 @endsection

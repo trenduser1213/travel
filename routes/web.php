@@ -141,10 +141,11 @@ Route::group(['middleware' => 'auth'], function()
 
     //Routing Admin MengapaKami
     Route::resource('/adminMengapaKami', adminMengapaKamiController::class);
-    Route::get('/adminMengapaKami/icon', [adminMengapaKamiController::class, 'icon']
-    )->name('adminMengapaKami.icon');
-
-
+    // Route::get('/adminMengapaKami/icon', [adminMengapaKamiController::class,'icon'])->name('adminMengapaKami.icon');
+    Route::get('/adminMengapaKami/icon', [adminMengapaKamiController::class,'icon'])->name('adminMengapaKami.icon');
+    Route::get('icon/icons', function (){
+        return view('admin.MengapaKami.icons');
+     });
     //All the routes that belongs to the group goes here
     // Route::get('dashboard', function() {} );
 });
