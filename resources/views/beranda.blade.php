@@ -335,7 +335,7 @@
                                 </ul>
                                 <p>{!! $artikel->excerpt !!}</p>
                                 <a
-                                    href="{{ route('tes.nama', ['post' => $artikel->slug, 'mitra' => $mitra->username]) }}">Baca
+                                    href="{{ route('detailArtikel', ['post' => $artikel->slug, 'mitra' => $mitra->username]) }}">Baca
                                     Selengkapnya...</a>
                             </div>
                         </div>

@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('gambar');
             $table->string('judul');
             $table->string('slug')->unique();
-            $table->string('kategori');
             $table->string('written_by');
             $table->text('excerpt');
             $table->text('body');
