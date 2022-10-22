@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Testimoni;
 
+use RealRashid\SweetAlert\Facades\Alert;
+
 class adminTestimoniController extends Controller
 {
     /**
@@ -60,6 +62,7 @@ class adminTestimoniController extends Controller
         $input->testimoni = $request->testimoni;
         $input->is_tampil = $request->is_tampil;
         $input->save();
+        Alert::success('Success', 'Sukses menambahkan testimoni');
         return redirect()->route('adminTestimoni.index')->with('success','Sukses Menambahkan Testimoni');
     }
 
@@ -117,6 +120,7 @@ class adminTestimoniController extends Controller
             $input->gambar = $namePath;
         }
         $input->update();
+        Alert::success('Success', 'Sukses edit testimoni');
         return redirect()->route('adminTestimoni.index')->with('success','Sukses update Testimoni');
     }
 

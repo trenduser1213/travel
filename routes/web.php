@@ -103,7 +103,9 @@ Route::get('/login', [LoginController::class,'show'])->name('show');
 Route::post('/login', [LoginController::class,'login'])->name('login');
 Route::post('/logout',[LoginController::class,'logout'])->name('logout');
 
-Route::group(['middleware' => 'auth'], function()
+// Route::group(['middleware' => 'auth'], function()
+// {
+Route::middleware(['middleware' => 'auth','role:admin'],)->group(function () 
 {
     Route::resource('/CategoryPost',KategoriArtikelController::class);
     
@@ -141,10 +143,11 @@ Route::group(['middleware' => 'auth'], function()
 
     //Routing Admin MengapaKami
     Route::resource('/adminMengapaKami', adminMengapaKamiController::class);
-    Route::get('/adminMengapaKami/icon', [adminMengapaKamiController::class, 'icon']
-    )->name('adminMengapaKami.icon');
-
-
+    // Route::get('/adminMengapaKami/icon', [adminMengapaKamiController::class,'icon'])->name('adminMengapaKami.icon');
+    Route::get('/adminMengapaKami/icon', [adminMengapaKamiController::class,'icon'])->name('adminMengapaKami.icon');
+    Route::get('icon/icons', function (){
+        return view('admin.MengapaKami.icons');
+     });
     //All the routes that belongs to the group goes here
     // Route::get('dashboard', function() {} );
 });
