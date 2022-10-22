@@ -17,11 +17,10 @@ class PostSeeder extends Seeder
     {
         DB::table('posts')->insert([
             'category_post_id' => 1,
-            'gambar' => 'assets/images/produk/2021-Milad-safari-tour.jpg',
+            'gambar' => 'assets/images/artikel/IMG-20181129-WA0042.jpg',
             'judul' => 'Paket Milad',
             'slug' => 'paket-milad',
             'excerpt' => 'awkwkwkwkwkkw',
-            'kategori' => 'saudi',
             'written_by' => 'M.Arifin',
             'body' => 'akwkwdksndakansdknksadnksnksndknaskdnksndkasnd',
             'is_tampil_di_beranda' => 'tidak',
@@ -31,11 +30,10 @@ class PostSeeder extends Seeder
 
     DB::table('posts')->insert([
             'category_post_id' => 2,
-            'gambar' => 'assets/images/produk/2021-Milad-safari-tour.jpg',
+            'gambar' => 'assets/images/artikel/1.jpg',
             'judul' => 'Paket Milad2',
             'slug' => 'paket-milad2',
             'excerpt' => 'awkwkwkwkwkkw',
-            'kategori' => 'saudi',
             'written_by' => 'M.Arifin',
             'body' => 'akwkwdksndakansdknksadnksnksndknaskdnksndkasnd',
             'is_tampil_di_beranda' => 'ya',
@@ -45,11 +43,10 @@ class PostSeeder extends Seeder
 
     DB::table('posts')->insert([
             'category_post_id' => 3,
-            'gambar' => 'assets/images/produk/2021-Milad-safari-tour.jpg',
+            'gambar' => 'assets/images/artikel/2.jpg',
             'judul' => 'Paket Milad3',
             'slug' => 'paket-milad3',
             'excerpt' => 'awkwkwkwkwkkw',
-            'kategori' => 'saudi',
             'written_by' => 'M.Arifin',
             'body' => 'akwkwdksndakansdknksadnksnksndknaskdnksndkasnd',
             'is_tampil_di_beranda' => 'ya',

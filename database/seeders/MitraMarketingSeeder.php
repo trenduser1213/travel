@@ -20,7 +20,7 @@ class MitraMarketingSeeder extends Seeder
     {
         DB::table('mitra_marketings')->insert([
             'nama' => 'Safari',
-            'username' => 'admin',
+            'username' => 'safari',
             'hp' => '123456789090', 
             'wa' => '123456789090',
             'alamat' => 'qwertyuiop',

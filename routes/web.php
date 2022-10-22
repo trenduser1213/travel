@@ -26,6 +26,7 @@ use App\Http\Controllers\adminFAQController;
 use App\Http\Controllers\adminSliderController;
 use App\Http\Controllers\adminMengapaKamiController;
 use App\Http\Controllers\adminMitraMarketingController;
+use App\Http\Controllers\adminArtikelController;
 
 use App\Models\CategoryPost;
 use App\Models\KontakJamaah;
@@ -71,7 +72,7 @@ Route::get('/{mitra:username}/galeri', [GaleriController::class, 'index']);
 Route::get('/{mitra:username}/artikel', [PostController::class, 'index']);
 
 //mengakses sebuah artikel
-Route::get('/artikel/{post}/{mitra}', [PostController::class, 'show'])->name('tes.nama');
+Route::get('/artikel/{post}/{mitra}', [PostController::class, 'show'])->name('detailArtikel');
 
 //mengakses halaman yang menampilkan seluruh artikel dari sebuah kategori
 Route::get('/kategori/{category:slug}', function(CategoryPost $category){
@@ -142,6 +143,9 @@ Route::middleware(['middleware' => 'auth','role:admin'],)->group(function ()
 
     //Routing Admin Slider
     Route::resource('/adminSlider', adminSliderController::class);
+
+    //Routing Admin Slider
+    Route::resource('/adminArtikel', adminArtikelController::class);
 
     //Routing Admin MengapaKami
     Route::resource('/adminMengapaKami', adminMengapaKamiController::class);
