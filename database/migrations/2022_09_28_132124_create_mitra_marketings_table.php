@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('alamat');
             $table->string('kota');
             $table->string('provinsi');
+            $table->string('foto')->nullable();
             $table->string('jabatan')->nullable();
             $table->string('status');
             $table->timestamps();

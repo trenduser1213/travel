@@ -217,6 +217,7 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
         'Share' => Jorenvh\Share\ShareFacade::class,
+        'Alert' => RealRashid\SweetAlert\SweetAlertServiceProvider::class,
     ])->toArray(),
 
 ];

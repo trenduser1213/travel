@@ -25,6 +25,7 @@ use App\Http\Controllers\adminAsosiasiController;
 use App\Http\Controllers\adminFAQController;  
 use App\Http\Controllers\adminSliderController;
 use App\Http\Controllers\adminMengapaKamiController;
+use App\Http\Controllers\adminMitraMarketingController;
 
 use App\Models\CategoryPost;
 use App\Models\KontakJamaah;
@@ -136,7 +137,8 @@ Route::middleware(['middleware' => 'auth','role:admin'],)->group(function ()
     //Routing Admin FAQ
     Route::resource('/adminFAQ', adminFAQController::class);
     
-
+    //Routing Admin Mitra/Marketing
+    Route::resource('/adminMitraMarketing', adminMitraMarketingController::class);
 
     //Routing Admin Slider
     Route::resource('/adminSlider', adminSliderController::class);

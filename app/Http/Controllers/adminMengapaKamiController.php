@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\MengapaKami;
 
 use Illuminate\Support\Facades\DB;
-
 use RealRashid\SweetAlert\Facades\Alert;
 
 class adminMengapaKamiController extends Controller
