@@ -103,7 +103,9 @@ Route::get('/login', [LoginController::class,'show'])->name('show');
 Route::post('/login', [LoginController::class,'login'])->name('login');
 Route::post('/logout',[LoginController::class,'logout'])->name('logout');
 
-Route::group(['middleware' => 'auth'], function()
+// Route::group(['middleware' => 'auth'], function()
+// {
+Route::middleware(['middleware' => 'auth','role:admin'],)->group(function () 
 {
     Route::resource('/CategoryPost',KategoriArtikelController::class);
     
