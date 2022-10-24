@@ -250,7 +250,7 @@
                         'Sukses Menghapus',
                         'success'
                     )
-                    window.location.href = '/adminFAQ';
+                    window.location.href = '/adminMitraMarketing';
                 })
                 .fail((errors) => {
                     alert('Tidak Terhapus');

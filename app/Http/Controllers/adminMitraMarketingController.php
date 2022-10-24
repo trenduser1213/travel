@@ -6,6 +6,8 @@ use App\Models\Province;
 use App\Models\Regency;
 use App\Models\Village;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Str;
+use Nette\Utils\Random;
 
 use Illuminate\Http\Request;
 
@@ -27,7 +29,7 @@ class adminMitraMarketingController extends Controller
     public function create()
     {
         $data = [
-            'provinsi' => Province::all(),
+            'provinsi' => Province::select("*")->orderBy("name")->get(),
             'kabupaten' => Regency::all(),
             'desa' => Village::all(),
         ];
@@ -43,14 +45,35 @@ class adminMitraMarketingController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'pertanyaan' => 'required',
-            'jawaban'=> 'required',
-            'is_tampil' =>'required',
+            'nama' => 'required',
+            'hp'=> 'required',
+            'wa' =>'required',
+            'alamat' =>'required',
+            'kabupaten' =>'required',
+            'provinsi' =>'required',
+            'jabatan' =>'required',
+            'foto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048' 
         ]);
+        
+        $image = $request->file('foto');
+        $destinationPath = 'assets/images/produk';
+        $profileImage = date('YmdHis') . uniqid()."." . $image->getClientOriginalExtension();
+        $namePath=$image->move($destinationPath, $profileImage);
+
+        $username = Str::random('5');
+
         $input = new MitraMarketing();
-        $input->pertanyaan = $request->pertanyaan;
-        $input->jawaban= $request->jawaban ;
-        $input->is_tampil = $request->is_tampil ;
+        $input->nama = $request->nama;
+        $input->hp= $request->hp ;
+        $input->wa = $request->wa ;
+        $input->alamat = $request->alamat ;
+        $input->kota = $request->kabupaten ;
+        $input->provinsi = $request->provinsi ;
+        $input->jabatan = $request->jabatan ;
+        $input->status = 1 ;
+        $input->username = $username ;        
+        $input->foto = $namePath;
+
         $input->save();
         Alert::success('Success', 'Sukses menambahkan MitraMarketing');
         return redirect()->route('adminMitraMarketing.index');
@@ -75,7 +98,7 @@ class adminMitraMarketingController extends Controller
      */
     public function edit($id)
         {   $data = [
-                'provinsi' => Province::all(),
+                'provinsi' => Province::select("*")->orderBy("name")->get(),
                 'kabupaten' => Regency::all(),
                 'desa' => Village::all(),
             'MitraMarketing' => MitraMarketing::find($id)
@@ -93,14 +116,39 @@ class adminMitraMarketingController extends Controller
     public function update(Request $request, $id)
     {
         $input = MitraMarketing::find($id);
-        if(isset($request->pertanyaan)){
-            $input->pertanyaan = $request->pertanyaan;
+        if(isset($request->nama)){
+            $input->nama = $request->nama;
         }        
-        if(isset($request->jawaban)){
-            $input->jawaban =$request->jawaban;
+        if(isset($request->hp)){
+            $input->hp =$request->hp;
         }        
+        if(isset($request->wa)){
+            $input->wa=$request->wa;
+        }
+        if(isset($request->alamat)){
+            $input->alamat=$request->alamat;
+        }
+        if(isset($request->kabupaten)){
+            $input->kota=$request->kabupaten;
+        }
+        if(isset($request->provinsi)){
+            $input->provinsi=$request->provinsi;
+        }
+        if(isset($request->jabatan)){
+            $input->jabatan=$request->jabatan;
+        }
+        if(isset($request->status)){
+            $input->status=$request->status;
+        }
         if(isset($request->is_tampil)){
             $input->is_tampil=$request->is_tampil;
+        }
+        if ($request->file('foto')) {
+            $image = $request->file('foto');
+            $destinationPath = 'assets/images/produk';
+            $profileImage = date('YmdHis') . uniqid()."." . $image->getClientOriginalExtension();
+            $namePath=$image->move($destinationPath, $profileImage);
+            $input->foto = $namePath ;
         }
         $input->update();
         Alert::success('Success', 'Sukses edit MitraMarketing ');
