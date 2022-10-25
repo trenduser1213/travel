@@ -17,9 +17,9 @@
                 </ul>
             </div>
         @endif
-        <form action="{{ route('adminKetentuan.store') }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('adminArtikel.update',$Artikel->id) }}" method="post" enctype="multipart/form-data">
             @csrf
-            @method('post')
+            @method('PUT')
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-6">
