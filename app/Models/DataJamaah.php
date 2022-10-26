@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class DataJamaah extends Model
 {
     use HasFactory;
+
+    public function provinsi(){
+        return $this->belongsTo(Province::class);
+    }
 }

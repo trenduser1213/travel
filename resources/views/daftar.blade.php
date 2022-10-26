@@ -105,7 +105,7 @@
                                                         class="file-input @error('foto_KTP') is-invalid @enderror"
                                                         accept=".jfif,.jpg,.jpeg,.png,.gif"
                                                         style="border: none; font-size: small; margin-left: -40px;margin-top:-25px;"
-                                                        id="foto_KTP" name="foto_KTP">
+                                                        id="foto_KTP" name="foto_KTP" required>
                                                 </div>
                                                 @error('foto_KTP')
                                                     <small class="text-danger"> {{ $message }}</small>
@@ -123,7 +123,7 @@
                                                         class="file-input2 @error('foto_vaksin') is-invalid @enderror"
                                                         accept=".jfif,.jpg,.jpeg,.png,.gif"
                                                         style="border: none; font-size: small; margin-left: -40px; margin-top:-25px;"
-                                                        id="foto_vaksin" name="foto_vaksin">
+                                                        id="foto_vaksin" name="foto_vaksin" required>
                                                 </div>
                                                 @error('foto_vaksin')
                                                     <small class="text-danger"> {{ $message }}</small>

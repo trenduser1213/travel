@@ -59,38 +59,21 @@
                             </ul>
                         </div>
                         <div class="widget recent-post-widget">
-                            <h3>Recent posts</h3>
+                            <h3>Artikel Terbaru</h3>
                             <div class="posts">
-                                <div class="post">
-                                    <div class="img-holder">
-                                        <img src="assets/images/artikel/1.jpg" alt>
-                                    </div>
-                                    <div class="details">
-                                        <h4><a href="#">HALAL BIHALAL RAJUT PERSAUDARAAN</a></h4>
-                                        <span class="date">22 Sep 2022</span>
-                                    </div>
-                                </div>
+                                @foreach ($artikel_terbaru as $artikel)
+                                    <div class="post">
+                                        <div class="img-holder">
+                                            <img src="{{ asset('assets/') }}../../{{ $artikel->gambar }}"
+                                                alt="{{ $artikel->slug }}">
 
-                                <div class="post">
-                                    <div class="img-holder">
-                                        <img src="assets/images/artikel/1.jpg" alt>
+                                        </div>
+                                        <div class="details">
+                                            <h4><a href="#">{{ $artikel->judul }}</a></h4>
+                                            <span class="date">{{ $artikel->published_at }}</span>
+                                        </div>
                                     </div>
-                                    <div class="details">
-                                        <h4><a href="#">HALAL BIHALAL RAJUT PERSAUDARAAN</a></h4>
-                                        <span class="date">22 Sep 2022</span>
-                                    </div>
-                                </div>
-
-                                <div class="post">
-                                    <div class="img-holder">
-                                        <img src="assets/images/artikel/1.jpg" alt>
-                                    </div>
-                                    <div class="details">
-                                        <h4><a href="#">HALAL BIHALAL RAJUT PERSAUDARAAN</a></h4>
-                                        <span class="date">22 Sep 2022</span>
-                                    </div>
-                                </div>
-
+                                @endforeach
                             </div>
                         </div>
                     </div>

@@ -22,6 +22,10 @@ class beranda extends Controller
         $this->GaleriModel = new GaleriModel();
     }
 
+    public function redirect(){
+        return redirect('/safari/beranda');
+    }
+
     public function index($username_mitra){
         $mitra = MitraMarketing::where('username', $username_mitra)->first();
         $slider = Slider::where('is_tampil', 'ya')->get();

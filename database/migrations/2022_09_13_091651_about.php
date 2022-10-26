@@ -17,14 +17,12 @@ return new class extends Migration
             $table->id();
             $table->string('judul');
             $table->string('subjudul');
-            $table->string('thumbnail');
-            $table->text('link_video_iframe');
-            $table->text('link_video_embed');
+            $table->text('link_video');
             $table->string('motto');
             $table->string('submotto');
             $table->text('teks_sejajar_video');
             $table->text('teks_di_bawah_video');
-            $table->text('teks_sejajar_video_di_beranda');
+            $table->text('teks_di_beranda');
             $table->timestamps();
         });
     }

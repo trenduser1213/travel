@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class KontakJamaah extends Model
+class Peminat extends Model
 {
     use HasFactory;
 }

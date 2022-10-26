@@ -48,7 +48,10 @@
                                                         data-type="iframe">
                                                         <i class="fi flaticon-play-button-2"></i> </a> --}}
                                         <div class="h_iframe" style="height: 360px">
-                                            {!! $about->link_video_iframe !!}
+                                            <iframe src="{!! $about->link_video !!}" title="YouTube video player"
+                                                frameborder="0"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                allowfullscreen></iframe>
                                         </div>
                                     </div>
                                 </center>
@@ -459,34 +462,37 @@
     <div class="modal fade" id="ModalWA" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Masukkan Kontak Anda</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+            <form method="POST" action="/peminat/store">
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Masukkan Kontak Anda</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="nama" class="col-form-label">Nama</label>
+                                <input type="text" class="form-control" id="nama" name="nama" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="hp" class="col-form-label">No.HP/WhatsApp</label>
+                                <input type="number" class="form-control" id="hp" name="hp" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="col-form-label">Email</label>
+                                <input type="text" class="form-control" id="email" name="email">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-primary">Kirim</button>
+                    </div>
                 </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-group">
-                            <label for="recipient-name" class="col-form-label">Nama</label>
-                            <input type="text" class="form-control" id="recipient-name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone-number" class="col-form-label">No.HP/WhatsApp</label>
-                            <input type="text" class="form-control" id="phone-number" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email" class="col-form-label">Email</label>
-                            <input type="text" class="form-control" id="email">
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                    <button type="button" class="btn btn-primary">Kirim</button>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
     <!-- End Modal WhatsApp -->
