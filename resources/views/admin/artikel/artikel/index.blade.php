@@ -155,8 +155,13 @@
                     '_method': 'delete'
                 })
                 .done((response) => {
-                    alert('sukses menghapus');
-                    window.location.href = '/adminTestimoni';
+                    // alert('sukses menghapus');
+                    Swal.fire(
+                    'Sukses',
+                    'Sukses Menghapus',
+                    'success'
+                    )
+                    window.location.href = '/adminArtikel';
                 })
                 .fail((errors) => {
                     alert('Tidak Terhapus');
