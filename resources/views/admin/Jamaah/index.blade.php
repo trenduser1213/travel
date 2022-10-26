@@ -38,7 +38,7 @@
                                     <th>No. HP/WA</th>
                                     <th>Provinsi</th>
                                     <th>Kabupaten/Kota</th>
-                                    <th>Mitra/Marketing</th>
+                                    <th width="5%">Mitra / Marketing</th>
                                     <th>Status</th>
                                     <th>Aksi</th>
                                 </tr>
@@ -50,26 +50,28 @@
                                         <td>{{ $Jamaah->nama }}</td>
                                         <td>{{ $Jamaah->jeniskelamin }}</td>
                                         <td>{{ $Jamaah->HP }}</td>
-                                        <td>{{ $Provinsi->name }}</td>
-                                        <td><img src="{{ $Jamaah->gambar }}" alt="{{ $Jamaah->nama }}"
-                                                style="max-height: 125px"></td>
+                                        <td>{{ $Jamaah->nama_provinsi }}</td>
+                                        <td>{{ $Jamaah->nama_kabupaten }}</td>
                                         <td>
-                                            <p class="mt-2 mb-2">{{ $Jamaah->Jamaah }}</p>
+                                            {{ $Jamaah->nama_mitra }}
                                         </td>
                                         <td>
-                                            @if ($Jamaah->is_tampil != 'ya')
-                                                <center><i class="fa fa-times" style="color: brown"></i></center>
-                                            @else
-                                                <center><i class="fa fa-check" style="color: green"></i></center>
+                                            @if ($Jamaah->status === 'diterima')
+                                                <button class="btn btn-sm btn-primary btn-round" disabled>Diterima</button>
+                                            @elseif ($Jamaah->status === 'dikonfirmasi')
+                                                <button class="btn btn-sm btn-warning btn-round"
+                                                    disabled>Dikonfirmasi</button>
+                                            @elseif ($Jamaah->status === 'selesai')
+                                                <button class="btn btn-sm btn-success btn-round" disabled>Selesai</button>
                                             @endif
                                         </td>
 
-                                        <td> <button class="btn btn-info btn-sm" style="margin: 5px" data-toggle="modal"
-                                                data-target="#ModalTestiDetail-{{ $Jamaah->id }}">
+                                        <td> <button class="btn btn-warning btn-sm" style="margin: 5px" data-toggle="modal"
+                                                data-target="#ModalGantiStatus-{{ $Jamaah->id }}">
                                                 <span class="btn-label">
-                                                    <i class="fa fa-info" style="font-size:10px "></i>
+                                                    <i class="fa fa-edit" style="font-size:10px "></i>
                                                 </span>
-                                                Detail
+                                                Ganti Status
                                             </button>
                                             <a href="{{ route('adminJamaah.edit', $Jamaah->id) }}"><button
                                                     class="btn btn-success btn-sm" style="margin: 5px">
@@ -87,7 +89,72 @@
                                             </button>
                                         </td>
                                     </tr>
+                                    <!-- Modal Ganti Status-->
+                                    <div class="modal fade" id="ModalGantiStatus-{{ $Jamaah->id }}" tabindex="-1"
+                                        role="dialog" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <form action="{{ route('adminJamaah.update', $Jamaah->id) }}" method="post"
+                                                enctype="multipart/form-data">
+                                                @csrf
+                                                @method('PUT')
+                                                {{ csrf_field() }}
+                                                <div class="modal-content">
 
+                                                    <div class="modal-header border-0">
+                                                        <h5 class="modal-title">
+                                                            Ganti status Jamaah
+                                                            "{{ $Jamaah->nama }}"
+                                                        </h5>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="form-group">
+                                                                    <label for="status">status</label>
+                                                                    <select name="status" id="status"
+                                                                        class="form-control" required>
+                                                                        <option value="-" disabled>Pilih status
+                                                                        </option>
+                                                                        @if ($Jamaah->status === 'diterima')
+                                                                            <option value="diterima" selected>Diterima
+                                                                            </option>
+                                                                            <option value="dikerjakan">Dikerjakan</option>
+                                                                            <option value="selesai">Selesai </option>
+                                                                        @elseif($Jamaah->status === 'dikerjakan')
+                                                                            <option value="diterima">Diterima</option>
+                                                                            <option value="dikerjakan" selected>Dikerjakan
+                                                                            </option>
+                                                                            <option value="selesai">Selesai </option>
+                                                                        @elseif($Jamaah->status === 'selesai')
+                                                                            <option value="diterima">Diterima</option>
+                                                                            <option value="dikerjakan">Dikerjakan</option>
+                                                                            <option value="selesai" selected>Selesai
+                                                                            </option>
+                                                                        @endif
+
+                                                                    </select>
+                                                                    @error('status')
+                                                                        <div class="alert alert-danger">{{ $message }}
+                                                                        </div>
+                                                                    @enderror
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer border-0">
+                                                        <button type="submit" class="btn btn-primary">Ubah
+                                                            Status</button>
+                                                        <button type="button" class="btn btn-danger"
+                                                            data-dismiss="modal">Tutup</button>
+                                                    </div>
+
+                                                </div>
+                                        </div>
+                                    </div>
                                     <!-- Modal Hapus-->
                                     <div class="modal fade" id="ModalFotoHapus-{{ $Jamaah->id }}" tabindex="-1"
                                         role="dialog" aria-hidden="true">
