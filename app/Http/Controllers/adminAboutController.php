@@ -21,9 +21,9 @@ class adminAboutController extends Controller
     }
 
 
-    public function update(Request $request)
+    public function update($id, Request $request)
     {
-        $input = About::first();
+        $input = About::find($id);
         if(isset($request->pertanyaan)){
             $input->pertanyaan = $request->pertanyaan;
         }        
@@ -34,8 +34,8 @@ class adminAboutController extends Controller
             $input->is_tampil=$request->is_tampil;
         }
         $input->update();
-        Alert::success('Success', 'Sukses edit Artikel ');
-        return redirect()->route('adminArtikel.index');
+        Alert::success('Success', 'Sukses edit About ');
+        return redirect()->route('adminAbout.index');
     }
 
 
