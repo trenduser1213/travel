@@ -27,9 +27,13 @@ use App\Http\Controllers\adminSliderController;
 use App\Http\Controllers\adminMengapaKamiController;
 use App\Http\Controllers\adminMitraMarketingController;
 use App\Http\Controllers\adminArtikelController;
+
 use App\Http\Controllers\adminDashboardController;
 use App\Http\Controllers\adminJamaahController;
 use App\Http\Controllers\adminAboutController;
+
+use App\Http\Controllers\RegionController;
+
 use App\Models\CategoryPost;
 use App\Models\KontakJamaah;
 use App\Models\Post;
@@ -103,13 +107,14 @@ Route::post('/getkabupaten', [DataJamaah::class, 'getkabupaten'])->name('getkabu
 Route::get('admin', [AdminDashboard::class, 'index']);
 //Routing admin Artikel
 
+Route::get('/kabupaten/{id}', [RegionController::class,'dataKabupaten'])->name('kabupaten');
+Route::post('/kabupaten', [RegionController::class,'dataKabupaten'])->name('kabupaten');
+
 // Auth::routes();
 Route::get('/login', [LoginController::class,'show'])->name('show');
 Route::post('/login', [LoginController::class,'login'])->name('login');
 Route::post('/logout',[LoginController::class,'logout'])->name('logout');
-
-// Route::group(['middleware' => 'auth'], function()
-// {
+ 
 Route::middleware(['middleware' => 'auth','role:admin'],)->group(function () 
 {
     //Routing admin Dashboard
