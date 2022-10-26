@@ -31,6 +31,7 @@ return new class extends Migration
             $table->string('pembiayaan');
             $table->string('setoran_awal');
             $table->string('mitra_marketing');
+            $table->string('status');
             $table->timestamps();
         });
     }

@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\KontakJamaah;
+use App\Models\Peminat;
+use App\Models\MitraMarketing;
+use RealRashid\SweetAlert\Facades\Alert;
 
-class KontakJamaahController extends Controller
+class PeminatController extends Controller
 {
-    public function store(Request $request){
+    public function store(Request $request, MitraMarketing $mitraMarketing ){
         Request()->validate([
             'nama' => 'required',
             'nomor_hp' => 'required|min:10|numeric',
@@ -19,13 +21,17 @@ class KontakJamaahController extends Controller
             'email.email' => 'Masukkan email yang valid',
         ]);
 
-        $jamaah = new KontakJamaah;
+        $jamaah = new Peminat;
         $jamaah->nama = $request->nama;
-        $jamaah->nomor_hp = $request->nomor_hp;
+        $jamaah->nomor_hp = $request->hp;
+        $jamaah->mitra_marketing = $mitraMarketing;
         $jamaah->email = $request->email;
 
+        dd($jamaah);
         $jamaah->save();
 
-        return redirect('/produk')->with('success', 'Kontak anda telah tersimpan!');
+
+        // Alert::success('Success', 'Data anda telah di simpan!');
+        // return redirect('/produk')->with('success', 'Kontak anda telah tersimpan!');
     }
 }

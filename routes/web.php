@@ -7,17 +7,17 @@ use App\Http\Controllers\adminGaleriController;
 use App\Http\Controllers\SyaratController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\GaleriController;
-use App\Http\Controllers\KontakJamaahController;
+use App\Http\Controllers\PeminatController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\DataJamaah;
 use App\Http\Controllers\beranda;
 use App\Http\Controllers\IdentitasPerusahaanController;
-use App\Http\Controllers\KategoriArtikelController;
-use App\Http\Controllers\SyaratKetentuansController;
-use App\Http\Controllers\adminProdukController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\LoginController;
 
+use App\Http\Controllers\KategoriArtikelController;
+use App\Http\Controllers\SyaratKetentuansController;
+use App\Http\Controllers\adminProdukController;
 use App\Http\Controllers\adminGaleriVideoController;
 use App\Http\Controllers\adminGaleriFotoController;
 use App\Http\Controllers\adminTestimoniController;
@@ -27,6 +27,11 @@ use App\Http\Controllers\adminSliderController;
 use App\Http\Controllers\adminMengapaKamiController;
 use App\Http\Controllers\adminMitraMarketingController;
 use App\Http\Controllers\adminArtikelController;
+
+use App\Http\Controllers\adminDashboardController;
+use App\Http\Controllers\adminJamaahController;
+use App\Http\Controllers\adminAboutController;
+
 use App\Http\Controllers\RegionController;
 
 use App\Models\CategoryPost;
@@ -48,7 +53,7 @@ use App\Http\Controllers\adminIdentitasPerusahaanController;
 |
 */
 
-Route::get('/', [Beranda::class, 'index']);
+Route::get('/', [Beranda::class, 'redirect']);
 
 //Mengakses beranda 
 Route::get('/{mitra:username}/beranda', [Beranda::class, 'index']);
@@ -86,14 +91,15 @@ Route::get('/kategori/{category:slug}', function(CategoryPost $category){
 });
 
 //menyimpan kontak calon jamaah
-Route::resource('/kontak_jamaah', KontakJamaahController::class);
+// Route::resource('/peminat', PeminatController::class);
+
+// Route::post('/peminat/store', [PeminatController::class, 'store']);
 
 //mendaftar ke sebuah produk tertentu
 Route::get('/{mitra:username}/daftar/{produk:slug}', [ProdukController::class, 'toRegister']);
 
 //menyimpan data pendaftaran
 Route::post('/{mitra:username}/daftar/{produk:slug}/store', [ProdukController::class, 'storeDataJamaah']);
-
 
 Route::post('/getkabupaten', [DataJamaah::class, 'getkabupaten'])->name('getkabupaten');
 
@@ -111,6 +117,15 @@ Route::post('/logout',[LoginController::class,'logout'])->name('logout');
  
 Route::middleware(['middleware' => 'auth','role:admin'],)->group(function () 
 {
+    //Routing admin Dashboard
+    Route::resource('/adminDashboard',adminDashboardController::class);
+
+    //Routing admin About
+    Route::resource('/adminAbout',adminAboutController::class);
+
+    //Routing admin Jamaah
+    Route::resource('/adminJamaah',adminJamaahController::class);
+
     Route::resource('/CategoryPost',KategoriArtikelController::class);
     
     //Routing admin Syarat & Ketentuan

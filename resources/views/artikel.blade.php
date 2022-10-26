@@ -43,7 +43,7 @@
                                             </h3>
                                             <p>{{ $artikel->excerpt }} ...</p>
                                             <div class="entry-bottom">
-                                                <a href="{{ route('tes.nama', ['post' => $artikel, 'mitra' => $mitra->username]) }}"
+                                                <a href="{{ route('detailArtikel', ['post' => $artikel, 'mitra' => $mitra->username]) }}"
                                                     class="read-more">Baca
                                                     Selengkapnya...</a>
                                             </div>

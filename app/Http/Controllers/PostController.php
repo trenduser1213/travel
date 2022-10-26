@@ -44,6 +44,9 @@ class PostController extends Controller
     public function show($slug_post, $username_mitra){
         $post = Post::where('slug', $slug_post)->first();
         $mitra = MitraMarketing::where('username', $username_mitra)->first();
+
+        $allpost = Post::where('is_tampil_di_halaman_artikel', 'ya')->latest();
+        $result = $allpost->get();
         // dd($mitra);
         return view('artikel_single',[
             "title" => "Single Post",
@@ -51,6 +54,7 @@ class PostController extends Controller
             "kategori" => CategoryPost::all(),
             "category" => CategoryPost::class,
             "identitas" => IdentitasPerusahaan::first(),
+            "artikel" => $result,
             "mitra" => $mitra,
         ]);
 

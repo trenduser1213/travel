@@ -26,9 +26,4 @@ class AboutController extends Controller
         return view('about', $data);
     }
 
-    public function edit()
-    {
-        return view('about_edit');
-    }
-    
 }

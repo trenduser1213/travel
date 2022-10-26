@@ -46,7 +46,6 @@ class ProdukController extends Controller
         return view('daftar',$data);
     }
 
-    
     public function storeDataJamaah(Request $request, $username_mitra, $slug_produk){
         $produk = Produk::where('slug', $slug_produk)->first();        
         $mitra = MitraMarketing::where('username', $username_mitra)->first();
@@ -66,7 +65,17 @@ class ProdukController extends Controller
         ]);
 
         // return dd($validatedData);
+        
+        $image = $request->file('foto_KTP');
+        $destinationPath = 'assets/images/jamaah/'.$request->nama;;
+        $profileImage = date('YmdHis') . uniqid()."." . $image->getClientOriginalExtension();
+        $namePath=$image->move($destinationPath, $profileImage);
 
+        $image2 = $request->file('foto_vaksin');
+        $destinationPath2 = 'assets/images/jamaah/'.$request->nama;;
+        $profileImage2 = date('YmdHis') . uniqid()."." . $image2->getClientOriginalExtension();
+        $namePath2=$image2->move($destinationPath2, $profileImage2);
+        
         $data =[
             'nama' => $request->nama,
             'jeniskelamin' => $request->jeniskelamin,
@@ -74,8 +83,8 @@ class ProdukController extends Controller
             'email' => $request->email,
             'NIK' => Request()->NIK,
             'no_paspor' => Request()->no_paspor,
-            'foto_KTP' => Request()->foto_KTP,
-            'foto_vaksin' => Request()->foto_vaksin,
+            'foto_KTP' => $namePath,
+            'foto_vaksin' => $namePath2,
             'provinsi' => Request()->provinsi,
             'kabupaten' => Request()->kabupaten,
             'kecamatan' => Request()->kecamatan,
@@ -83,12 +92,13 @@ class ProdukController extends Controller
             'slug_produk' => $produk ->slug,
             'pembiayaan' => Request()->pembiayaan,
             'setoran_awal' => Request()->setoran_awal,
+            'status' => 'diterima',
             'mitra_marketing' => $mitra->username,
         ];
 
         // return dd($data);
 
         $this->Produk->addDataPendaftaranJamaah($data);
-        return redirect('/beranda')->with('success', 'Pendaftaran anda berhasil!');
+        return redirect('/')->with('success', 'Pendaftaran anda berhasil!');
     }
 }
