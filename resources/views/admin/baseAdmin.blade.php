@@ -913,6 +913,24 @@
             });
 
         });
+
+        $(document).ready(function(e) {
+
+
+            $('#image2').change(function() {
+
+                let reader = new FileReader();
+
+                reader.onload = (e) => {
+
+                    $('#preview-image-before-upload2').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(this.files[0]);
+
+            });
+
+        });
     </script>
 </body>
 

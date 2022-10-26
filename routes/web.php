@@ -101,7 +101,6 @@ Route::get('/{mitra:username}/daftar/{produk:slug}', [ProdukController::class, '
 //menyimpan data pendaftaran
 Route::post('/{mitra:username}/daftar/{produk:slug}/store', [ProdukController::class, 'storeDataJamaah']);
 
-Route::post('/getkabupaten', [DataJamaah::class, 'getkabupaten'])->name('getkabupaten');
 
 //Routing Admin
 Route::get('admin', [AdminDashboard::class, 'index']);
