@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\Peminat;
 
 class adminPeminatController extends Controller
 {
@@ -20,5 +21,22 @@ class adminPeminatController extends Controller
         ];
         // dd($data);
         return view('admin.Peminat.index', $data);
-}
+    }
+    public function update( Request $request, $id)
+    {
+        $input = Peminat::find($id);
+        if(isset($request->status)){
+            $input->status = $request->status;
+        } 
+        $input->update();
+        Alert::success('Success', 'Sukses edit');
+        return redirect()->route('adminPeminat.index');
+    }
+    public function destroy($id)
+    {
+        $input = Peminat::find($id);
+        $input->delete();
+        // Alert::success('Success', 'Sukses Menghapus Data ');
+        return redirect()->route('adminPeminat.index');
+    }
 }

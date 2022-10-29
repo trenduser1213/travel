@@ -231,7 +231,7 @@
                 let id_provinsi = $('#provinsi').val();
                 console.log(id_provinsi);
                 $.ajax({
-                    url: "{{ route('getkabupaten') }}",
+                    url: "{{ route('postkabupaten') }}",
                     type: 'POST',
                     data: {
                         "id_prov": id_provinsi
@@ -241,7 +241,7 @@
                     success: function(data) {
                         console.log(data);
                         // console.log(data);
-                        $('#postkabupaten').html(data);
+                        $('#kabupaten').html(data);
                     },
                     error: function(data) {
                         console.log('error:', data);

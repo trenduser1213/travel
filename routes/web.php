@@ -106,8 +106,8 @@ Route::post('/{mitra:username}/daftar/{produk:slug}/store', [ProdukController::c
 Route::get('admin', [AdminDashboard::class, 'index']);
 //Routing admin Artikel
 
-Route::get('/kabupaten/{id}', [RegionController::class,'dataKabupaten'])->name('getkabupaten');
-Route::post('/kabupaten', [RegionController::class,'dataKabupaten'])->name('postkabupaten');
+// Route::get('/kabupaten/{id}', [RegionController::class,'dataKabupaten'])->name('getkabupaten');
+Route::post('/postkabupaten', [RegionController::class,'dataKabupaten'])->name('postkabupaten');
 
 // Auth::routes();
 Route::get('/login', [LoginController::class,'show'])->name('show');
