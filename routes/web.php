@@ -31,6 +31,9 @@ use App\Http\Controllers\adminArtikelController;
 use App\Http\Controllers\adminDashboardController;
 use App\Http\Controllers\adminJamaahController;
 use App\Http\Controllers\adminAboutController;
+use App\Http\Controllers\adminPeminatController;
+
+use App\Http\Controllers\mitraDashboardController;
 
 use App\Http\Controllers\RegionController;
 
@@ -61,9 +64,6 @@ Route::get('/{mitra:username}/beranda', [Beranda::class, 'index']);
 //Mengakses halaman tentang kami
 Route::get('/{mitra:username}/about', [AboutController::class, 'index']);
 
-// Route::get('/admin/about-edit', [AboutController::class, 'edit']);   
-
-// Route::get('/about-edit', [AboutController::class, 'edit']);
 
 //mengakses halaman syarat dan ketentuan
 Route::get('/{mitra:username}/syarat-dan-ketentuan', [SyaratController::class, 'index']);
@@ -106,14 +106,20 @@ Route::post('/{mitra:username}/daftar/{produk:slug}/store', [ProdukController::c
 Route::get('admin', [AdminDashboard::class, 'index']);
 //Routing admin Artikel
 
-Route::get('/kabupaten/{id}', [RegionController::class,'dataKabupaten'])->name('kabupaten');
-Route::post('/kabupaten', [RegionController::class,'dataKabupaten'])->name('kabupaten');
+Route::get('/kabupaten/{id}', [RegionController::class,'dataKabupaten'])->name('getkabupaten');
+Route::post('/kabupaten', [RegionController::class,'dataKabupaten'])->name('postkabupaten');
 
 // Auth::routes();
 Route::get('/login', [LoginController::class,'show'])->name('show');
 Route::post('/login', [LoginController::class,'login'])->name('login');
 Route::post('/logout',[LoginController::class,'logout'])->name('logout');
  
+Route::middleware(['middleware' => 'auth', 'role:mitra'])->group( function (){
+    Route::get('/{mitra:username}/mitraDashboard', [mitraDashboardController::class, 'index']);
+    Route::get('/{mitra:username}/mitraDashboard/create', [mitraDashboardController::class, 'create']);
+    Route::post('/{mitra:username}/mitraDashboard/store', [mitraDashboardController::class, 'store'])->name('MitraDashboard.store');
+});
+
 Route::middleware(['middleware' => 'auth','role:admin'],)->group(function () 
 {
     //Routing admin Dashboard
@@ -124,6 +130,9 @@ Route::middleware(['middleware' => 'auth','role:admin'],)->group(function ()
 
     //Routing admin Jamaah
     Route::resource('/adminJamaah',adminJamaahController::class);
+
+    //Routing admin Peminat
+    Route::resource('/adminPeminat',adminPeminatController::class);
 
     Route::resource('/CategoryPost',KategoriArtikelController::class);
     

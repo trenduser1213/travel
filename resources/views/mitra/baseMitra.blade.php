@@ -100,135 +100,18 @@
                             <h4 class="text-section">Umum</h4>
                         </li>
                         <li class="nav-item">
-                            <a href="#">
+                            <a href="/{{ $mitra->username }}/mitraDashboard">
                                 <i class="fas fa-laptop"></i>
-                                <p>Dashboard Admin</p>
+                                <p>Dashboard Mitra</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('adminMitraMarketing.index') }}">
+                            <a href="https://api.whatsapp.com/send/?phone=6281232324112&text=Halo Safari Global Perkasa, Saya ingin bertanya. &app_absent=0"
+                                target="_blank">
                                 <i class="fas fa-user-friends"></i>
-                                <p>Mitra/Marketing</p>
+                                <p>Hubungi Safari</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="{{ route('adminJamaah.index') }}">
-                                <i class="fas fa-users"></i>
-                                <p>Jam'aah</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('adminPeminat.index') }}">
-                                <i class="fas fa-user-clock"></i>
-                                <p>Peminat</p>
-                            </a>
-                        </li>
-                        <li class="nav-section">
-                            <span class="sidebar-mini-icon">
-                                <i class="fa fa-ellipsis-h"></i>
-                            </span>
-                            <h4 class="text-section">Manajemen Konten</h4>
-                        </li>
-                        <li class="nav-item">
-                            <a data-toggle="collapse" href="#dashboard" class="collapsed" aria-expanded="false">
-                                <i class="fas fa-home"></i>
-                                <p>Beranda</p>
-                                <span class="caret"></span>
-                            </a>
-                            <div class="collapse" id="dashboard">
-                                <ul class="nav nav-collapse">
-                                    <li style="margin-top:-10px">
-                                        <a href="{{ route('adminSlider.index') }}">
-                                            <i
-                                                class="
-                                                fas fa-images"></i>
-                                            <p>Slider</p>
-                                        </a>
-                                    </li>
-                                    <li style="margin-top:-10px">
-                                        <a href="{{ route('adminMengapaKami.index') }}">
-                                            <i
-                                                class="
-                                            fas fas fa-user-plus
-                                            "></i>
-                                            <p>Mengapa Kami</p>
-                                        </a>
-                                    </li>
-                                    <li style="margin-top:-10px">
-                                        <a href="{{ route('adminTestimoni.index') }}">
-                                            <i
-                                                class="
-                                            fas fa-quote-right"></i>
-                                            <p>Testimoni</p>
-                                        </a>
-                                    </li>
-                                    <li style="margin-top:-10px">
-                                        <a href="{{ route('adminAsosiasi.index') }}">
-                                            <i
-                                                class="
-                                                    fas fa-user-friends"></i>
-                                            <p>Asosiasi</p>
-                                        </a>
-                                    </li>
-                                    <li style="margin-top:-10px">
-                                        <a href="{{ route('adminFAQ.index') }}">
-                                            <i class="fas fa-question-circle"></i>
-                                            <p>FAQ</p>
-                                        </a>
-                                    </li>
-
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a data-toggle="collapse" href="#forms">
-                                <i class="fas fa-newspaper"></i>
-                                <p>Artikel</p>
-                                <span class="caret"></span>
-                            </a>
-                            <div class="collapse" id="forms">
-                                <ul class="nav nav-collapse">
-                                    <li>
-                                        <a href="{{ route('CategoryPost.index') }}">
-                                            <span class="sub-item">Kategori Artikel</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('adminArtikel.index') }}">
-                                            <span class="sub-item">Artikel</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="{{ route('adminIdentitasPerusahaan.index') }}">
-                                <i class="fas fa-building"></i>
-                                <p>Identitas Perusahaan</p>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="{{ route('adminGaleri.index') }}">
-                                <i class="fas fa-file-image"></i>
-                                <p>Galeri</p>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="{{ route('adminKetentuan.index') }}">
-                                <i class="fas fa-file-signature"></i>
-                                <p>Syarat dan ketentuan</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('adminProduk.index') }}">
-                                <i class="fas fa-plane-departure"></i>
-                                <p>Produk</p>
-                            </a>
-                        </li>
-
                     </ul>
                 </div>
             </div>

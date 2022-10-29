@@ -1,4 +1,4 @@
-@extends('admin.baseAdmin')
+@extends('mitra.baseMitra')
 
 @section('title')
     Tambah Jama'ah
@@ -11,7 +11,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <form action="{{ route('adminJamaah.store') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ $mitra->username }}/mitraDashboard/store" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('post')
                 {{ csrf_field() }}
@@ -162,20 +162,6 @@
                                     @foreach ($produk as $produk)
                                         <option value="{{ $produk->slug }}">
                                             {{ $produk->nama }} | {{ $produk->harga }}</option>
-                                    @endforeach
-
-                                </select>
-                            </div>
-                            <div class="col-lg-6 form-group">
-                                <label for="Mitra" class="form-label">Pilih Mitra</label>
-                                <select class="form-control" aria-label="Default select example" name="Mitra"
-                                    id="Mitra" style="font-size: 14px;">
-                                    <option selected style="font-size: 14px;" disabled>Pilih
-                                        Mitra</option>
-
-                                    @foreach ($Mitra as $Mitra)
-                                        <option value="{{ $Mitra->id }}">
-                                            {{ $Mitra->nama }}</option>
                                     @endforeach
 
                                 </select>
