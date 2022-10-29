@@ -9,7 +9,14 @@ class DataJamaah extends Model
 {
     use HasFactory;
 
-    public function provinsi(){
+    protected $table = 'data_jamaahs';
+    protected $primaryKey = 'id';
+    protected $guarded = [];
+
+    public function province(){
         return $this->belongsTo(Province::class);
+    }
+    public function regency(){
+        return $this->belongsTo(Regency::class);
     }
 }

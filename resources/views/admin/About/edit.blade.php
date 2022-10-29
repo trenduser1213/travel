@@ -69,7 +69,7 @@
                             <label for="submotto">Link Video</label>
                             <input type="text" class="form-control" id="link_video" name="link_video"
                                 placeholder="Masukkan link video embed" value="{{ $About->link_video }}" required>
-                            @error('video')
+                            @error('link_video')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                             <div class="row">
@@ -136,11 +136,11 @@
                 </div>
             </div>
         </div>
+        
+        <button class="btn btn-primary ml-auto" style="margin-left:auto" data-toggle="modal" data-target="#ModalKonfirmasi">
+            Simpan
+        </button>
     </form>
-
-    <button class="btn btn-primary ml-auto" style="margin-left:auto" data-toggle="modal" data-target="#ModalKonfirmasi">
-        Simpan
-    </button>
     </div>
 
 

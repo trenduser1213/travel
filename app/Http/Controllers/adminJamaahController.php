@@ -9,6 +9,7 @@ use App\Models\Regency;
 use App\Models\Produk;
 use App\Models\MitraMarketing;
 use Illuminate\Support\Facades\DB;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class adminJamaahController extends Controller
 {
@@ -19,17 +20,19 @@ class adminJamaahController extends Controller
      */
 
     public function index()
-    {   $jamaah = DB::table('data_jamaahs')
+    {   
+        // $jamaah = DataJamaah::all() ;
+        $jamaah = DB::table('data_jamaahs')
         ->join('provinces', 'data_jamaahs.provinsi', '=', 'provinces.id')
         ->join('regencies', 'data_jamaahs.kabupaten', '=', 'regencies.id')
-        ->join('mitra_marketings', 'data_jamaahs.mitra_marketing', '=', 'mitra_marketings.username')
+        ->join('mitra_marketings', 'data_jamaahs.mitra_marketing', '=', 'mitra_marketings.id')
         ->select('data_jamaahs.*', 'provinces.name as nama_provinsi', 'regencies.name as nama_kabupaten', 'mitra_marketings.nama as nama_mitra')
         ->get();
-        
+        // dd($jamaah);
         $data = [
-        'Jamaah' => $jamaah,
-        // 'Provinsi' => Province::all(),
-    ];
+            'Jamaah' => $jamaah,
+            // 'Provinsi' => Province::all(),
+        ];
 
     // dd($data);
         return view('admin.Jamaah.index', $data);
@@ -67,50 +70,63 @@ class adminJamaahController extends Controller
         if (isset($request->nama)) {
             $input->nama = $request->nama;
         }
-        if (isset($request->slug)) {
-            $input->slug = $request->slug ;
+        if (isset($request->jeniskelamin)) {
+            $input->jeniskelamin = $request->jeniskelamin ;
         }
-        if (isset($request->harga)) {
-            $input->harga= $request->harga ;
+        if (isset($request->HP)) {
+            $input->HP= $request->HP ;
         }
-        if (isset($request->tgl_berangkat)) {
-            $input->tgl_berangkat = $request->tgl_berangkat ;
+        if (isset($request->email)) {
+            $input->email = $request->email ;
         }
-        if (isset($request->durasi)) {
-            $input->durasi= $request->durasi ;
+        if (isset($request->NIK)) {
+            $input->NIK= $request->NIK ;
         }
-        if (isset($request->total_seat)) {
-            $input->total_seat= $request->total_seat ;
+        if (isset($request->no_paspor)) {
+            $input->no_paspor= $request->no_paspor ;
         }
-        if (isset($request->berangkat_dari)) {
-            $input->berangkat_dari = $request->berangkat_dari ;
+        if (isset($request->provinsi)) {
+            $input->provinsi = $request->provinsi ;
         }
-        if (isset($request->hotel)) {
-            $input->hotel= $request->hotel ;
+        if (isset($request->kabupaten)) {
+            $input->kabupaten= $request->kabupaten ;
         }
-        if (isset($request->maskapai)) {
-            $input->maskapai= $request->maskapai ;
+        if (isset($request->alamat)) {
+            $input->alamat= $request->alamat ;
         }
-        if (isset($request->kategori_paket)) {
-            $input->kategori_paket= $request->kategori_paket ;
+        if (isset($request->produk)) {
+            $input->slug_produk= $request->produk ;
         }
-        if (isset($request->is_tampil_di_beranda)) {
-            $input->is_tampil_di_beranda= $request->is_tampil_di_beranda ;
+        if (isset($request->pembiayaan)) {
+            $input->pembiayaan= $request->pembiayaan ;
         }
-        if (isset($request->is_tampil_di_halaman_DataJamaah)) {
-            $input->is_tampil_di_halaman_DataJamaah = $request->is_tampil_di_halaman_DataJamaah ;
+        if (isset( $request->setoran_awal)) {
+            $input->setoran_awal = $request->setoran_awal ;
+        }
+        if (isset( $request->Mitra)) {
+            $input->mitra_marketing = $request->Mitra ;
+        }
+        if (isset( $request->status)) {
+            $input->status = $request->status ;
+        }
+        if ($request->file('foto_KTP')) {
+            $image = $request->file('foto_KTP');
+            $destinationPath = 'assets/images/DataJamaah/foto_KTP';
+            $profileImage = date('YmdHis') . uniqid()."." . $image->getClientOriginalExtension();
+            $namePath_foto_KTP=$image->move($destinationPath, $profileImage);
+            $input->foto_KTP = $namePath_foto_KTP ;
         }
         if ($request->file('gambar')) {
-            $image = $request->file('gambar');
-            $destinationPath = 'assets/images/DataJamaah';
+            $image = $request->file('foto_vaksin');
+            $destinationPath = 'assets/images/DataJamaah/foto_vaksin';
             $profileImage = date('YmdHis') . uniqid()."." . $image->getClientOriginalExtension();
-            $namePath=$image->move($destinationPath, $profileImage);
-            $input->gambar = $namePath ;
+            $namePath_foto_vaksin=$image->move($destinationPath, $profileImage);
+            $input->foto_vaksin = $namePath_foto_vaksin ;
         }
         $input->update();
         // dd($input);
-        return redirect()->route('adminDataJamaah.index');
-        
+        Alert::success('Success', 'Sukses edit');
+        return redirect()->route('adminJamaah.index');
     }
 
     public function store(Request $request){
@@ -118,25 +134,60 @@ class adminJamaahController extends Controller
         //validasi inputan
         $this->validate($request,[
             'nama' => 'required',
-            'slug' => 'required|unique:posts',
-            'harga'=> 'required',
-            'tgl_berangkat' => 'required',
-            'durasi'=> 'required',
-            'total_seat'=> 'required',
-            'berangkat_dari' => 'required',
-            'hotel'=> 'required',
-            'maskapai'=> 'required',
-            'kategori_paket'=> 'required',
-            'is_tampil_di_beranda'=> 'required',
-            'is_tampil_di_halaman_DataJamaah' =>'required',
-            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048' 
+            'jeniskelamin' => 'required',
+            'HP'=> 'required',
+            'email' => 'required',
+            'NIK'=> 'required',
+            'no_paspor'=> 'required',
+            'foto_KTP' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'foto_vaksin' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'provinsi'=> 'required',
+            'kabupaten'=> 'required',
+            'alamat'=> 'required',
+            'produk'=> 'required',
+            'pembiayaan'=> 'required',
+            'setoran_awal'=> 'required',
+            'Mitra'=> 'required',
+            // 'kecamatan'=> 'required',
+            // 'is_tampil_di_beranda'=> 'required',
+            // 'is_tampil_di_halaman_DataJamaah' =>'required',
+            // 'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048' 
         ]);
         // dd($request->date)
-        $image = $request->file('gambar');
-        $destinationPath = 'assets/images/DataJamaah';
+        $image = $request->file('foto_KTP');
+        $destinationPath = 'assets/images/DataJamaah/foto_KTP';
         $profileImage = date('YmdHis') . uniqid()."." . $image->getClientOriginalExtension();
-        $namePath=$image->move($destinationPath, $profileImage);
-        // $request->gambar1 = $namePath;
+        $namePath_foto_KTP=$image->move($destinationPath, $profileImage);
+
+        $image = $request->file('foto_vaksin');
+        $destinationPath = 'assets/images/DataJamaah/foto_vaksin';
+        $profileImage = date('YmdHis') . uniqid()."." . $image->getClientOriginalExtension();
+        $namePath_foto_vaksin=$image->move($destinationPath, $profileImage);
+       
+        $input = new DataJamaah();
+        $input->nama = $request->nama;
+        $input->jeniskelamin = $request->jeniskelamin ;
+        $input->HP= $request->HP ;
+        $input->email = $request->email ;
+        $input->NIK= $request->NIK ; 
+        $input->no_paspor= $request->no_paspor ;
+        $input->foto_KTP = $namePath_foto_KTP ;
+        $input->foto_vaksin = $namePath_foto_vaksin ;
+        $input->provinsi = $request->provinsi ;
+        $input->kabupaten= $request->kabupaten ;
+        $input->alamat= $request->alamat ;
+        $input->slug_produk= $request->produk ;
+        $input->pembiayaan= $request->pembiayaan ;
+        $input->setoran_awal = $request->setoran_awal ;
+        $input->mitra_marketing = $request->Mitra ;
+        $input->save();
+
+        
+        Alert::success('Success', 'Sukses Menambahkan');
+        return redirect()->route('adminJamaah.index');
+        // ->with('success','Product created successfully.');
+    }
+     // $request->gambar1 = $namePath;
 
         // DataJamaah::create([
         //     'nama' => $request->nama ,
@@ -153,31 +204,12 @@ class adminJamaahController extends Controller
         //     'is_tampil_di_halaman_DataJamaah' => $request->is_tampil_di_halaman_DataJamaah ,
         //     'gambar' => $namePath  
         // ]);
-        $input = new DataJamaah();
-        $input->nama = $request->nama;
-        $input->slug = $request->slug ;
-        $input->harga= $request->harga ;
-        $input->tgl_berangkat = $request->tgl_berangkat ;
-        $input->durasi= $request->durasi ; 
-        $input->total_seat= $request->total_seat ;
-        $input->berangkat_dari = $request->berangkat_dari ;
-        $input->hotel= $request->hotel ;
-        $input->maskapai= $request->maskapai ;
-        $input->kategori_paket= $request->kategori_paket ;
-        $input->is_tampil_di_beranda= $request->is_tampil_di_beranda ;
-        $input->is_tampil_di_halaman_DataJamaah = $request->is_tampil_di_halaman_DataJamaah ;
-        $input->gambar = $namePath ;
-        $input->save();
-
-        return redirect()->route('adminDataJamaah.index');
-        // ->with('success','Product created successfully.');
-    }
     
     public function destroy($id)
     {
         $DataJamaah = DataJamaah::find($id);
         $DataJamaah->delete();
-
-        return redirect()->route('adminDataJamaah.index');
+        // Alert::success('Success', 'Sukses Menghapus Data ');
+        return redirect()->route('adminJamaah.index');
     }
 }

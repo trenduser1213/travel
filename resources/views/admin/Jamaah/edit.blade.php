@@ -13,7 +13,7 @@
         <div class="col-md-12">
             <form action="{{ route('adminJamaah.update', $Jamaah->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
-                @method('post')
+                @method('PUT')
                 {{ csrf_field() }}
                 <div class="card">
                     <div class="card-header">
@@ -155,14 +155,16 @@
                                 <label for="kabupaten" class="form-label">Kabupaten</label>
                                 <select class="form-control" aria-label="Default select example" name="kabupaten"
                                     id="kabupaten" style="font-size: 14px;" required>
-                                    <option style="font-size: 14px;" disabled>Pilih Kabupaten
-                                    </option>
+                                    {{-- <option style="font-size: 14px;" disabled>Pilih Kabupaten
+                                    </option> --}}
+                                    {{-- <option value="{{ $kabupaten->id }}" disabled>{{ $kabupaten->name }}
+                                    </option> --}}
                                     @foreach ($kabupaten as $kabupaten)
                                         @if ($Jamaah->kabupaten === $kabupaten->id)
-                                            <option value="{{ $kabupaten->id }}" selected>{{ $kabupaten->name }}
+                                            <option value="{{ $kabupaten->id }}" disabled>{{ $kabupaten->name }}
                                             </option>
                                         @else
-                                            <option value="{{ $kabupaten->id }}">{{ $kabupaten->name }}
+                                            <option value="{{ $kabupaten->id }}" hidden>{{ $kabupaten->name }}
                                             </option>
                                         @endif
                                     @endforeach
@@ -263,4 +265,36 @@
             </form>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script>
+        $(function () {
+            $.ajaxSetup({
+                headers : {'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')}
+            });
+        });
+        $(function(){
+            
+            $('#provinsi').on('change',function(){
+                let id_provinsi = $('#provinsi').val();
+                console.log(id_provinsi);
+                $.ajax({
+                    url : "{{route('kabupaten')}}",
+                    type : 'POST',
+                    data : {"id_prov" : id_provinsi},
+                    cache : false,
+
+                    success: function(data ){
+                        console.log(data);
+                        // console.log(data);
+                        $('#kabupaten').html(data); 
+                    },
+                    error: function(data){
+                        console.log('error:',data);
+                    }
+                })
+            })
+        })
+    </script>
+
 @endsection
