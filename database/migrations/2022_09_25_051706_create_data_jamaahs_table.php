@@ -31,7 +31,7 @@ return new class extends Migration
             $table->string('pembiayaan');
             $table->string('setoran_awal');
             $table->string('mitra_marketing');
-            $table->string('status');
+            $table->enum('status',['diterima','dikerjakan','selesai'])->default('diterima');
             $table->timestamps();
         });
     }

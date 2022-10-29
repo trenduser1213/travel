@@ -53,7 +53,7 @@
                                         <td>{{ $Jamaah->nama_provinsi }}</td>
                                         <td>{{ $Jamaah->nama_kabupaten }}</td>
                                         <td>
-                                            {{ $Jamaah->nama_mitra }}
+                                            {{ $Jamaah->nama_mitra}}
                                         </td>
                                         <td>
                                             @if ($Jamaah->status === 'diterima')
@@ -110,48 +110,52 @@
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
-                                                    <div class="modal-body">
-                                                        <div class="row">
-                                                            <div class="col-md-12">
-                                                                <div class="form-group">
-                                                                    <label for="status">status</label>
-                                                                    <select name="status" id="status"
-                                                                        class="form-control" required>
-                                                                        <option value="-" disabled>Pilih status
-                                                                        </option>
-                                                                        @if ($Jamaah->status === 'diterima')
-                                                                            <option value="diterima" selected>Diterima
+                                                    <form action="{{ route('adminJamaah.update', $Jamaah->id) }}" method="post">
+                                                        @csrf
+                                                        @method('PUT')
+                                                        {{ csrf_field() }}
+                                                        <div class="modal-body">
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <div class="form-group">
+                                                                        <label for="status">status</label>
+                                                                        <select name="status" id="status"
+                                                                            class="form-control" required>
+                                                                            <option value="-" disabled>Pilih status
                                                                             </option>
-                                                                            <option value="dikerjakan">Dikerjakan</option>
-                                                                            <option value="selesai">Selesai </option>
-                                                                        @elseif($Jamaah->status === 'dikerjakan')
-                                                                            <option value="diterima">Diterima</option>
-                                                                            <option value="dikerjakan" selected>Dikerjakan
-                                                                            </option>
-                                                                            <option value="selesai">Selesai </option>
-                                                                        @elseif($Jamaah->status === 'selesai')
-                                                                            <option value="diterima">Diterima</option>
-                                                                            <option value="dikerjakan">Dikerjakan</option>
-                                                                            <option value="selesai" selected>Selesai
-                                                                            </option>
-                                                                        @endif
+                                                                            @if ($Jamaah->status === 'diterima')
+                                                                                <option value="diterima" selected>Diterima
+                                                                                </option>
+                                                                                <option value="dikerjakan">Dikerjakan</option>
+                                                                                <option value="selesai">Selesai </option>
+                                                                            @elseif($Jamaah->status === 'dikerjakan')
+                                                                                <option value="diterima">Diterima</option>
+                                                                                <option value="dikerjakan" selected>Dikerjakan
+                                                                                </option>
+                                                                                <option value="selesai">Selesai </option>
+                                                                            @elseif($Jamaah->status === 'selesai')
+                                                                                <option value="diterima">Diterima</option>
+                                                                                <option value="dikerjakan">Dikerjakan</option>
+                                                                                <option value="selesai" selected>Selesai
+                                                                                </option>
+                                                                            @endif
 
-                                                                    </select>
-                                                                    @error('status')
-                                                                        <div class="alert alert-danger">{{ $message }}
-                                                                        </div>
-                                                                    @enderror
+                                                                        </select>
+                                                                        @error('status')
+                                                                            <div class="alert alert-danger">{{ $message }}
+                                                                            </div>
+                                                                        @enderror
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="modal-footer border-0">
-                                                        <button type="submit" class="btn btn-primary">Ubah
-                                                            Status</button>
-                                                        <button type="button" class="btn btn-danger"
-                                                            data-dismiss="modal">Tutup</button>
-                                                    </div>
-
+                                                        <div class="modal-footer border-0">
+                                                            <button type="submit" class="btn btn-primary">Ubah
+                                                                Status</button>
+                                                            <button type="button" class="btn btn-danger"
+                                                                data-dismiss="modal">Tutup</button>
+                                                        </div>
+                                                    </form>
                                                 </div>
                                         </div>
                                     </div>
@@ -220,8 +224,12 @@
                     '_method': 'delete'
                 })
                 .done((response) => {
-                    alert('sukses menghapus');
-                    window.location.href = '/adminTestimoni';
+                    Swal.fire(
+                        'Sukses',
+                        'Sukses Menghapus',
+                        'success'
+                    )
+                    window.location.href = '/adminJamaah';
                 })
                 .fail((errors) => {
                     alert('Tidak Terhapus');
