@@ -24,14 +24,29 @@ class adminAboutController extends Controller
     public function update($id, Request $request)
     {
         $input = About::find($id);
-        if(isset($request->pertanyaan)){
-            $input->pertanyaan = $request->pertanyaan;
+        if(isset($request->judul)){
+            $input->judul = $request->judul;
         }        
-        if(isset($request->jawaban)){
-            $input->jawaban =$request->jawaban;
+        if(isset($request->written_by)){
+            $input->subjudul =$request->written_by;
         }        
-        if(isset($request->is_tampil)){
-            $input->is_tampil=$request->is_tampil;
+        if(isset($request->link_video)){
+            $input->link_video=$request->link_video;
+        }
+        if(isset($request->motto)){
+            $input->motto=$request->motto;
+        }
+        if(isset($request->submotto)){
+            $input->submotto=$request->submotto;
+        }
+        if(isset($request->teks_sejajar_video)){
+            $input->teks_sejajar_video=$request->teks_sejajar_video;
+        }
+        if(isset($request->teks_di_bawah_video)){
+            $input->teks_di_bawah_video=$request->teks_di_bawah_video;
+        }
+        if(isset($request->teks_di_beranda)){
+            $input->teks_di_beranda=$request->teks_di_beranda;
         }
         $input->update();
         Alert::success('Success', 'Sukses edit About ');
