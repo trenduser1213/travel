@@ -4,9 +4,10 @@
 @endsection
 @section('body')
     <h1>Admin Tentang Kami</h1>
-    <form action="{{ route('adminAbout.store') }}" method="post" enctype="multipart/form-data">
+    <form action="{{ route('adminAbout.update', $id = 1) }}" method="post" enctype="multipart/form-data">
         @csrf
-        @method('post')
+        @method('PUT')
+        {{ csrf_field() }}
         <div class="card">
             <div class="card-header">
                 <h4>Informasi Halaman</h4>
@@ -112,12 +113,34 @@
                     </div>
                 </div>
             </div>
-            <div class="card-footer">
-                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                    <button class="btn btn-primary me-md-2" type="submit">Simpan</button>
+        </div>
+        <!-- Modal Konfirmasi-->
+
+        <div class="modal fade" id="ModalKonfirmasi" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+
+                    <div class="modal-header border-0">
+                        <h5 class="modal-title">
+                            Anda Yakin ingin mengubah konten "Tentang Kami"?
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-footer border-0">
+                        <button type="submit" id="addRowButton" class="btn btn-primary">Ya, Saya Yakin</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+                    </div>
+
                 </div>
             </div>
+        </div>
     </form>
+
+    <button class="btn btn-primary ml-auto" style="margin-left:auto" data-toggle="modal" data-target="#ModalKonfirmasi">
+        Simpan
+    </button>
     </div>
 
 
