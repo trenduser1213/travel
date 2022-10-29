@@ -13,11 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('peminat', function (Blueprint $table) {
+        Schema::create('peminats', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
             $table->string('nomor_hp');
             $table->string('mitra_marketing');
+            $table->string('status');
             $table->string('email')->nullable();
             $table->timestamps();
         });

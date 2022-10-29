@@ -240,42 +240,6 @@
     <script src="{{ asset('assets/') }}../../assets/vendor/swiper/swiper-bundle.min.js"></script>
     <script src="{{ asset('assets/') }}../../assets/vendor/glightbox/js/glightbox.min.js"></script>
 
-    <script>
-        $(function() {
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"').attr('content')
-                }
-            });
-
-            $(function() {
-
-                $('#provinsi').on('change', function() {
-                    let id_provinsi = $('#provinsi').val();
-                    console.log(id_provinsi);
-
-                    $.ajax({
-                        type: "POST",
-                        url: "{{ route('getkabupaten') }}",
-                        data: {
-                            id_provinsi: id_provinsi
-                        },
-                        cache: false,
-
-                        success: function($msg) {
-                            $('#kabupaten').html(msg);
-                            // $('#kecamatan').html('');
-                        },
-
-                        error: function(data) {
-                            console.log('error:', data);
-                        },
-                    })
-                })
-            })
-        })
-    </script>
-
 </body>
 
 </html>
