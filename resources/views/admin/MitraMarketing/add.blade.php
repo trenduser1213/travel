@@ -77,6 +77,14 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" class="form-control" id="email" name="email"
+                                        placeholder="Masukkan email" value="" required>
+                                    @error('email')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
                                     <label for="provinsi">Provinsi</label>
                                     <select name="provinsi" id="provinsi" class="form-control" required>
                                         <option value="-" selected disabled>Pilih Provinsi</option>
@@ -141,7 +149,7 @@
                 let id_provinsi = $('#provinsi').val();
                 console.log(id_provinsi);
                 $.ajax({
-                    url: "{{ route('getkabupaten') }}",
+                    url: "{{ route('postkabupaten') }}",
                     type: 'POST',
                     data: {
                         "id_prov": id_provinsi
@@ -151,7 +159,7 @@
                     success: function(data) {
                         console.log(data);
                         // console.log(data);
-                        $('#postkabupaten').html(data);
+                        $('#kabupaten').html(data);
                     },
                     error: function(data) {
                         console.log('error:', data);

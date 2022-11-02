@@ -100,7 +100,7 @@
                             <h4 class="text-section">Umum</h4>
                         </li>
                         <li class="nav-item">
-                            <a href="/{{ $mitra->username }}/mitraDashboard">
+                            <a href="/mitraDashboard">
                                 <i class="fas fa-laptop"></i>
                                 <p>Dashboard Mitra</p>
                             </a>

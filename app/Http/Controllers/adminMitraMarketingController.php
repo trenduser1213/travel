@@ -5,9 +5,11 @@ use App\Models\MitraMarketing;
 use App\Models\Province;
 use App\Models\Regency;
 use App\Models\Village;
+use App\Models\User;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Str;
 use Nette\Utils\Random;
+use Illuminate\Support\Facades\Hash;
 
 use Illuminate\Http\Request;
 
@@ -52,7 +54,8 @@ class adminMitraMarketingController extends Controller
             'kabupaten' =>'required',
             'provinsi' =>'required',
             'jabatan' =>'required',
-            'foto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048' 
+            'foto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048' ,
+            'email' => 'required',
         ]);
         
         $image = $request->file('foto');
@@ -73,8 +76,16 @@ class adminMitraMarketingController extends Controller
         $input->status = 1 ;
         $input->username = $username ;        
         $input->foto = $namePath;
-
         $input->save();
+
+        $inputUser = new user();
+        $inputUser->name = $request->nama;
+        $inputUser->email = $request->email;
+        $inputUser->username = $username;
+        $inputUser->password = Hash::make('password');
+        $inputUser->save();
+
+
         Alert::success('Success', 'Sukses menambahkan MitraMarketing');
         return redirect()->route('adminMitraMarketing.index');
     }
@@ -116,8 +127,10 @@ class adminMitraMarketingController extends Controller
     public function update(Request $request, $id)
     {
         $input = MitraMarketing::find($id);
+        $inputUser = User::find($id);
         if(isset($request->nama)){
             $input->nama = $request->nama;
+            $inputUser->name = $request->nama;
         }        
         if(isset($request->hp)){
             $input->hp =$request->hp;
@@ -151,6 +164,7 @@ class adminMitraMarketingController extends Controller
             $input->foto = $namePath ;
         }
         $input->update();
+        $inputUser->update();
         Alert::success('Success', 'Sukses edit MitraMarketing ');
         return redirect()->route('adminMitraMarketing.index');
     }

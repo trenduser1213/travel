@@ -108,8 +108,8 @@ Route::post('/{mitra:username}/daftar/{produk:slug}/store', [ProdukController::c
 Route::get('admin', [AdminDashboard::class, 'index']);
 //Routing admin Artikel
 
-Route::get('/kabupaten/{id}', [RegionController::class,'dataKabupaten'])->name('getkabupaten');
-Route::post('/kabupaten', [RegionController::class,'dataKabupaten'])->name('postkabupaten');
+// Route::get('/kabupaten/{id}', [RegionController::class,'dataKabupaten'])->name('getkabupaten');
+Route::post('/postkabupaten', [RegionController::class,'dataKabupaten'])->name('postkabupaten');
 
 // Auth::routes();
 Route::get('/login', [LoginController::class,'show'])->name('show');
@@ -117,9 +117,10 @@ Route::post('/login', [LoginController::class,'login'])->name('login');
 Route::post('/logout',[LoginController::class,'logout'])->name('logout');
  
 Route::middleware(['middleware' => 'auth', 'role:mitra'])->group( function (){
-    Route::get('/{mitra:username}/mitraDashboard', [mitraDashboardController::class, 'index']);
-    Route::get('/{mitra:username}/mitraDashboard/create', [mitraDashboardController::class, 'create']);
-    Route::post('/{mitra:username}/mitraDashboard/store', [mitraDashboardController::class, 'store'])->name('MitraDashboard.store');
+    Route::resource('/mitraDashboard',mitraDashboardController::class);
+    // Route::get('/{mitra:username}/mitraDashboard', [mitraDashboardController::class, 'index']);
+    // Route::get('/{mitra:username}/mitraDashboard/create', [mitraDashboardController::class, 'create']);
+    // Route::post('/{mitra:username}/mitraDashboard/store', [mitraDashboardController::class, 'store'])->name('MitraDashboard.store');
 });
 
 Route::middleware(['middleware' => 'auth','role:admin'],)->group(function () 

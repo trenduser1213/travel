@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
             IndoRegionProvinceSeeder::class,
             IndoRegionRegencySeeder::class,
             IndoRegionDistrictSeeder::class,
-            MitraMarketingSeeder::class,
+            // MitraMarketingSeeder::class,
             AsosiasiSeeder::class,
             SliderSeeder::class,
             TestimoniSeeder::class,

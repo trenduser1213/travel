@@ -160,7 +160,7 @@
                 let id_provinsi = $('#provinsi').val();
                 console.log(id_provinsi);
                 $.ajax({
-                    url : "{{route('kabupaten')}}",
+                    url : "{{route('postkabupaten')}}",
                     type : 'POST',
                     data : {"id_prov" : id_provinsi},
                     cache : false,
