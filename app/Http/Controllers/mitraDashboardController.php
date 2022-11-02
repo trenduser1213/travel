@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Province;
 use App\Models\Regency;
 use App\Models\Produk;
+use App\Models\DataJamaah;
+use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Auth;
 
 class mitraDashboardController extends Controller
 {   
@@ -16,7 +19,14 @@ class mitraDashboardController extends Controller
         
     }
         
-    public function index($username_mitra){
+    public function index(){
+        // $username_mitra = 'safari';
+        $username_mitra = \Auth::user()->username;
+        // $username_mitras = DB::table('Users')->where('id','=',$id)->select('username')->get();
+        // dd($id);
+        // foreach($username_mitras as $username_mitra){
+        // echo $username_mitra;
+        // }
         $jamaah = DB::table('data_jamaahs')
         ->join('provinces', 'data_jamaahs.provinsi', '=', 'provinces.id')
         ->join('regencies', 'data_jamaahs.kabupaten', '=', 'regencies.id')
@@ -42,7 +52,7 @@ class mitraDashboardController extends Controller
         return view('mitra.dashboard.index', $data);
 }
 
-public function create($username_mitra){
+public function create(){
 
 
     $data = [
@@ -50,14 +60,71 @@ public function create($username_mitra){
         "kabupaten" => Regency::all(),
         "produk" => Produk::all(),
         'Mitra' => MitraMarketing::all(),
-        'mitra' => MitraMarketing::where('username', $username_mitra)->first(),
+        // 'mitra' => MitraMarketing::where('username', $username_mitra)->first(),
     ];
     return view('mitra.Jamaah.add', $data);
 }
 
-public function store(){
+public function store(Request $request)
+{
+
+    //validasi inputan
+    $this->validate($request,[
+        'nama' => 'required',
+        'jeniskelamin' => 'required',
+        'HP'=> 'required',
+        'email' => 'required',
+        'NIK'=> 'required',
+        'no_paspor'=> 'required',
+        'foto_KTP' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        'foto_vaksin' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        'provinsi'=> 'required',
+        'kabupaten'=> 'required',
+        'alamat'=> 'required',
+        'produk'=> 'required',
+        'pembiayaan'=> 'required',
+        'setoran_awal'=> 'required',
+        // 'Mitra'=> 'required',
+        // 'kecamatan'=> 'required',
+        // 'is_tampil_di_beranda'=> 'required',
+        // 'is_tampil_di_halaman_DataJamaah' =>'required',
+        // 'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048' 
+    ]);
+    // dd($request->date)
+    $image = $request->file('foto_KTP');
+    $destinationPath = 'assets/images/DataJamaah/foto_KTP';
+    $profileImage = date('YmdHis') . uniqid()."." . $image->getClientOriginalExtension();
+    $namePath_foto_KTP=$image->move($destinationPath, $profileImage);
+
+    $image = $request->file('foto_vaksin');
+    $destinationPath = 'assets/images/DataJamaah/foto_vaksin';
+    $profileImage = date('YmdHis') . uniqid()."." . $image->getClientOriginalExtension();
+    $namePath_foto_vaksin=$image->move($destinationPath, $profileImage);
+
+    $username_mitra = \Auth::user()->username;
+
+    $input = new DataJamaah();
+    $input->nama = $request->nama;
+    $input->jeniskelamin = $request->jeniskelamin ;
+    $input->HP= $request->HP ;
+    $input->email = $request->email ;
+    $input->NIK= $request->NIK ; 
+    $input->no_paspor= $request->no_paspor ;
+    $input->foto_KTP = $namePath_foto_KTP ;
+    $input->foto_vaksin = $namePath_foto_vaksin ;
+    $input->provinsi = $request->provinsi ;
+    $input->kabupaten= $request->kabupaten ;
+    $input->alamat= $request->alamat ;
+    $input->slug_produk= $request->produk ;
+    $input->pembiayaan= $request->pembiayaan ;
+    $input->setoran_awal = $request->setoran_awal ;
+    $input->mitra_marketing = $username_mitra ;
+    $input->save();
+
+
+    Alert::success('Success', 'Sukses Menambahkan');
+    return redirect()->route('mitraDashboard.index');
+    
 
 }
-
-
 }
