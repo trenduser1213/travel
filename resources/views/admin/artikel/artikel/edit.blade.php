@@ -17,7 +17,7 @@
                 </ul>
             </div>
         @endif
-        <form action="{{ route('adminArtikel.update',$Artikel->id) }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('adminArtikel.update', $Artikel->id) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="card-body">
@@ -106,6 +106,7 @@
                                     <li>
                                         Masukkan Gambar jika ingin mengganti gambar yang sudah ada
                                     </li>
+                                    <li>Masukkan Gambar dengan ukuran max. 2MB</li>
                                     <li>Masukkan Gambar dengan
                                         resolusi
                                         1000x667

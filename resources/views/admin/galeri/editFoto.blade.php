@@ -18,7 +18,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <form action="{{ route('adminGaleriFoto.update',$foto->id) }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('adminGaleriFoto.update', $foto->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 {{ csrf_field() }}
@@ -75,12 +75,19 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="link">Foto Baru</label>
-                                    <input type="file"
-                                        class="form-control file-input"
+                                    <input type="file" class="form-control file-input"
                                         accept=".jfif,.jpg,.jpeg,.png,.gif" id="image" name="link">
-                                    {{-- @error('link')
+                                    <small class="text-danger"><i class="fa fa-info-circle"></i> Masukkan foto dengan
+                                        ketentuan :
+                                        <ul>
+                                            <li>masukkan foto jika ingin diganti</li>
+                                            <li>ukuran maksimal 2 MB</li>
+                                            <li>resolusi 800x600px (4:3)</li>
+                                        </ul>
+                                    </small>
+                                    @error('link')
                                         <div class="alert alert-danger">{{ $message }}</div>
-                                    @enderror --}}
+                                    @enderror
                                 </div>
                                 <img id="preview-image-before-upload" alt="preview image"
                                     style="max-height:250px; margin-left:30px;">
@@ -90,7 +97,6 @@
                     </div>
                     <div class="card-action">
                         <button class="btn btn-success" type="submit">Simpan</button>
-                        <button class="btn btn-danger">Batal</button>
                     </div>
                 </div>
             </form>

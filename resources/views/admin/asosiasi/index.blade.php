@@ -50,7 +50,7 @@
                                         </td>
 
                                         <td>
-                                            @if ($asosiasi->is_tampil_di_beranda === 'ya')
+                                            @if ($asosiasi->is_tampil === 'tidak')
                                                 <center><i class="fa fa-times" style="color: brown"></i></center>
                                             @else
                                                 <center><i class="fa fa-check" style="color: green"></i></center>
@@ -133,6 +133,7 @@
                 // 
             });
         });
+
         function hapusData(url) {
             // if (confirm('Yakin Hapus Kategori')) {
             $.post(url, {

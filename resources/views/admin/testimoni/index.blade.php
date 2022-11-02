@@ -9,7 +9,7 @@
     <div class="col-md-6">
         @if (session()->has('success'))
             <div class="alert alert-success" role="alert">
-                Data telah di tambahkan
+                Data telah di simpan
             </div>
         @endif
     </div>
@@ -34,9 +34,7 @@
                                 <tr>
                                     <th width="5%">No</th>
                                     <th>Nama</th>
-                                    <th>Jabatan</th>
                                     <th>Foto</th>
-                                    <th width="400%">Testimoni</th>
                                     <th width="5%">Tampil di Beranda</th>
                                     <th>Aksi</th>
                                 </tr>
@@ -46,12 +44,8 @@
                                     <tr>
                                         <td>{{ $n++ }}</td>
                                         <td>{{ $testimoni->nama }}</td>
-                                        <td>{{ $testimoni->jabatan }}</td>
                                         <td><img src="{{ $testimoni->gambar }}" alt="{{ $testimoni->nama }}"
                                                 style="max-height: 125px"></td>
-                                        <td>
-                                            <p class="mt-2 mb-2">{{ $testimoni->testimoni }}</p>
-                                        </td>
                                         <td>
                                             @if ($testimoni->is_tampil != 'ya')
                                                 <center><i class="fa fa-times" style="color: brown"></i></center>
@@ -206,6 +200,7 @@
                 // 
             });
         });
+
         function hapusData(url) {
             // if (confirm('Yakin Hapus Kategori')) {
             $.post(url, {

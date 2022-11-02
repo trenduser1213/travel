@@ -1,7 +1,7 @@
 @extends('layout.template')
 
 @section('title')
-    {{-- Artikel | {{ $post->judul }} --}}
+    Artikel | {{ $post->judul }}
 @endsection
 
 @section('content')
@@ -54,14 +54,14 @@
                             <h3>Kategori</h3>
                             <ul>
                                 @foreach ($kategori as $kategori)
-                                    <li><a href="#">{{ $kategori->nama }}<span>(8)</span></a></li>
+                                    <li><a href="#">{{ $kategori->nama }}<span></span></a></li>
                                 @endforeach
                             </ul>
                         </div>
                         <div class="widget recent-post-widget">
                             <h3>Artikel Terbaru</h3>
                             <div class="posts">
-                                @foreach ($artikel_terbaru as $artikel)
+                                @foreach ($artikel as $artikel)
                                     <div class="post">
                                         <div class="img-holder">
                                             <img src="{{ asset('assets/') }}../../{{ $artikel->gambar }}"

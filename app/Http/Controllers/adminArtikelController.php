@@ -51,7 +51,7 @@ class adminArtikelController extends Controller
             'written_by' => 'required',
             'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', 
             'kategori' => 'required',
-            'descSummernote' => 'required',
+            'body' => 'required',
             'is_tampil_di_beranda'=> 'required',
             'is_tampil_di_halaman_artikel' =>'required',
         ]);
@@ -64,15 +64,15 @@ class adminArtikelController extends Controller
         $input = new Post();
         $input->judul = $request->judul;
         $input->written_by = $request->written_by;
-        $input->body = $request->descSummernote;
-        $input->excerpt = Str::limit(strip_tags($request->descSummernote),100);
+        $input->body = $request->body;
+        $input->excerpt = Str::limit(strip_tags($request->body),100);
         $input->slug = Str::slug($request->judul, '-');
         $input->category_post_id = $request->kategori ;
         $input->is_tampil_di_beranda= $request->is_tampil_di_beranda ;
         $input->is_tampil_di_halaman_artikel = $request->is_tampil_di_halaman_artikel ;
         $input->gambar = $namePath ;
         $input->save();
-        // $cek['descSummernote'] = Str::limit(strip_tags($request->descSummernote),300);
+        // $cek['body'] = Str::limit(strip_tags($request->body),300);
         // Post::create($cek);
         Alert::success('Success', 'Sukses menambahkan artikel ');
         return redirect()->route('adminArtikel.index');

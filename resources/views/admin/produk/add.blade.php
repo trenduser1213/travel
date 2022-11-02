@@ -1,4 +1,9 @@
 @extends('admin.baseAdmin')
+
+@section('title')
+    Tambah Produk
+@endsection
+
 @section('body')
     <div class="page-header">
         <h4 class="page-title">Tambah Produk</h4>

@@ -66,7 +66,7 @@
                                 <span>{{ $about->submotto }}</span>
                                 <h2>{{ $about->motto }}</h2>
                             </div>
-                            {!! $about->teks_sejajar_video_di_beranda !!}
+                            {!! $about->teks_di_beranda !!}
                             <div class="btns">
                                 <a href="/{{ $mitra->username }}/about" class="theme-btn" tabindex="0">Baca
                                     Selengkapnya</a>
@@ -366,7 +366,7 @@
                         <div class="col-lg-3 col-md-4 col-xs-6">
                             <div class="sponsor-logo" data-aos="zoom-in">
                                 <img src="{{ asset('assets/') }}../../{{ $asosiasi->logo }}"
-                                    alt="{{ $asosiasi->nama }}">
+                                    alt="{{ $asosiasi->nama }}" style="max-height: 100%">
                             </div>
                         </div>
                     @endforeach

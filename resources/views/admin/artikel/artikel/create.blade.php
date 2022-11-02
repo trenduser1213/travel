@@ -49,6 +49,18 @@
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
+                        <small class="text-info"><i class="fas fa-info-circle"></i> Masukkan gambar dengan ketentuan :
+                            <ul>
+                                <li>
+                                    Masukkan Gambar jika ingin mengganti gambar yang sudah ada
+                                </li>
+                                <li>Masukkan Gambar dengan ukuran max. 2MB</li>
+                                <li>Masukkan Gambar dengan
+                                    resolusi
+                                    1000x667
+                                </li>
+                            </ul>
+                        </small>
                         <img id="preview-image-before-upload" alt="preview image"
                             style="max-height:250px; margin-left:30px;">
 
@@ -78,8 +90,8 @@
 
                         <div class="form-group">
                             <label for="is_tampil_di_halaman_artikel">Tampilkan di Halaman artikel?</label>
-                            <select name="is_tampil_di_halaman_artikel" id="is_tampil_di_beranda" class="form-control"
-                                required>
+                            <select name="is_tampil_di_halaman_artikel" id="is_tampil_di_halaman_artikel"
+                                class="form-control" required>
                                 <option value="-" selected disabled>Pilih Opsi</option>
                                 <option value="ya">Ya</option>
                                 <option value="tidak">Tidak</option>
@@ -92,8 +104,11 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="body">Isi Artikel</label>
-                            <textarea class="form-control" id="descSummernote" name="descSummernote" rows="3"></textarea>
+                            <textarea class="form-control" id="descSummernote" name="body" rows="3"></textarea>
                         </div>
+                        @error('body')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
 
                     </div>
                 </div>

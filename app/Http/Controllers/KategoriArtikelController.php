@@ -15,7 +15,7 @@ class KategoriArtikelController extends Controller
     public function index()
     {
         $kategoris = CategoryPost::orderBy('id')->get();
-        return view('admin.artikel.index')->with('kategoris',$kategoris);
+        return view('admin.artikel.kategori')->with('kategoris',$kategoris);
         // dd($kategoris);
     }
 

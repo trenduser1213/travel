@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\syaratKetentuans;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 use Illuminate\Support\Facades\DB;
 
@@ -109,16 +110,19 @@ class SyaratKetentuansController extends Controller
             'isi1'      =>'required|sometimes',
             'isi2'      =>'required|sometimes',
             'isi3'      =>'required|sometimes',    
-            'gambar1'     => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'gambar2'     => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'gambar3'     => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'gambar1'     => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'gambar2'     => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'gambar3'     => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             
         ]);
+        $syarat = syaratKetentuans::find($id);
+        
         if ($image = $request->file('gambar1')) {
             $destinationPath = 'assets/images/syarat-dan-ketentuan';
             $profileImage = date('YmdHis') . uniqid()."." . $image->getClientOriginalExtension();
             $namePath=$image->move($destinationPath, $profileImage);
-            $request->gambar1 = $namePath;
+            // $request->gambar1 = $namePath;
+            $syarat->gambar1  = $namePath;
         }else{
             unset($request['gambar1']);
         }       
@@ -126,7 +130,8 @@ class SyaratKetentuansController extends Controller
             $destinationPath2 = 'assets/images/syarat-dan-ketentuan/';
             $profileImage2 = date('YmdHis') . ".".uniqid()."." . $image2->getClientOriginalExtension();
             $namePath2=$image2->move($destinationPath2, $profileImage2);
-            $request->gambar2 = $namePath2;
+            // $request->gambar2 = $namePath2;
+            $syarat->gambar2  = $namePath2;
         }else{
             unset($request['gambar2']);
         }
@@ -134,28 +139,43 @@ class SyaratKetentuansController extends Controller
             $destinationPath3 = 'assets/images/syarat-dan-ketentuan/';
             $profileImage3 = date('YmdHis') .".".uniqid()."." . $image3->getClientOriginalExtension();
             $namePath3=$image3->move($destinationPath3, $profileImage3);
-            $request->gambar3 = $namePath3;
+            $syarat->gambar2  = $namePath3;
         }else{
             unset($request['gambar3']);
         }
         // dd($request->gambar1,$request['gambar2'],$request['gambar3']);
         // dd($request->gambar1);
-        $syarat = syaratKetentuans::find($id);
+
         // $input= $request->all();
-        $syarat->judul  = $request->judul;
-        $syarat->subjudul  = $request->subjudul;
-        $syarat->judul1  = $request->judul1;
-        $syarat->gambar1  = $request->gambar1;
-        $syarat->isi1  = $request->isi1;
-        $syarat->judul2  = $request->judul2;    
-        $syarat->gambar2  = $request->gambar2;
-        $syarat->isi2  = $request->isi2;
-        $syarat->judul3  = $request->judul3;    
-        $syarat->gambar3  = $request->gambar3;
-        $syarat->isi3  = $request->isi3;
+        if($request->judul){
+            $syarat->judul  = $request->judul;
+        }
+        if($request->subjudul){
+            $syarat->subjudul  = $request->subjudul;
+        }
+        if($request->judul1){
+            $syarat->judul1  = $request->judul1;
+        }
+        if($request->isi1){
+            $syarat->isi1  = $request->isi1;
+        }
+        if($request->judul2){
+            $syarat->judul2  = $request->judul2;
+        }
+        if($request->isi2){
+            $syarat->isi2  = $request->isi2;
+        }
+        if($request->judul3){
+            $syarat->judul3  = $request->judul3;
+        }
+        if($request->isi3){
+            $syarat->isi3  = $request->isi3;
+        }
+
         // dd($input);
         $syarat->update();
         // dd($syarat);
+        Alert::success('Success', 'Sukses edit syarat dan ketentuan');
         return redirect()->route('adminKetentuan.index')->with('success','Product created successfully.');
         
     }
