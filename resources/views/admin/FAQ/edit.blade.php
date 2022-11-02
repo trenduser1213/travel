@@ -11,7 +11,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <form action="{{ route('adminFAQ.update',$FAQ->id) }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('adminFAQ.update', $FAQ->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 {{ csrf_field() }}
@@ -54,7 +54,6 @@
                     </div>
                     <div class="card-action">
                         <button class="btn btn-success" type="submit">Simpan</button>
-                        <button class="btn btn-danger">Batal</button>
                     </div>
                 </div>
             </form>

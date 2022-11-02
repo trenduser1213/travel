@@ -1,11 +1,16 @@
 @extends('admin.baseAdmin')
+
+@section('title')
+    Admin Kategori
+@endsection
+
 @section('body')
     <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex align-items-center">
-                        <h4 class="card-title">Add Row</h4>
+                        <h4 class="card-title">Data Kategori</h4>
                         <button class="btn btn-primary btn-round ml-auto"
                             onclick="addKategori('{{ route('CategoryPost.store') }}')" data-toggle="modal" data-target="">
                             <i class="fa fa-plus"></i>
@@ -31,8 +36,8 @@
                                     </div>
                                     <div class="modal-body">
                                         <div class="form-group row">
-                                            <label for="nama_kategori"
-                                                class="col-md-2 col-md-offset-1 control-label">kategori</label>
+                                            <label for="nama_kategori" class="col-md-4 col-md-offset-1 control-label">Nama
+                                                Kategori</label>
                                             <div class="col-md-8">
                                                 <input type="text" name="nama_kategori" id="nama_kategori"
                                                     class="form-control" required autofocus>
@@ -45,8 +50,8 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="slug"
-                                                class="col-md-2 col-md-offset-1 control-label">slug</label>
+                                            <label for="slug" class="col-md-4 col-md-offset-1 control-label">Kode
+                                                Kategori</label>
                                             <div class="col-md-8">
                                                 <input type="text" name="slug" id="slug" class="form-control"
                                                     required autofocus>
@@ -72,10 +77,10 @@
                         <table id="tableKategori" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th width="10%">no</th>
-                                    <th>Kategori</th>
-                                    <th>Slug</th>
-                                    <th width="10%"><i class="fa fa-gear"></i>action</th>
+                                    <th width="10%">No</th>
+                                    <th> Nama Kategori</th>
+                                    <th>Kode Kategori</th>
+                                    <th width="10%"><i class="fa fa-gear"></i>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody><?php $n = 0; ?>
@@ -89,14 +94,23 @@
                                                 <button
                                                     onclick="editForm('{{ route('CategoryPost.update', $kategori->id) }}')"
                                                     type="button" data-toggle="tooltip" title=""
-                                                    class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
-                                                    <i class="fa fa-edit"></i>
+                                                    data-original-title="Edit Task" class="btn btn-success btn-sm"
+                                                    style="margin: 5px">
+                                                    <span class="btn-label">
+                                                        <i class="fa fa-edit" style="font-size:10px"></i>
+                                                    </span>
+                                                    Edit
                                                 </button>
+
                                                 <button
                                                     onclick="hapusData('{{ route('CategoryPost.destroy', $kategori->id) }}')"
                                                     type="button" data-toggle="tooltip" title=""
-                                                    class="btn btn-link btn-danger" data-original-title="Remove">
-                                                    <i class="fa fa-times"></i>
+                                                    class="btn btn-danger btn-sm" style="margin: 5px"
+                                                    data-original-title="Remove">
+                                                    <span class="btn-label">
+                                                        <i class="fa fa-trash" style="font-size:10px"></i>
+                                                    </span>
+                                                    Hapus
                                                 </button>
                                             </div>
                                         </td>

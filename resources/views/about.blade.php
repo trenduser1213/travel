@@ -38,7 +38,10 @@
                                                         data-type="iframe">
                                                         <i class="fi flaticon-play-button-2"></i> </a> --}}
                                         <div class="h_iframe" style="height: 360px">
-                                            {!! $about->link_video_iframe !!}
+                                            <iframe src="{!! $about->link_video !!}" title="YouTube video player"
+                                                frameborder="0"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                allowfullscreen></iframe>
                                         </div>
                                     </div>
                                 </center>

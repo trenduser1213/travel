@@ -136,11 +136,11 @@
                 </div>
             </div>
         </div>
-        
-        <button class="btn btn-primary ml-auto" style="margin-left:auto" data-toggle="modal" data-target="#ModalKonfirmasi">
-            Simpan
-        </button>
     </form>
+
+    <button class="btn btn-primary ml-auto" style="margin-left:auto" data-toggle="modal" data-target="#ModalKonfirmasi">
+        Simpan
+    </button>
     </div>
 
 

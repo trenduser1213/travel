@@ -50,7 +50,7 @@
                                         </td>
                                         <td>{{ $MengapaKami->deskripsi }}</td>
                                         <td>
-                                            @if ($MengapaKami->is_tampil_di_beranda === 'ya')
+                                            @if ($MengapaKami->is_tampil === 'tidak')
                                                 <center><i class="fa fa-times" style="color: brown"></i></center>
                                             @else
                                                 <center><i class="fa fa-check" style="color: green"></i></center>
@@ -134,6 +134,7 @@
                 // 
             });
         });
+
         function hapusData(url) {
             // if (confirm('Yakin Hapus Kategori')) {
             $.post(url, {
@@ -142,9 +143,9 @@
                 })
                 .done((response) => {
                     Swal.fire(
-                    'Sukses',
-                    'Sukses Menghapus',
-                    'success'
+                        'Sukses',
+                        'Sukses Menghapus',
+                        'success'
                     )
                     window.location.href = '/adminMengapaKami';
                 })

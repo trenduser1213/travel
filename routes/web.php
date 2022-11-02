@@ -77,6 +77,8 @@ Route::get('/{mitra:username}/galeri', [GaleriController::class, 'index']);
 //mengakses halaman artikel
 Route::get('/{mitra:username}/artikel', [PostController::class, 'index']);
 
+Route::get('/{mitra:username}/artikel/{category_pos_id}', [PostController::class, 'indexWithKategori'])->name('artikelPerKategori');
+
 //mengakses sebuah artikel
 Route::get('/artikel/{post}/{mitra}', [PostController::class, 'show'])->name('detailArtikel');
 
@@ -93,7 +95,7 @@ Route::get('/kategori/{category:slug}', function(CategoryPost $category){
 //menyimpan kontak calon jamaah
 // Route::resource('/peminat', PeminatController::class);
 
-// Route::post('/peminat/store', [PeminatController::class, 'store']);
+Route::post('/peminat/store', [PeminatController::class, 'store']);
 
 //mendaftar ke sebuah produk tertentu
 Route::get('/{mitra:username}/daftar/{produk:slug}', [ProdukController::class, 'toRegister']);

@@ -1,4 +1,9 @@
 @extends('admin.baseAdmin')
+
+@section('title')
+    Admin Identitas Perusahaan
+@endsection
+
 @section('body')
     <div class="page-header">
         <h4 class="page-title">Edit Identitas Perusahaan</h4>
@@ -274,7 +279,6 @@
             </div>
             <div class="card-action">
                 <button class="btn btn-success" type="submit">Submit</button>
-                <button class="btn btn-danger">Cancel</button>
             </div>
             </form>
         </div>

@@ -3,7 +3,7 @@
 @section('title')
     Tambah Asosiasi
 @endsection
- 
+
 @section('body')
     <div class="page-header">
         <h4 class="page-title">Tambah Asosiasi</h4>
@@ -29,7 +29,7 @@
                                     <label for="logo">Logo</label>
                                     <input type="file"
                                         class="form-control file-input @error('logo') is-invalid @enderror"
-                                        accept=".jfif,.jpg,.jpeg,.png,.gif" id="logo" name="logo">
+                                        accept=".jfif,.jpg,.jpeg,.png,.gif" id="image" name="logo">
                                     <small class="text-danger"><i class="fa fa-info-circle"></i> Masukkan foto dengan
                                         ketentuan :
                                         <ul>
@@ -56,7 +56,7 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="judul">Preview Gambar</label> <br>
+                                    <label for="judul">Preview Logo</label> <br>
                                     <img id="preview-image-before-upload" alt="preview image" style="max-height:250px;">
                                 </div>
 
@@ -66,7 +66,6 @@
                     </div>
                     <div class="card-action">
                         <button class="btn btn-success" type="submit">Simpan</button>
-                        <button class="btn btn-danger">Batal</button>
                     </div>
                 </div>
             </form>

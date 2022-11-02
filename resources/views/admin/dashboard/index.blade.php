@@ -23,7 +23,7 @@
                         <div class="col-7 col-stats">
                             <div class="numbers">
                                 <p class="card-category">Jama'ah Baru</p>
-                                <h4 class="card-title">150</h4>
+                                <h4 class="card-title">{{ $newJamaah }}</h4>
                             </div>
                         </div>
                     </div>
@@ -42,7 +42,7 @@
                         <div class="col-7 col-stats">
                             <div class="numbers">
                                 <p class="card-category">Peminat Baru</p>
-                                <h4 class="card-title">150</h4>
+                                <h4 class="card-title">{{ $newPeminat }}</h4>
                             </div>
                         </div>
                     </div>
@@ -61,7 +61,7 @@
                         <div class="col-7 col-stats">
                             <div class="numbers">
                                 <p class="card-category">Jumlah Jama'ah</p>
-                                <h4 class="card-title">23</h4>
+                                <h4 class="card-title">{{ $allJamaah }}</h4>
                             </div>
                         </div>
                     </div>
@@ -80,7 +80,7 @@
                         <div class="col-7 col-stats">
                             <div class="numbers">
                                 <p class="card-category">Jumlah Peminat</p>
-                                <h4 class="card-title">23</h4>
+                                <h4 class="card-title">{{ $allPeminat }}</h4>
                             </div>
                         </div>
                     </div>
