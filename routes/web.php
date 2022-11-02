@@ -115,9 +115,10 @@ Route::post('/login', [LoginController::class,'login'])->name('login');
 Route::post('/logout',[LoginController::class,'logout'])->name('logout');
  
 Route::middleware(['middleware' => 'auth', 'role:mitra'])->group( function (){
-    Route::get('/{mitra:username}/mitraDashboard', [mitraDashboardController::class, 'index']);
-    Route::get('/{mitra:username}/mitraDashboard/create', [mitraDashboardController::class, 'create']);
-    Route::post('/{mitra:username}/mitraDashboard/store', [mitraDashboardController::class, 'store'])->name('MitraDashboard.store');
+    Route::resource('/mitraDashboard',mitraDashboardController::class);
+    // Route::get('/{mitra:username}/mitraDashboard', [mitraDashboardController::class, 'index']);
+    // Route::get('/{mitra:username}/mitraDashboard/create', [mitraDashboardController::class, 'create']);
+    // Route::post('/{mitra:username}/mitraDashboard/store', [mitraDashboardController::class, 'store'])->name('MitraDashboard.store');
 });
 
 Route::middleware(['middleware' => 'auth','role:admin'],)->group(function () 

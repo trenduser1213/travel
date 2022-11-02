@@ -77,6 +77,14 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" class="form-control" id="email" name="email"
+                                        placeholder="Masukkan email" value="" required>
+                                    @error('email')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
                                     <label for="provinsi">Provinsi</label>
                                     <select name="provinsi" id="provinsi" class="form-control" required>
                                         <option value="-" selected disabled>Pilih Provinsi</option>
