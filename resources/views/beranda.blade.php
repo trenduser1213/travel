@@ -6,7 +6,6 @@
 
 @section('content')
     <!-- start of hero -->
-
     <section class="hero hero-style-1">
         <div class="hero-slider">
             @foreach ($slider as $slider)
@@ -30,7 +29,22 @@
         </div>
     </section>
     <!-- end of hero slider -->
+    <script>
+        let start = 0;
+        otomatis();
 
+        function otomatis() {
+            const slide = document.querySelectorAll(".slide");
+            const slick = document.querySelectorAll(".slick-next")
+
+
+            slide[start].style.display = "block";
+            start++;
+
+            setTimeout(slick, 2000);
+
+        }
+    </script>
     <!-- about-area start -->
 
     <div class="wpo-about-area-3 section-padding">
@@ -462,7 +476,7 @@
     <div class="modal fade" id="ModalWA" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
-            <form method="POST" action="/peminat/store">
+            <form method="POST" action="/{{ $mitra->username }}/peminat/store">
                 @csrf
                 <div class="modal-content">
                     <div class="modal-header">

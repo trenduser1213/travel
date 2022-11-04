@@ -9,8 +9,10 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class PeminatController extends Controller
 {
-    public function store(Request $request, mitraMarketing $mitraMarketing ){
-        $mitra = MitraMarketing::where('id', $mitraMarketing)->first();
+    public function store(Request $request,$mitraMarketing ){
+        $mitra = MitraMarketing::where('username', $mitraMarketing)->first()->id;
+        // dd($mitra);
+        // dd($mitraMarketing);
         // $request->validate([
         //     'nama' => 'required',
         //     'nomor_hp' => 'required|min:10|numeric',
@@ -27,7 +29,7 @@ class PeminatController extends Controller
         $peminat->nomor_hp = $request->hp;
         $peminat->email = $request->email;
         $peminat->status = 'diterima';
-        $peminat->mitra_marketing = $mitraMarketing;
+        $peminat->mitra_marketing = $mitra; 
         $peminat->save();
 
         Alert::success('Success', 'Data anda telah di simpan!');
