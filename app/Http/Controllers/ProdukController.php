@@ -10,6 +10,7 @@ use App\Models\Regency;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Models\MitraMarketing;
+use RealRashid\SweetAlert\Facades\Alert;
 
 
 class ProdukController extends Controller
@@ -93,12 +94,13 @@ class ProdukController extends Controller
             'pembiayaan' => Request()->pembiayaan,
             'setoran_awal' => Request()->setoran_awal,
             'status' => 'diterima',
-            'mitra_marketing' => $mitra->username,
+            'mitra_marketing' => $mitra->id,
         ];
 
         // return dd($data);
 
         $this->Produk->addDataPendaftaranJamaah($data);
-        return redirect('/')->with('success', 'Pendaftaran anda berhasil!');
+        Alert::success('Success', 'Data anda telah di simpan!');
+        return redirect()->back()->with('success', 'Pendaftaran anda berhasil!');
     }
 }

@@ -1,7 +1,7 @@
 @extends('admin.baseAdmin')
 
 @section('title')
-    Tambah Video
+    Tambah Foto
 @endsection
 
 @section('body')
@@ -40,6 +40,13 @@
                                     <input type="file"
                                         class="form-control file-input @error('link') is-invalid @enderror"
                                         accept=".jfif,.jpg,.jpeg,.png,.gif" id="image" name="link">
+                                    <small class="text-danger"><i class="fa fa-info-circle"></i> Masukkan foto dengan
+                                        ketentuan :
+                                        <ul>
+                                            <li>ukuran maksimal 2 MB</li>
+                                            <li>resolusi 800x600px (4:3)</li>
+                                        </ul>
+                                    </small>
                                     @error('link')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
@@ -78,13 +85,11 @@
                                     @enderror
                                 </div>
 
-
                             </div>
                         </div>
                     </div>
                     <div class="card-action">
-                        <button class="btn btn-success" type="submit">Simpan</button>
-                        <button class="btn btn-danger">Batal</button>
+                        <button class="btn btn-success" type="submit">Tambah</button>
                     </div>
                 </div>
             </form>

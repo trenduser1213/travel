@@ -25,6 +25,7 @@
     <link href="{{ asset('assets/') }}../../assets/css/style.css" rel="stylesheet">
 
     <link rel="stylesheet" href="{{ asset('assets/') }}../../assets/css/social-share.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet"> -->
     <!-- <link href="assets/vendor/aos/aos.css" rel="stylesheet"> -->
@@ -33,11 +34,27 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+    <script>
+        WebFont.load({
+            google: {
+                "families": ["Lato:300,400,700,900"]
+            },
+            custom: {
+                "families": [, "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands",
+                    "simple-line-icons"
+                ],
+                urls: ['{{ asset('assets/') }}../../admin-assets/assets/css/fonts.min.css']
+            },
+            active: function() {
+                sessionStorage.fonts = true;
+            }
+        });
+    </script>
 
 </head>
 
 <body>
+    @include('sweetalert::alert')
 
     <!-- start page-wrapper -->
     <div class="page-wrapper">

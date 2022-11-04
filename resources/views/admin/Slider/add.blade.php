@@ -66,7 +66,6 @@
                     </div>
                     <div class="card-action">
                         <button class="btn btn-success" type="submit">Simpan</button>
-                        <button class="btn btn-danger">Batal</button>
                     </div>
                 </div>
             </form>

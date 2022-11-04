@@ -21,23 +21,6 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.all.min.js"></script>
     <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
 
-    <script>
-        WebFont.load({
-            google: {
-                "families": ["Lato:300,400,700,900"]
-            },
-            custom: {
-                "families": [, "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands",
-                    "simple-line-icons"
-                ],
-                urls: ['{{ asset('assets/') }}../../admin-assets/assets/css/fonts.min.css']
-            },
-            active: function() {
-                sessionStorage.fonts = true;
-            }
-        });
-    </script>
-
 
     <!-- CSS Files -->
     <link rel="stylesheet" href="{{ asset('assets/') }}../../admin-assets/assets/css/bootstrap.min.css">
@@ -100,7 +83,7 @@
                             <h4 class="text-section">Umum</h4>
                         </li>
                         <li class="nav-item">
-                            <a href="#">
+                            <a href="{{ route('adminDashboard.index') }}">
                                 <i class="fas fa-laptop"></i>
                                 <p>Dashboard Admin</p>
                             </a>

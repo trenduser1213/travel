@@ -39,11 +39,11 @@
                                                 <li><i class="fa fa-calendar"></i> {{ $artikel->published_at }}</li>
                                             </ul>
                                             <h3><a
-                                                    href="{{ $mitra->username }}/artikel/{{ $artikel->slug }}">{{ $artikel->judul }}</a>
+                                                    href="{{ route('detailArtikel', ['post' => $artikel->slug, 'mitra' => $mitra->username]) }}">{{ $artikel->judul }}</a>
                                             </h3>
                                             <p>{{ $artikel->excerpt }} ...</p>
                                             <div class="entry-bottom">
-                                                <a href="{{ route('detailArtikel', ['post' => $artikel, 'mitra' => $mitra->username]) }}"
+                                                <a href="{{ route('detailArtikel', ['post' => $artikel->slug, 'mitra' => $mitra->username]) }}"
                                                     class="read-more">Baca
                                                     Selengkapnya...</a>
                                             </div>
@@ -69,7 +69,9 @@
                                     <h3>Kategori</h3>
                                     <ul>
                                         @foreach ($kategori as $kategori)
-                                            <li><a href="#">{{ $kategori->nama }}<span>(8)</span></a></li>
+                                            <li><a
+                                                    href="{{ route('artikelPerKategori', ['category_pos_id' => $kategori->id, 'mitra' => $mitra->username]) }}">{{ $kategori->nama }}</a>
+                                            </li>
                                         @endforeach
                                     </ul>
                                 </div>

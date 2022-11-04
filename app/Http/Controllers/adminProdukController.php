@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Produk;
-
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 
 class adminProdukController extends Controller
@@ -75,6 +75,7 @@ class adminProdukController extends Controller
         }
         $input->update();
         // dd($input);
+        Alert::success('Success', 'Sukses mengedit produk!');
         return redirect()->route('adminProduk.index');
         
     }
@@ -104,21 +105,6 @@ class adminProdukController extends Controller
         $namePath=$image->move($destinationPath, $profileImage);
         // $request->gambar1 = $namePath;
 
-        // produk::create([
-        //     'nama' => $request->nama ,
-        //     'slug' => $request->slug ,
-        //     'harga'=> $request->harga ,
-        //     'date' => $request->date ,
-        //     'durasi'=> $request->durasi , 
-        //     'total_seat'=> $request->total_seat ,
-        //     'berangkat_dari' => $request->berangkat_dari ,
-        //     'hotel'=> $request->hotel ,
-        //     'maskapai'=> $request->maskapai ,
-        //     'kategori_paket'=> $request->kategori ,
-        //     'is_tampil_di_beranda'=> $request->is_tampil_di_beranda ,
-        //     'is_tampil_di_halaman_produk' => $request->is_tampil_di_halaman_produk ,
-        //     'gambar' => $namePath  
-        // ]);
         $input = new produk();
         $input->nama = $request->nama;
         $input->slug = $request->slug ;
@@ -135,15 +121,15 @@ class adminProdukController extends Controller
         $input->gambar = $namePath ;
         $input->save();
 
+        Alert::success('Success', 'Sukses mengedit produk ');
         return redirect()->route('adminProduk.index');
-        // ->with('success','Product created successfully.');
     }
     
     public function destroy($id)
     {
         $produk = produk::find($id);
         $produk->delete();
-
+        Alert::success('Success', 'Sukses menghapus produk ');
         return redirect()->route('adminProduk.index');
     }
 }

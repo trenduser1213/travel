@@ -20,6 +20,7 @@ class PostController extends Controller
     public function index(MitraMarketing $mitra){
         $post = Post::where('is_tampil_di_halaman_artikel', 'ya')->latest();
 
+
         if(request('search')){
             $post->where('judul', 'like', '%' . request('search') . '%')
             ->orWhere('body', 'like', '%' . request('search') . '%')
@@ -27,7 +28,7 @@ class PostController extends Controller
         } 
         
         $result = $post->get();
-        // dd($result);
+
         return view('artikel', [
             "title" => "Semua Artikel",
             "active" => 'artikel',
@@ -37,8 +38,6 @@ class PostController extends Controller
             "identitas" => IdentitasPerusahaan::first(),
             "mitra" => $mitra,
         ]);
-
-
     }
 
     public function show($slug_post, $username_mitra){
@@ -47,7 +46,7 @@ class PostController extends Controller
 
         $allpost = Post::where('is_tampil_di_halaman_artikel', 'ya')->latest();
         $result = $allpost->get();
-        // dd($mitra);
+        // dd($post);
         return view('artikel_single',[
             "title" => "Single Post",
             "post"  => $post,
@@ -56,9 +55,32 @@ class PostController extends Controller
             "identitas" => IdentitasPerusahaan::first(),
             "artikel" => $result,
             "mitra" => $mitra,
-        ]);
-
-        
+        ]);   
     }
 
+    public function indexWithKategori(MitraMarketing $mitra, $idCategory){
+        $post = Post::where('category_post_id', '=', $idCategory)->where('is_tampil_di_halaman_artikel', '=', 'ya')->get();
+
+        // dd($post);
+        if(request('search')){
+            $post->where('judul', 'like', '%' . request('search') . '%')
+            ->orWhere('body', 'like', '%' . request('search') . '%')
+            ->orWhere('excerpt', 'like', '%' . request('search') . '%');
+        } 
+        
+        $result = $post;
+
+        return view('artikel', [
+            "title" => "Semua Artikel",
+            "active" => 'artikel',
+            "kategori" => CategoryPost::all(),
+            "nama_kategori" => CategoryPost::find($idCategory)->nama,
+            "artikel" => $result,
+            "artikel_terbaru" => $result,
+            "identitas" => IdentitasPerusahaan::first(),
+            "mitra" => $mitra,
+        ]);
+
+
+    }
 }
