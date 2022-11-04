@@ -23,7 +23,7 @@ class beranda extends Controller
     }
 
     public function redirect(){
-        return redirect('/safari/beranda');
+        return redirect('/Safari/beranda');
     }
 
     public function index($username_mitra){

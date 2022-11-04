@@ -23,6 +23,7 @@
     <link href="{{ asset('assets/') }}../../assets/css/odometer-theme-default.css" rel="stylesheet">
     <link href="{{ asset('assets/') }}../../assets/css/nice-select.css" rel="stylesheet">
     <link href="{{ asset('assets/') }}../../assets/css/style.css" rel="stylesheet">
+    <link href="{{ asset('assets/') }}../../assets/css/font-awesome.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="{{ asset('assets/') }}../../assets/css/social-share.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -244,6 +245,7 @@
     <!-- end of page-wrapper -->
     <!-- All JavaScript files
     ================================================== -->
+    <script src="https://kit.fontawesome.com/9a9fb1d908.js" crossorigin="anonymous"></script>
     <script src="{{ asset('assets/') }}../../assets/js/jquery.min.js"></script>
     <script src="{{ asset('assets/') }}../../assets/js/bootstrap.min.js"></script>
     <script src="{{ asset('assets/') }}../../assets/js/circle-progress.min.js"></script>

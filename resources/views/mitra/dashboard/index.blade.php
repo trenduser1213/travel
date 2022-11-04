@@ -96,7 +96,7 @@
                 <div class="card-header">
                     <div class="d-flex align-items-center">
                         <h4 class="card-title">Data Jamaah</h4>
-                        <a href="/{{ $mitra->username }}/mitraDashboard/create" style="margin-left:auto"><button
+                        <a href="/mitraDashboard/create" style="margin-left:auto"><button
                                 class="btn btn-primary btn-round ml-auto">
                                 <i class="fa fa-plus"></i>Tambah Jamaah
                             </button></a>

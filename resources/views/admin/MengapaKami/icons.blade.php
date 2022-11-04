@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Fontawesome - Atlantis Bootstrap 4 Admin Dashboard</title>
     <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
-    <link rel="icon" href="{{ asset('assets/') }}../../assets/img/icon.ico" type="image/x-icon" />
+    <link rel="icon" href="{{ asset('assets/') }}../../admin-assets/assets/img/icon.ico" type="image/x-icon" />
 
     <!-- Fonts and icons -->
-    <script src="{{ asset('assets/') }}../../assets/js/plugin/webfont/webfont.min.js"></script>
+    <script src="{{ asset('assets/') }}../../admin-assets/assets/js/plugin/webfont/webfont.min.js"></script>
     <script>
         WebFont.load({
             google: {
@@ -18,7 +18,7 @@
                 "families": ["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands",
                     "simple-line-icons"
                 ],
-                urls: ['{{ asset('assets/') }}../../assets/css/fonts.min.css']
+                urls: ['{{ asset('assets/') }}../../admin-assets/assets/css/fonts.min.css']
             },
             active: function() {
                 sessionStorage.fonts = true;
@@ -27,38 +27,203 @@
     </script>
 
     <!-- CSS Files -->
-    <link rel="stylesheet" href="{{ asset('assets/') }}../../assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('assets/') }}../../assets/css/atlantis.css">
+    <link rel="stylesheet" href="{{ asset('assets/') }}../../admin-assets/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/') }}../../admin-assets/assets/css/atlantis.css">
     <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link rel="stylesheet" href="{{ asset('assets/') }}../../assets/css/demo.css">
+    <link rel="stylesheet" href="{{ asset('assets/') }}../../admin-assets/assets/css/demo.css">
 </head>
 
 <body>
     <div class="wrapper">
+        <div class="main-header">
+            <!-- Logo Header -->
+            <div class="logo-header" data-background-color="white">
+
+                <a href="#" class="logo">
+                    <img src="{{ asset('assets/') }}../../assets/images/logo-safari.png"
+                        style="max-width: 60%; border : 10px solid white;" alt="navbar brand" class="navbar-brand">
+
+                </a>
+                <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse"
+                    data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon">
+                        <i class="icon-menu"></i>
+                    </span>
+                </button>
+                <button class="topbar-toggler more"><i class="icon-options-vertical"></i></button>
+                <div class="nav-toggle">
+                    <button class="btn btn-toggle toggle-sidebar">
+                        <i class="icon-menu"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- End Logo Header -->
+
+            <!-- Navbar Header -->
+            <nav class="navbar navbar-header navbar-expand-lg" data-background-color="blue2">
+                <a href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();"
+                    class="btn btn-info ml-auto"><i class="fa fa-sign-out"></i> Logout</a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+            </nav>
+            <!-- End Navbar -->
+        </div>
+
+        <!-- Sidebar -->
+        <div class="sidebar sidebar-style-2" data-background-color="blue2">
+            <div class="sidebar-wrapper scrollbar scrollbar-inner">
+                <div class="sidebar-content">
+
+                    <ul class="nav nav-primary">
+                        <li class="nav-section">
+                            <span class="sidebar-mini-icon">
+                                <i class="fa fa-ellipsis-h"></i>
+                            </span>
+                            <h4 class="text-section">Umum</h4>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('adminDashboard.index') }}">
+                                <i class="fas fa-laptop"></i>
+                                <p>Dashboard Admin</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('adminMitraMarketing.index') }}">
+                                <i class="fas fa-user-friends"></i>
+                                <p>Mitra/Marketing</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('adminJamaah.index') }}">
+                                <i class="fas fa-users"></i>
+                                <p>Jam'aah</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('adminPeminat.index') }}">
+                                <i class="fas fa-user-clock"></i>
+                                <p>Peminat</p>
+                            </a>
+                        </li>
+                        <li class="nav-section">
+                            <span class="sidebar-mini-icon">
+                                <i class="fa fa-ellipsis-h"></i>
+                            </span>
+                            <h4 class="text-section">Manajemen Konten</h4>
+                        </li>
+                        <li class="nav-item">
+                            <a data-toggle="collapse" href="#dashboard" class="collapsed" aria-expanded="false">
+                                <i class="fas fa-home"></i>
+                                <p>Beranda</p>
+                                <span class="caret"></span>
+                            </a>
+                            <div class="collapse" id="dashboard">
+                                <ul class="nav nav-collapse">
+                                    <li style="margin-top:-10px">
+                                        <a href="{{ route('adminSlider.index') }}">
+                                            <i
+                                                class="
+                                                fas fa-images"></i>
+                                            <p>Slider</p>
+                                        </a>
+                                    </li>
+                                    <li style="margin-top:-10px">
+                                        <a href="{{ route('adminMengapaKami.index') }}">
+                                            <i
+                                                class="
+                                            fas fas fa-user-plus
+                                            "></i>
+                                            <p>Mengapa Kami</p>
+                                        </a>
+                                    </li>
+                                    <li style="margin-top:-10px">
+                                        <a href="{{ route('adminTestimoni.index') }}">
+                                            <i
+                                                class="
+                                            fas fa-quote-right"></i>
+                                            <p>Testimoni</p>
+                                        </a>
+                                    </li>
+                                    <li style="margin-top:-10px">
+                                        <a href="{{ route('adminAsosiasi.index') }}">
+                                            <i
+                                                class="
+                                                    fas fa-user-friends"></i>
+                                            <p>Asosiasi</p>
+                                        </a>
+                                    </li>
+                                    <li style="margin-top:-10px">
+                                        <a href="{{ route('adminFAQ.index') }}">
+                                            <i class="fas fa-question-circle"></i>
+                                            <p>FAQ</p>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a data-toggle="collapse" href="#forms">
+                                <i class="fas fa-newspaper"></i>
+                                <p>Artikel</p>
+                                <span class="caret"></span>
+                            </a>
+                            <div class="collapse" id="forms">
+                                <ul class="nav nav-collapse">
+                                    <li>
+                                        <a href="{{ route('CategoryPost.index') }}">
+                                            <span class="sub-item">Kategori Artikel</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('adminArtikel.index') }}">
+                                            <span class="sub-item">Artikel</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ route('adminIdentitasPerusahaan.index') }}">
+                                <i class="fas fa-building"></i>
+                                <p>Identitas Perusahaan</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ route('adminGaleri.index') }}">
+                                <i class="fas fa-file-image"></i>
+                                <p>Galeri</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ route('adminKetentuan.index') }}">
+                                <i class="fas fa-file-signature"></i>
+                                <p>Syarat dan ketentuan</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('adminProduk.index') }}">
+                                <i class="fas fa-plane-departure"></i>
+                                <p>Produk</p>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- End Sidebar -->
         <div class="main-panel">
             <div class="container">
                 <div class="page-inner">
                     <div class="page-header">
                         <h4 class="page-title">Icons</h4>
-                        <ul class="breadcrumbs">
-                            <li class="nav-home">
-                                <a href="#">
-                                    <i class="flaticon-home"></i>
-                                </a>
-                            </li>
-                            <li class="separator">
-                                <i class="flaticon-right-arrow"></i>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#">Base</a>
-                            </li>
-                            <li class="separator">
-                                <i class="flaticon-right-arrow"></i>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#">Line Awesome</a>
-                            </li>
-                        </ul>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
@@ -127,19 +292,23 @@
                                         <span class="category-title mt-0">Contacts</span>
                                         <div class="avatar-group">
                                             <div class="avatar">
-                                                <img src="{{ asset('assets/') }}../../assets/img/jm_denis.jpg" alt="..."
+                                                <img src="{{ asset('assets/') }}../../admin-assets/assets/img/jm_denis.jpg"
+                                                    alt="..."
                                                     class="avatar-img rounded-circle border border-white">
                                             </div>
                                             <div class="avatar">
-                                                <img src="{{ asset('assets/') }}../../assets/img/chadengle.jpg" alt="..."
+                                                <img src="{{ asset('assets/') }}../../admin-assets/assets/img/chadengle.jpg"
+                                                    alt="..."
                                                     class="avatar-img rounded-circle border border-white">
                                             </div>
                                             <div class="avatar">
-                                                <img src="{{ asset('assets/') }}../../assets/img/mlane.jpg" alt="..."
+                                                <img src="{{ asset('assets/') }}../../admin-assets/assets/img/mlane.jpg"
+                                                    alt="..."
                                                     class="avatar-img rounded-circle border border-white">
                                             </div>
                                             <div class="avatar">
-                                                <img src="{{ asset('assets/') }}../../assets/img/talha.jpg" alt="..."
+                                                <img src="{{ asset('assets/') }}../../admin-assets/assets/img/talha.jpg"
+                                                    alt="..."
                                                     class="avatar-img rounded-circle border border-white">
                                             </div>
                                             <div class="avatar">
@@ -151,7 +320,8 @@
                                             <div class="user">
                                                 <a href="#">
                                                     <div class="avatar avatar-online">
-                                                        <img src="{{ asset('assets/') }}../../assets/img/jm_denis.jpg" alt="..."
+                                                        <img src="{{ asset('assets/') }}../../admin-assets/assets/img/jm_denis.jpg"
+                                                            alt="..."
                                                             class="avatar-img rounded-circle border border-white">
                                                     </div>
                                                     <div class="user-data">
@@ -163,7 +333,8 @@
                                             <div class="user">
                                                 <a href="#">
                                                     <div class="avatar avatar-offline">
-                                                        <img src="{{ asset('assets/') }}../../assets/img/chadengle.jpg" alt="..."
+                                                        <img src="{{ asset('assets/') }}../../admin-assets/assets/img/chadengle.jpg"
+                                                            alt="..."
                                                             class="avatar-img rounded-circle border border-white">
                                                     </div>
                                                     <div class="user-data">
@@ -175,7 +346,8 @@
                                             <div class="user">
                                                 <a href="#">
                                                     <div class="avatar avatar-offline">
-                                                        <img src="{{ asset('assets/') }}../../assets/img/mlane.jpg" alt="..."
+                                                        <img src="{{ asset('assets/') }}../../admin-assets/assets/img/mlane.jpg"
+                                                            alt="..."
                                                             class="avatar-img rounded-circle border border-white">
                                                     </div>
                                                     <div class="user-data">
@@ -191,7 +363,8 @@
                                             <div class="user">
                                                 <a href="#">
                                                     <div class="avatar avatar-online">
-                                                        <img src="{{ asset('assets/') }}../../assets/img/jm_denis.jpg" alt="..."
+                                                        <img src="{{ asset('assets/') }}../../admin-assets/assets/img/jm_denis.jpg"
+                                                            alt="..."
                                                             class="avatar-img rounded-circle border border-white">
                                                     </div>
                                                     <div class="user-data2">
@@ -203,7 +376,8 @@
                                             <div class="user">
                                                 <a href="#">
                                                     <div class="avatar avatar-offline">
-                                                        <img src="{{ asset('assets/') }}../../assets/img/chadengle.jpg" alt="..."
+                                                        <img src="{{ asset('assets/') }}../../admin-assets/assets/img/chadengle.jpg"
+                                                            alt="..."
                                                             class="avatar-img rounded-circle border border-white">
                                                     </div>
                                                     <div class="user-data2">
@@ -215,7 +389,8 @@
                                             <div class="user">
                                                 <a href="#">
                                                     <div class="avatar avatar-away">
-                                                        <img src="{{ asset('assets/') }}../../assets/img/talha.jpg" alt="..."
+                                                        <img src="{{ asset('assets/') }}../../admin-assets/assets/img/talha.jpg"
+                                                            alt="..."
                                                             class="avatar-img rounded-circle border border-white">
                                                     </div>
                                                     <div class="user-data2">
@@ -233,8 +408,8 @@
                             <div class="messages-title">
                                 <div class="user">
                                     <div class="avatar avatar-offline float-right ml-2">
-                                        <img src="{{ asset('assets/') }}../../assets/img/chadengle.jpg" alt="..."
-                                            class="avatar-img rounded-circle border border-white">
+                                        <img src="{{ asset('assets/') }}../../admin-assets/assets/img/chadengle.jpg"
+                                            alt="..." class="avatar-img rounded-circle border border-white">
                                     </div>
                                     <span class="name">Chad</span>
                                     <span class="last-active">Active 2h ago</span>
@@ -247,8 +422,8 @@
                                 <div class="message-content-wrapper">
                                     <div class="message message-in">
                                         <div class="avatar avatar-sm">
-                                            <img src="{{ asset('assets/') }}../../assets/img/chadengle.jpg" alt="..."
-                                                class="avatar-img rounded-circle border border-white">
+                                            <img src="{{ asset('assets/') }}../../admin-assets/assets/img/chadengle.jpg"
+                                                alt="..." class="avatar-img rounded-circle border border-white">
                                         </div>
                                         <div class="message-body">
                                             <div class="message-content">
@@ -279,8 +454,8 @@
                                 <div class="message-content-wrapper">
                                     <div class="message message-in">
                                         <div class="avatar avatar-sm">
-                                            <img src="{{ asset('assets/') }}../../assets/img/chadengle.jpg" alt="..."
-                                                class="avatar-img rounded-circle border border-white">
+                                            <img src="{{ asset('assets/') }}../../admin-assets/assets/img/chadengle.jpg"
+                                                alt="..." class="avatar-img rounded-circle border border-white">
                                         </div>
                                         <div class="message-body">
                                             <div class="message-content">
@@ -313,8 +488,8 @@
                                 <div class="message-content-wrapper">
                                     <div class="message message-in">
                                         <div class="avatar avatar-sm">
-                                            <img src="{{ asset('assets/') }}../../assets/img/chadengle.jpg" alt="..."
-                                                class="avatar-img rounded-circle border border-white">
+                                            <img src="{{ asset('assets/') }}../../admin-assets/assets/img/chadengle.jpg"
+                                                alt="..." class="avatar-img rounded-circle border border-white">
                                         </div>
                                         <div class="message-body">
                                             <div class="message-content">
@@ -341,290 +516,32 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="tasks" role="tabpanel">
-                        <div class="quick-wrapper tasks-wrapper">
-                            <div class="tasks-scroll scrollbar-outer">
-                                <div class="tasks-content">
-                                    <span class="category-title mt-0">Today</span>
-                                    <ul class="tasks-list">
-                                        <li>
-                                            <label class="custom-checkbox custom-control checkbox-secondary">
-                                                <input type="checkbox" checked=""
-                                                    class="custom-control-input"><span
-                                                    class="custom-control-label">Planning new project structure</span>
-                                                <span class="task-action">
-                                                    <a href="#" class="link text-danger">
-                                                        <i class="flaticon-interface-5"></i>
-                                                    </a>
-                                                </span>
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <label class="custom-checkbox custom-control checkbox-secondary">
-                                                <input type="checkbox" class="custom-control-input"><span
-                                                    class="custom-control-label">Create the main structure </span>
-                                                <span class="task-action">
-                                                    <a href="#" class="link text-danger">
-                                                        <i class="flaticon-interface-5"></i>
-                                                    </a>
-                                                </span>
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <label class="custom-checkbox custom-control checkbox-secondary">
-                                                <input type="checkbox" class="custom-control-input"><span
-                                                    class="custom-control-label">Add new Post</span>
-                                                <span class="task-action">
-                                                    <a href="#" class="link text-danger">
-                                                        <i class="flaticon-interface-5"></i>
-                                                    </a>
-                                                </span>
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <label class="custom-checkbox custom-control checkbox-secondary">
-                                                <input type="checkbox" class="custom-control-input"><span
-                                                    class="custom-control-label">Finalise the design proposal</span>
-                                                <span class="task-action">
-                                                    <a href="#" class="link text-danger">
-                                                        <i class="flaticon-interface-5"></i>
-                                                    </a>
-                                                </span>
-                                            </label>
-                                        </li>
-                                    </ul>
 
-                                    <span class="category-title">Tomorrow</span>
-                                    <ul class="tasks-list">
-                                        <li>
-                                            <label class="custom-checkbox custom-control checkbox-secondary">
-                                                <input type="checkbox" class="custom-control-input"><span
-                                                    class="custom-control-label">Initialize the project </span>
-                                                <span class="task-action">
-                                                    <a href="#" class="link text-danger">
-                                                        <i class="flaticon-interface-5"></i>
-                                                    </a>
-                                                </span>
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <label class="custom-checkbox custom-control checkbox-secondary">
-                                                <input type="checkbox" class="custom-control-input"><span
-                                                    class="custom-control-label">Create the main structure </span>
-                                                <span class="task-action">
-                                                    <a href="#" class="link text-danger">
-                                                        <i class="flaticon-interface-5"></i>
-                                                    </a>
-                                                </span>
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <label class="custom-checkbox custom-control checkbox-secondary">
-                                                <input type="checkbox" class="custom-control-input"><span
-                                                    class="custom-control-label">Updates changes to GitHub </span>
-                                                <span class="task-action">
-                                                    <a href="#" class="link text-danger">
-                                                        <i class="flaticon-interface-5"></i>
-                                                    </a>
-                                                </span>
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <label class="custom-checkbox custom-control checkbox-secondary">
-                                                <input type="checkbox" class="custom-control-input"><span
-                                                    title="This task is too long to be displayed in a normal space!"
-                                                    class="custom-control-label">This task is too long to be displayed
-                                                    in a normal space! </span>
-                                                <span class="task-action">
-                                                    <a href="#" class="link text-danger">
-                                                        <i class="flaticon-interface-5"></i>
-                                                    </a>
-                                                </span>
-                                            </label>
-                                        </li>
-                                    </ul>
-
-                                    <div class="mt-3">
-                                        <div class="btn btn-primary btn-rounded btn-sm">
-                                            <span class="btn-label">
-                                                <i class="fa fa-plus"></i>
-                                            </span>
-                                            Add Task
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="settings" role="tabpanel">
-                        <div class="quick-wrapper settings-wrapper">
-                            <div class="quick-scroll scrollbar-outer">
-                                <div class="quick-content settings-content">
-
-                                    <span class="category-title mt-0">General Settings</span>
-                                    <ul class="settings-list">
-                                        <li>
-                                            <span class="item-label">Enable Notifications</span>
-                                            <div class="item-control">
-                                                <input type="checkbox" checked data-toggle="toggle"
-                                                    data-onstyle="primary" data-style="btn-round">
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <span class="item-label">Signin with social media</span>
-                                            <div class="item-control">
-                                                <input type="checkbox" data-toggle="toggle" data-onstyle="primary"
-                                                    data-style="btn-round">
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <span class="item-label">Backup storage</span>
-                                            <div class="item-control">
-                                                <input type="checkbox" data-toggle="toggle" data-onstyle="primary"
-                                                    data-style="btn-round">
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <span class="item-label">SMS Alert</span>
-                                            <div class="item-control">
-                                                <input type="checkbox" checked data-toggle="toggle"
-                                                    data-onstyle="primary" data-style="btn-round">
-                                            </div>
-                                        </li>
-                                    </ul>
-
-                                    <span class="category-title mt-0">Notifications</span>
-                                    <ul class="settings-list">
-                                        <li>
-                                            <span class="item-label">Email Notifications</span>
-                                            <div class="item-control">
-                                                <input type="checkbox" checked data-toggle="toggle"
-                                                    data-onstyle="primary" data-style="btn-round">
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <span class="item-label">New Comments</span>
-                                            <div class="item-control">
-                                                <input type="checkbox" checked data-toggle="toggle"
-                                                    data-onstyle="primary" data-style="btn-round">
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <span class="item-label">Chat Messages</span>
-                                            <div class="item-control">
-                                                <input type="checkbox" checked data-toggle="toggle"
-                                                    data-onstyle="primary" data-style="btn-round">
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <span class="item-label">Project Updates</span>
-                                            <div class="item-control">
-                                                <input type="checkbox" data-toggle="toggle" data-onstyle="primary"
-                                                    data-style="btn-round">
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <span class="item-label">New Tasks</span>
-                                            <div class="item-control">
-                                                <input type="checkbox" checked data-toggle="toggle"
-                                                    data-onstyle="primary" data-style="btn-round">
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
-        <!-- Custom template | don't include it in your project! -->
-        <div class="custom-template">
-            <div class="title">Settings</div>
-            <div class="custom-content">
-                <div class="switcher">
-                    <div class="switch-block">
-                        <h4>Logo Header</h4>
-                        <div class="btnSwitch">
-                            <button type="button" class="changeLogoHeaderColor" data-color="dark"></button>
-                            <button type="button" class="selected changeLogoHeaderColor" data-color="blue"></button>
-                            <button type="button" class="changeLogoHeaderColor" data-color="purple"></button>
-                            <button type="button" class="changeLogoHeaderColor" data-color="light-blue"></button>
-                            <button type="button" class="changeLogoHeaderColor" data-color="green"></button>
-                            <button type="button" class="changeLogoHeaderColor" data-color="orange"></button>
-                            <button type="button" class="changeLogoHeaderColor" data-color="red"></button>
-                            <button type="button" class="changeLogoHeaderColor" data-color="white"></button>
-                            <br />
-                            <button type="button" class="changeLogoHeaderColor" data-color="dark2"></button>
-                            <button type="button" class="changeLogoHeaderColor" data-color="blue2"></button>
-                            <button type="button" class="changeLogoHeaderColor" data-color="purple2"></button>
-                            <button type="button" class="changeLogoHeaderColor" data-color="light-blue2"></button>
-                            <button type="button" class="changeLogoHeaderColor" data-color="green2"></button>
-                            <button type="button" class="changeLogoHeaderColor" data-color="orange2"></button>
-                            <button type="button" class="changeLogoHeaderColor" data-color="red2"></button>
-                        </div>
-                    </div>
-                    <div class="switch-block">
-                        <h4>Navbar Header</h4>
-                        <div class="btnSwitch">
-                            <button type="button" class="changeTopBarColor" data-color="dark"></button>
-                            <button type="button" class="changeTopBarColor" data-color="blue"></button>
-                            <button type="button" class="changeTopBarColor" data-color="purple"></button>
-                            <button type="button" class="changeTopBarColor" data-color="light-blue"></button>
-                            <button type="button" class="changeTopBarColor" data-color="green"></button>
-                            <button type="button" class="changeTopBarColor" data-color="orange"></button>
-                            <button type="button" class="changeTopBarColor" data-color="red"></button>
-                            <button type="button" class="changeTopBarColor" data-color="white"></button>
-                            <br />
-                            <button type="button" class="changeTopBarColor" data-color="dark2"></button>
-                            <button type="button" class="selected changeTopBarColor" data-color="blue2"></button>
-                            <button type="button" class="changeTopBarColor" data-color="purple2"></button>
-                            <button type="button" class="changeTopBarColor" data-color="light-blue2"></button>
-                            <button type="button" class="changeTopBarColor" data-color="green2"></button>
-                            <button type="button" class="changeTopBarColor" data-color="orange2"></button>
-                            <button type="button" class="changeTopBarColor" data-color="red2"></button>
-                        </div>
-                    </div>
-                    <div class="switch-block">
-                        <h4>Sidebar</h4>
-                        <div class="btnSwitch">
-                            <button type="button" class="selected changeSideBarColor" data-color="white"></button>
-                            <button type="button" class="changeSideBarColor" data-color="dark"></button>
-                            <button type="button" class="changeSideBarColor" data-color="dark2"></button>
-                        </div>
-                    </div>
-                    <div class="switch-block">
-                        <h4>Background</h4>
-                        <div class="btnSwitch">
-                            <button type="button" class="changeBackgroundColor" data-color="bg2"></button>
-                            <button type="button" class="changeBackgroundColor selected" data-color="bg1"></button>
-                            <button type="button" class="changeBackgroundColor" data-color="bg3"></button>
-                            <button type="button" class="changeBackgroundColor" data-color="dark"></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="custom-toggle">
-                <i class="flaticon-settings"></i>
-            </div>
-        </div>
-        <!-- End Custom template -->
+
     </div>
     <!--   Core JS Files   -->
-    <script src="{{ asset('assets/') }}../../assets/js/core/jquery.3.2.1.min.js"></script>
-    <script src="{{ asset('assets/') }}../../assets/js/core/popper.min.js"></script>
-    <script src="{{ asset('assets/') }}../../assets/js/core/bootstrap.min.js"></script>
+    <script src="{{ asset('assets/') }}../../admin-assets/assets/js/core/jquery.3.2.1.min.js"></script>
+    <script src="{{ asset('assets/') }}../../admin-assets/assets/js/core/popper.min.js"></script>
+    <script src="{{ asset('assets/') }}../../admin-assets/assets/js/core/bootstrap.min.js"></script>
     <!-- jQuery UI -->
-    <script src="{{ asset('assets/') }}../../assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
-    <script src="{{ asset('assets/') }}../../assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+    <script src="{{ asset('assets/') }}../../admin-assets/assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js">
+    </script>
+    <script
+        src="{{ asset('assets/') }}../../admin-assets/assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js">
+    </script>
     <!-- Bootstrap Toggle -->
-    <script src="{{ asset('assets/') }}../../assets/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js"></script>
+    <script src="{{ asset('assets/') }}../../admin-assets/assets/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js">
+    </script>
     <!-- jQuery Scrollbar -->
-    <script src="{{ asset('assets/') }}../../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+    <script src="{{ asset('assets/') }}../../admin-assets/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js">
+    </script>
     <!-- Atlantis JS -->
-    <script src="{{ asset('assets/') }}../../assets/js/atlantis.min.js"></script>
+    <script src="{{ asset('assets/') }}../../admin-assets/assets/js/atlantis.min.js"></script>
     <!-- Atlantis DEMO methods, don't include it in your project! -->
-    <script src="{{ asset('assets/') }}../../assets/js/setting-demo2.js"></script>
+    <script src="{{ asset('assets/') }}../../admin-assets/assets/js/setting-demo2.js"></script>
     <script>
         var iconClass = ['fas fa-address-book', 'fas fa-address-card', 'fas fa-adjust', 'fas fa-air-freshener',
             'fas fa-align-center', 'fas fa-align-justify', 'fas fa-align-left', 'fas fa-align-right',

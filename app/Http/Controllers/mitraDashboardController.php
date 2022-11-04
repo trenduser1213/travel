@@ -20,35 +20,34 @@ class mitraDashboardController extends Controller
     }
         
     public function index(){
-        // $username_mitra = 'safari';
-        $username_mitra = \Auth::user()->username;
-        // $username_mitras = DB::table('Users')->where('id','=',$id)->select('username')->get();
-        // dd($id);
-        // foreach($username_mitras as $username_mitra){
-        // echo $username_mitra;
+        $id_mitra = MitraMarketing::where('username', Auth::user()->username)->first()->id;
+        // $id_mitras = DB::table('Users')->where('id','=',$id)->select('username')->get();
+        // dd(Auth::user());
+        // foreach($id_mitras as $id_mitra){
+        // echo $id_mitra;
         // }
         $jamaah = DB::table('data_jamaahs')
         ->join('provinces', 'data_jamaahs.provinsi', '=', 'provinces.id')
         ->join('regencies', 'data_jamaahs.kabupaten', '=', 'regencies.id')
-        ->join('mitra_marketings', 'data_jamaahs.mitra_marketing', '=', 'mitra_marketings.username')
-        ->where('mitra_marketing', '=', $username_mitra)
+        ->join('mitra_marketings', 'data_jamaahs.mitra_marketing', '=', 'mitra_marketings.id')
+        ->where('mitra_marketing', '=', $id_mitra)
         ->select('data_jamaahs.*', 'provinces.name as nama_provinsi', 'regencies.name as nama_kabupaten', 'mitra_marketings.nama as nama_mitra')
         ->get();
         // dd($jamaah);
 
         $Peminat = DB::table('peminats')
-        ->join('mitra_marketings', 'peminats.mitra_marketing', '=', 'mitra_marketings.username')
-        ->where('mitra_marketing', '=', $username_mitra)
+        ->join('mitra_marketings', 'peminats.mitra_marketing', '=', 'mitra_marketings.id')
+        ->where('mitra_marketing', '=', $id_mitra)
         ->select('peminats.*', 'mitra_marketings.nama as nama_mitra')
         ->get();
 
         $data = [
         'Jamaah' => $jamaah,
         'Peminat' => $Peminat,
-        'mitra' => MitraMarketing::where('username', $username_mitra)->first(),
+        'mitra' => MitraMarketing::where('id', $id_mitra)->first(),
         ];
 
-        // dd($data);
+// ;       return dd(Auth::user());
         return view('mitra.dashboard.index', $data);
 }
 
@@ -68,6 +67,8 @@ public function create(){
 public function store(Request $request)
 {
 
+    $id_mitra = MitraMarketing::where('username', Auth::user()->username)->first()->id;
+// dd($id_mitra);
     //validasi inputan
     $this->validate($request,[
         'nama' => 'required',
@@ -101,8 +102,6 @@ public function store(Request $request)
     $profileImage = date('YmdHis') . uniqid()."." . $image->getClientOriginalExtension();
     $namePath_foto_vaksin=$image->move($destinationPath, $profileImage);
 
-    $username_mitra = \Auth::user()->username;
-
     $input = new DataJamaah();
     $input->nama = $request->nama;
     $input->jeniskelamin = $request->jeniskelamin ;
@@ -118,7 +117,7 @@ public function store(Request $request)
     $input->slug_produk= $request->produk ;
     $input->pembiayaan= $request->pembiayaan ;
     $input->setoran_awal = $request->setoran_awal ;
-    $input->mitra_marketing = $username_mitra ;
+    $input->mitra_marketing = $id_mitra ;
     $input->save();
 
 

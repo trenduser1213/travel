@@ -95,7 +95,7 @@ Route::get('/kategori/{category:slug}', function(CategoryPost $category){
 //menyimpan kontak calon jamaah
 // Route::resource('/peminat', PeminatController::class);
 
-Route::post('/peminat/store', [PeminatController::class, 'store']);
+Route::post('{mitra}/peminat/store', [PeminatController::class, 'store']);
 
 //mendaftar ke sebuah produk tertentu
 Route::get('/{mitra:username}/daftar/{produk:slug}', [ProdukController::class, 'toRegister']);
