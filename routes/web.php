@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AboutController;
-use App\Http\Controllers\AdminDashboard;
 use App\Http\Controllers\adminGaleriController;
 use App\Http\Controllers\SyaratController;
 use App\Http\Controllers\ProdukController;
@@ -105,7 +104,7 @@ Route::post('/{mitra:username}/daftar/{produk:slug}/store', [ProdukController::c
 
 
 //Routing Admin
-Route::get('admin', [AdminDashboard::class, 'index']);
+// Route::get('admin', [AdminDashboard::class, 'index']);
 //Routing admin Artikel
 
 // Route::get('/kabupaten/{id}', [RegionController::class,'dataKabupaten'])->name('getkabupaten');

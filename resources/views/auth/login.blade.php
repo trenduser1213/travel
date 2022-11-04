@@ -97,7 +97,7 @@
                         <label class="custom-control-label" for="rememberme">{{ __('Remember Me') }}</label>
                     </div>
 
-                    <a href="#" class="link float-right">Forget Password ?</a>
+                    <a href="{{ route('password.request') }}" class="link float-right">Forget Password ?</a>
                 </div>
                 <div class="form-action mb-3">
                     <button type="submit" class="btn btn-primary btn-rounded btn-login">{{ __('Login') }}</button>

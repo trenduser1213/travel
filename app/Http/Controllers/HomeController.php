@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('admin.index');
+        // $role=Role::user();
+        if (\Auth::user()->hasAnyRole('admin')) {
+            return redirect()->route('adminDashboard.index');  
+        }else{
+            return redirect()->route('mitraDashboard.index');
+        }
+
+        dd($role);
     }
 }
