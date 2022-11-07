@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use Illuminate\Support\Facades\DB;
 use App\Models\MitraMarketing;
 use App\Models\Province;
 use App\Models\Regency;
@@ -177,6 +179,9 @@ class adminMitraMarketingController extends Controller
      */
     public function destroy($id)
     {
+        $username = MitraMarketing::find($id)->username;
+        $idUser = DB::table('users')->where('username', $username)->delete();
+        
         $input = MitraMarketing::find($id);
         $input->delete();
         Alert::success('Success', 'Sukses hapus MitraMarketing');
