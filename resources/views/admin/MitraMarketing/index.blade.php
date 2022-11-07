@@ -149,6 +149,13 @@
                                                                 <span>{{ $MitraMarketing->jabatan }}</span>
                                                             </div>
                                                         </div>
+                                                        <div class="form-group row" style="margin-bottom: -15px">
+                                                            <label for="Nama" class="col-md-4">Link Website
+                                                            </label>
+                                                            <div class="col-md-8">
+                                                                <span>localhost:8000/{{ $MitraMarketing->username }}/beranda</span>
+                                                            </div>
+                                                        </div>
                                                         <div class="form-group row mt-4">
                                                             @if ($MitraMarketing->foto != null)
                                                                 <center><img src="{{ $MitraMarketing->foto }}"

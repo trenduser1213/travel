@@ -97,45 +97,17 @@
                     <div class="card-title">Mitra Teratas</div>
                 </div>
                 <div class="card-body pb-0">
-                    <div class="d-flex">
-                        <div class="avatar">
-                            <img src="../assets/img/logoproduct.svg" alt="..." class="avatar-img rounded-circle">
+                    @foreach ($mitra as $mitra)
+                        <div class="d-flex">
+                            <div class="flex-1 pt-1 ml-2">
+                                <h6 class="fw-bold mb-1">{{ $mitra->nama_mitra }}</h6>
+                            </div>
+                            <div class="d-flex ml-auto align-items-center">
+                                <h3 class="text-info fw-bold">{{ $mitra->jumlah }}</h3>
+                            </div>
                         </div>
-                        <div class="flex-1 pt-1 ml-2">
-                            <h6 class="fw-bold mb-1">CSS</h6>
-                            <small class="text-muted">Cascading Style Sheets</small>
-                        </div>
-                        <div class="d-flex ml-auto align-items-center">
-                            <h3 class="text-info fw-bold">+$17</h3>
-                        </div>
-                    </div>
-                    <div class="separator-dashed"></div>
-                    <div class="d-flex">
-                        <div class="avatar">
-                            <img src="../assets/img/logoproduct.svg" alt="..." class="avatar-img rounded-circle">
-                        </div>
-                        <div class="flex-1 pt-1 ml-2">
-                            <h6 class="fw-bold mb-1">J.CO Donuts</h6>
-                            <small class="text-muted">The Best Donuts</small>
-                        </div>
-                        <div class="d-flex ml-auto align-items-center">
-                            <h3 class="text-info fw-bold">+$300</h3>
-                        </div>
-                    </div>
-                    <div class="separator-dashed"></div>
-                    <div class="d-flex">
-                        <div class="avatar">
-                            <img src="../assets/img/logoproduct3.svg" alt="..." class="avatar-img rounded-circle">
-                        </div>
-                        <div class="flex-1 pt-1 ml-2">
-                            <h6 class="fw-bold mb-1">Ready Pro</h6>
-                            <small class="text-muted">Bootstrap 4 Admin Dashboard</small>
-                        </div>
-                        <div class="d-flex ml-auto align-items-center">
-                            <h3 class="text-info fw-bold">+$350</h3>
-                        </div>
-                    </div>
-                    <div class="separator-dashed"></div>
+                        <div class="separator-dashed"></div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -145,46 +117,17 @@
                     <div class="card-title">Provinsi Teratas</div>
                 </div>
                 <div class="card-body pb-0">
-                    <div class="d-flex">
-                        <div class="avatar">
-                            <img src="../assets/img/logoproduct.svg" alt="..." class="avatar-img rounded-circle">
+                    @foreach ($provinsi as $provinsi)
+                        <div class="d-flex">
+                            <div class="flex-1 pt-1 ml-2">
+                                <h6 class="fw-bold mb-1">{{ $provinsi->nama_provinsi }}</h6>
+                            </div>
+                            <div class="d-flex ml-auto align-items-center">
+                                <h3 class="text-info fw-bold">{{ $provinsi->jumlah }}</h3>
+                            </div>
                         </div>
-                        <div class="flex-1 pt-1 ml-2">
-                            <h6 class="fw-bold mb-1">CSS</h6>
-                            <small class="text-muted">Cascading Style Sheets</small>
-                        </div>
-                        <div class="d-flex ml-auto align-items-center">
-                            <h3 class="text-info fw-bold">+$17</h3>
-                        </div>
-                    </div>
-                    <div class="separator-dashed"></div>
-                    <div class="d-flex">
-                        <div class="avatar">
-                            <img src="../assets/img/logoproduct.svg" alt="..." class="avatar-img rounded-circle">
-                        </div>
-                        <div class="flex-1 pt-1 ml-2">
-                            <h6 class="fw-bold mb-1">J.CO Donuts</h6>
-                            <small class="text-muted">The Best Donuts</small>
-                        </div>
-                        <div class="d-flex ml-auto align-items-center">
-                            <h3 class="text-info fw-bold">+$300</h3>
-                        </div>
-                    </div>
-                    <div class="separator-dashed"></div>
-                    <div class="d-flex">
-                        <div class="avatar">
-                            <img src="../assets/img/logoproduct3.svg" alt="..." class="avatar-img rounded-circle">
-                        </div>
-                        <div class="flex-1 pt-1 ml-2">
-                            <h6 class="fw-bold mb-1">Ready Pro</h6>
-                            <small class="text-muted">Bootstrap 4 Admin Dashboard</small>
-                        </div>
-                        <div class="d-flex ml-auto align-items-center">
-                            <h3 class="text-info fw-bold">+$350</h3>
-                        </div>
-                    </div>
-                    <div class="separator-dashed"></div>
-
+                        <div class="separator-dashed"></div>
+                    @endforeach
                 </div>
             </div>
         </div>
