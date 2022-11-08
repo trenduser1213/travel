@@ -41,10 +41,13 @@ class mitraDashboardController extends Controller
         ->select('peminats.*', 'mitra_marketings.nama as nama_mitra')
         ->get();
 
+        $username = Auth::user()->username;
+
         $data = [
         'Jamaah' => $jamaah,
         'Peminat' => $Peminat,
         'mitra' => MitraMarketing::where('id', $id_mitra)->first(),
+        'username' => $username,
         ];
 
 // ;       return dd(Auth::user());

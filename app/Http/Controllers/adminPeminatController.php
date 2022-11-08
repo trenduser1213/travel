@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Peminat;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class adminPeminatController extends Controller
 {
@@ -12,7 +13,7 @@ class adminPeminatController extends Controller
     {   
         // $jamaah = DataJamaah::all() ;
         $Peminat =DB::table('peminats')
-        ->join('mitra_marketings', 'peminats.mitra_marketing', '=', 'mitra_marketings.username')
+        ->join('mitra_marketings', 'peminats.mitra_marketing', '=', 'mitra_marketings.id')
         ->select('peminats.*', 'mitra_marketings.nama as nama_mitra')
         ->get();
 

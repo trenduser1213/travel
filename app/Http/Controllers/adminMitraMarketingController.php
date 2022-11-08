@@ -12,6 +12,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Str;
 use Nette\Utils\Random;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
 use Illuminate\Http\Request;
 
@@ -86,6 +87,7 @@ class adminMitraMarketingController extends Controller
         $inputUser->username = $username;
         $inputUser->password = Hash::make('password');
         $inputUser->save();
+        $inputUser->assignRole('mitra');
 
 
         Alert::success('Success', 'Sukses menambahkan MitraMarketing');

@@ -112,6 +112,12 @@
                                 <p>Hubungi Safari</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="/{{ $username }}/beranda" target="_blank">
+                                <i class="fab fa-chrome"></i>
+                                <p>Web Promo Saya</p>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
