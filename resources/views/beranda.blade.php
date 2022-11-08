@@ -86,7 +86,7 @@
                                 <a href="/{{ $mitra->username }}/about" class="theme-btn" tabindex="0">Baca
                                     Selengkapnya</a>
                                 <ul>
-                                    <li class="video-holder">
+                                    {{-- <li class="video-holder">
                                         <a href="{!! $about->link_video_embed !!}" class="video-btn" data-type="iframe"
                                             tabindex="0"></a>
                                     </li>
@@ -95,7 +95,7 @@
                                             tabindex="0">
                                             Lihat Video Kami
                                         </a>
-                                    </li>
+                                    </li> --}}
                                 </ul>
                             </div>
                         </div>

@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use Illuminate\Support\Facades\DB;
 use App\Models\MitraMarketing;
 use App\Models\Province;
 use App\Models\Regency;
@@ -11,6 +13,8 @@ use Illuminate\Support\Str;
 use Nette\Utils\Random;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Role;
+
 
 use Illuminate\Http\Request;
 
@@ -94,6 +98,7 @@ class adminMitraMarketingController extends Controller
         $inputUser->username = $username;
         $inputUser->password = Hash::make('password');
         $inputUser->save();
+        $inputUser->assignRole('mitra');
 
 
         Alert::success('Success', 'Sukses menambahkan MitraMarketing');
@@ -191,6 +196,9 @@ class adminMitraMarketingController extends Controller
      */
     public function destroy($id)
     {
+        $username = MitraMarketing::find($id)->username;
+        $idUser = DB::table('users')->where('username', $username)->delete();
+        
         $input = MitraMarketing::find($id);
         $input->delete();
         Alert::success('Success', 'Sukses hapus MitraMarketing');
