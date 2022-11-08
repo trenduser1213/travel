@@ -148,38 +148,42 @@
      <div class="modal fade" id="ModalWA" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
          <div class="modal-dialog" role="document">
-             <div class="modal-content">
-                 <div class="modal-header">
-                     <h5 class="modal-title" id="exampleModalLabel">Masukkan Kontak Anda</h5>
-                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                         <span aria-hidden="true">&times;</span>
-                     </button>
+             <form method="POST" action="/{{ $mitra->username }}/peminat/store">
+                 @csrf
+                 <div class="modal-content">
+                     <div class="modal-header">
+                         <h5 class="modal-title" id="exampleModalLabel">Masukkan Kontak Anda</h5>
+                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                             <span aria-hidden="true">&times;</span>
+                         </button>
+                     </div>
+                     <div class="modal-body">
+                         <form>
+                             <div class="form-group">
+                                 <label for="nama" class="col-form-label">Nama</label>
+                                 <input type="text" class="form-control" id="nama" name="nama"
+                                     placeholder="Masukkan nama anda" required>
+                             </div>
+                             <div class="form-group">
+                                 <label for="hp" class="col-form-label">No.HP/WhatsApp</label>
+                                 <input type="number" class="form-control" id="hp" name="hp"
+                                     value="62"
+                                     placeholder="Masukkan No. Whatsapp di awali dengan 62 (cth : 6281212341234)" required>
+                             </div>
+                             <div class="form-group">
+                                 <label for="email" class="col-form-label">Email</label>
+                                 <input type="text" class="form-control" id="email" name="email"
+                                     placeholder="Masukkan email anda (tidak wajib)">
+                             </div>
+                         </form>
+                     </div>
+                     <div class="modal-footer">
+                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                         <button type="submit" class="btn btn-primary">Kirim</button>
+                     </div>
                  </div>
-                 <div class="modal-body">
-                     <form method="POST" action="/kontak_jamaah">
-                         @csrf
-                         <div class="form-group">
-                             <label for="nama" class="col-form-label">Nama</label>
-                             <input type="text" class="form-control" id="nama" name="nama"
-                                 placeholder="Masukkan nama anda" required>
-                         </div>
-                         <div class="form-group">
-                             <label for="nomor_hp" class="col-form-label">No.HP/WhatsApp</label>
-                             <input type="number" class="form-control" id="no_hp" name="nomor_hp"
-                                 placeholder="Masukkan nomor HP/WA" required>
-                         </div>
-                         <div class="form-group">
-                             <label for="email" class="col-form-label">Email</label>
-                             <input type="email" class="form-control" id="email" name="email"
-                                 placeholder="Masukkan e-mail anda (tidak wajib)">
-                         </div>
-                 </div>
-                 <div class="modal-footer">
-                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                     <button type="submit" class="btn btn-primary">Kirim</button>
-                 </div>
-                 </form>
-             </div>
+             </form>
          </div>
      </div>
+     <!-- End Modal WhatsApp -->
  @endsection
