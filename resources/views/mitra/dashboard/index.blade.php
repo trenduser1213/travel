@@ -10,7 +10,7 @@
             <h1 class="pb-2 fw-bold">Dashboard Mitra</h1>
         </div>
     </div>
-    <div class="row">
+    {{-- <div class="row">
         <div class="col-sm-6 col-md-3">
             <div class="card card-stats card-round">
                 <div class="card-body ">
@@ -87,7 +87,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
 
     <div class="row">
