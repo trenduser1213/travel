@@ -490,15 +490,18 @@
                         <form>
                             <div class="form-group">
                                 <label for="nama" class="col-form-label">Nama</label>
-                                <input type="text" class="form-control" id="nama" name="nama" required>
+                                <input type="text" class="form-control" id="nama" name="nama"
+                                    placeholder="Masukkan nama anda" required>
                             </div>
                             <div class="form-group">
                                 <label for="hp" class="col-form-label">No.HP/WhatsApp</label>
-                                <input type="number" class="form-control" id="hp" name="hp" required>
+                                <input type="number" class="form-control" id="hp" name="hp" value="62"
+                                    placeholder="Masukkan No. Whatsapp di awali dengan 62 (cth : 6285845591668)" required>
                             </div>
                             <div class="form-group">
                                 <label for="email" class="col-form-label">Email</label>
-                                <input type="text" class="form-control" id="email" name="email">
+                                <input type="text" class="form-control" id="email" name="email"
+                                    placeholder="Masukkan email anda (tidak wajib)">
                             </div>
                         </form>
                     </div>

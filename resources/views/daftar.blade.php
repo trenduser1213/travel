@@ -61,15 +61,29 @@
                                                         / Female</option>
                                                 </select>
                                             </div>
-                                            <div class="col-lg-6 col-md-6 col-sm-6 col-12 form-group">
-                                                <label for="HP" class="form-label">No. HP</label>
-                                                <input type="tel" name="HP" id="HP"
-                                                    class="form-control @error('HP') is-invalid @enderror"
-                                                    placeholder="Masukkan nomor HP/WA" value="{{ old('HP') }}" required>
-                                                @error('HP')
-                                                    <small class="text-danger"> {{ $message }}</small>
-                                                @enderror
-                                            </div>
+                                            @if (old('HP') === null)
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-12 form-group">
+                                                    <label for="HP" class="form-label">No. HP</label>
+                                                    <input type="tel" name="HP" id="HP"
+                                                        class="form-control @error('HP') is-invalid @enderror"
+                                                        placeholder="Masukkan nomor HP/WA" value="62" required>
+                                                    @error('HP')
+                                                        <small class="text-danger"> {{ $message }}</small>
+                                                    @enderror
+                                                </div>
+                                            @elseif (old('HP') != null)
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-12 form-group">
+                                                    <label for="HP" class="form-label">No. HP</label>
+                                                    <input type="tel" name="HP" id="HP"
+                                                        class="form-control @error('HP') is-invalid @enderror"
+                                                        placeholder="Masukkan nomor HP/WA" value="{{ old('HP') }}"
+                                                        required>
+                                                    @error('HP')
+                                                        <small class="text-danger"> {{ $message }}</small>
+                                                    @enderror
+                                                </div>
+                                            @endif
+
                                             <div class="col-lg-6 col-md-6 col-sm-6 col-12 form-group">
                                                 <label for="email" class="form-label">Email</label>
                                                 <input type="email"
@@ -136,7 +150,7 @@
                                         <br>
                                         <h2>Data Alamat</h2>
                                         <div class="row">
-                                            <div class="col-lg-4 col-md-6 col-sm-6 col-12 form-group clearfix">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-12 form-group clearfix">
                                                 <label for="provinsi" class="form-label">Provinsi</label>
                                                 <select class="form-select" aria-label="Default select example"
                                                     name="provinsi" id="provinsi" style="font-size: 14px;" required>
@@ -148,30 +162,19 @@
                                                     @endforeach
                                                 </select>
                                             </div>
-                                            <div class="col-lg-4 col-md-6 col-sm-6 col-12 form-group clearfix">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-12 form-group clearfix">
                                                 <label for="kabupaten" class="form-label">Kabupaten</label>
-                                                <select class="form-select" aria-label="Default select example"
+                                                <select class="form-control" aria-label="Default select example"
                                                     name="kabupaten" id="kabupaten" style="font-size: 14px;" required>
                                                     <option selected style="font-size: 14px;" disabled>Pilih Kabupaten
                                                     </option>
-                                                    @foreach ($kabupaten as $kabupaten)
+                                                    {{-- @foreach ($kabupaten as $kabupaten)
                                                         <option value="{{ $kabupaten->id }}">{{ $kabupaten->name }}
                                                         </option>
-                                                    @endforeach
+                                                    @endforeach --}}
                                                 </select>
                                             </div>
-                                            <div class="col-lg-4 col-md-6 col-sm-6 col-12 form-group clearfix">
-                                                <label for="kecamatan" class="form-label">Kecamatan</label>
-                                                <select class="form-select" aria-label="Default select example"
-                                                    name="kecamatan" id="kecamatan" style="font-size: 14px;" required>
-                                                    <option selected style="font-size: 14px;" disabled>Pilih Kecamatan
-                                                    </option>
-                                                    @foreach ($kecamatan as $kecamatan)
-                                                        <option value="{{ $kecamatan->id }}">{{ $kecamatan->name }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
+
                                             <div class="col-lg-12 col-12 form-group">
                                                 <label for="alamat" class="form-label">Alamat Lengkap</label>
                                                 <textarea class="form-control" name="alamat" id="alamat" placeholder="Masukkan alamat lengkap dengan kode pos"
@@ -220,7 +223,14 @@
                                                 @enderror
                                             </div>
                                             <div class="submit-area">
-                                                <button type="submit" class="theme-btn submit-btn">Daftar</button>
+                                                <button type="submit" class="theme-btn submit-btn">Daftar</button> <br>
+                                                <br>
+                                                <small class="text-warning"><i class="fas fa-info-circle"></i> pastikan
+                                                    anda sudah
+                                                    mengisi seluruh
+                                                    formulir
+                                                    (kecuali passpor)
+                                                    dengan benar sebelum melanjutkan pendaftaran</small>
                                             </div>
                                         </div>
                                     </div>
@@ -334,4 +344,39 @@
         </div>
     </div>
     <!-- form-area-end -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script>
+        $(function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+        });
+        $(function() {
+
+            $('#provinsi').on('change', function() {
+                let id_provinsi = $('#provinsi').val();
+                console.log(id_provinsi);
+                $.ajax({
+                    url: "{{ route('postkabupaten') }}",
+                    type: 'POST',
+                    data: {
+                        "id_prov": id_provinsi
+                    },
+                    cache: false,
+
+                    success: function(data) {
+                        console.log(data);
+                        // console.log(data);
+                        $('#kabupaten').html(data);
+                    },
+                    error: function(data) {
+                        console.log('error:', data);
+                    }
+                })
+            })
+        })
+    </script>
 @endsection

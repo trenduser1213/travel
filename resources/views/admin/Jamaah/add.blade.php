@@ -40,15 +40,28 @@
                                         / Female</option>
                                 </select>
                             </div>
-                            <div class="col-lg-6 form-group">
-                                <label for="HP" class="form-label">No. HP</label>
-                                <input type="tel" name="HP" id="HP"
-                                    class="form-control @error('HP') is-invalid @enderror"
-                                    placeholder="Masukkan nomor HP/WA" value="{{ old('HP') }}" required>
-                                @error('HP')
-                                    <small class="text-danger"> {{ $message }}</small>
-                                @enderror
-                            </div>
+                            @if (old('HP') === null)
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-12 form-group">
+                                    <label for="HP" class="form-label">No. HP</label>
+                                    <input type="tel" name="HP" id="HP"
+                                        class="form-control @error('HP') is-invalid @enderror"
+                                        placeholder="Masukkan nomor HP/WA" value="62" required>
+                                    @error('HP')
+                                        <small class="text-danger"> {{ $message }}</small>
+                                    @enderror
+                                </div>
+                            @elseif (old('HP') != null)
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-12 form-group">
+                                    <label for="HP" class="form-label">No. HP</label>
+                                    <input type="tel" name="HP" id="HP"
+                                        class="form-control @error('HP') is-invalid @enderror"
+                                        placeholder="Masukkan nomor HP/WA" value="{{ old('HP') }}" required>
+                                    @error('HP')
+                                        <small class="text-danger"> {{ $message }}</small>
+                                    @enderror
+                                </div>
+                            @endif
+
                             <div class="col-lg-6 form-group">
                                 <label for="email" class="form-label">Email</label>
                                 <input type="email" class="form-control @error('email') is-invalid @enderror"
@@ -63,8 +76,8 @@
                                     Kependudukan)</label>
 
                                 <input type="number" class="form-control @error('NIK') is-invalid @enderror" name="NIK"
-                                    id="NIK" placeholder="Masukkan NIK sesuai KTP" value="{{ old('NIK') }}"
-                                    required>
+                                    id="NIK" placeholder="Masukkan NIK sesuai KTP (min. 16 digit)"
+                                    value="{{ old('NIK') }}" required>
                                 @error('NIK')
                                     <small class="text-danger"> {{ $message }}</small>
                                 @enderror
