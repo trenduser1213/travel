@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('hp');
             $table->string('wa');
             $table->string('alamat');
+            $table->string('email')->unique()->nullable();
             $table->string('kota')->nullable();
             $table->string('provinsi')->nullable();
             $table->string('foto')->nullable();

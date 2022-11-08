@@ -73,41 +73,42 @@
 @endsection --}}
 @extends('auth.base')
 @section('body')
-{{-- <H1 class="">Dashboard</H1> --}}
-<div class="wrapper wrapper-login">
-    <div class="container container-login animated fadeIn">
-        <h3 class="text-center">Sign In To Admin</h3>
-        <div class="login-form">
-            <form method="POST" action="{{ route('login') }}">
-                @csrf
-                <div class="form-group form-floating-label">
-                    <input id="email" type="email" class="form-control input-border-bottom @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-                    <label for="username" class="placeholder">Username</label>
-                </div>
-                <div class="form-group form-floating-label">
-                    <input id="password" type="password" class="form-control input-border-bottom @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-                    <label for="password" class="placeholder">Password</label>
-                    {{-- <div class="show-password">
+    {{-- <H1 class="">Dashboard</H1> --}}
+    <div class="wrapper wrapper-login">
+        <div class="container container-login animated fadeIn">
+            <h3 class="text-center">Sign In</h3>
+            <div class="login-form">
+                <form method="POST" action="{{ route('login') }}">
+                    @csrf
+                    <div class="form-group form-floating-label">
+                        <input id="email" type="email"
+                            class="form-control input-border-bottom @error('email') is-invalid @enderror" name="email"
+                            value="{{ old('email') }}" required autocomplete="email" autofocus>
+                        <label for="username" class="placeholder">Username</label>
+                    </div>
+                    <div class="form-group form-floating-label">
+                        <input id="password" type="password"
+                            class="form-control input-border-bottom @error('password') is-invalid @enderror" name="password"
+                            required autocomplete="current-password">
+                        <label for="password" class="placeholder">Password</label>
+                        {{-- <div class="show-password">
                         <i class="icon-eye"></i>
                     </div> --}}
-                </div>
-                <div class="row form-sub m-0">
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="rememberme">
-                        <label class="custom-control-label" for="rememberme">{{ __('Remember Me') }}</label>
+                    </div>
+                    <div class="row form-sub m-0">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="rememberme">
+                            <label class="custom-control-label" for="rememberme">{{ __('Remember Me') }}</label>
+                        </div>
+
+                        <a href="{{ route('password.request') }}" class="link float-right">Forget Password ?</a>
+                    </div>
+                    <div class="form-action mb-3">
+                        <button type="submit" class="btn btn-primary btn-rounded btn-login">{{ __('Login') }}</button>
                     </div>
 
-                    <a href="{{ route('password.request') }}" class="link float-right">Forget Password ?</a>
-                </div>
-                <div class="form-action mb-3">
-                    <button type="submit" class="btn btn-primary btn-rounded btn-login">{{ __('Login') }}</button>
-                </div>
-                <div class="login-account">
-                    <span class="msg">Don't have an account yet ?</span>
-                    <a href="#" id="show-signup" class="link">Sign Up</a>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
-</div>
 @endsection

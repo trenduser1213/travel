@@ -61,15 +61,29 @@
                                                         / Female</option>
                                                 </select>
                                             </div>
-                                            <div class="col-lg-6 col-md-6 col-sm-6 col-12 form-group">
-                                                <label for="HP" class="form-label">No. HP</label>
-                                                <input type="tel" name="HP" id="HP"
-                                                    class="form-control @error('HP') is-invalid @enderror"
-                                                    placeholder="Masukkan nomor HP/WA" value="{{ old('HP') }}" required>
-                                                @error('HP')
-                                                    <small class="text-danger"> {{ $message }}</small>
-                                                @enderror
-                                            </div>
+                                            @if (old('HP') === null)
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-12 form-group">
+                                                    <label for="HP" class="form-label">No. HP</label>
+                                                    <input type="tel" name="HP" id="HP"
+                                                        class="form-control @error('HP') is-invalid @enderror"
+                                                        placeholder="Masukkan nomor HP/WA" value="62" required>
+                                                    @error('HP')
+                                                        <small class="text-danger"> {{ $message }}</small>
+                                                    @enderror
+                                                </div>
+                                            @elseif (old('HP') != null)
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-12 form-group">
+                                                    <label for="HP" class="form-label">No. HP</label>
+                                                    <input type="tel" name="HP" id="HP"
+                                                        class="form-control @error('HP') is-invalid @enderror"
+                                                        placeholder="Masukkan nomor HP/WA" value="{{ old('HP') }}"
+                                                        required>
+                                                    @error('HP')
+                                                        <small class="text-danger"> {{ $message }}</small>
+                                                    @enderror
+                                                </div>
+                                            @endif
+
                                             <div class="col-lg-6 col-md-6 col-sm-6 col-12 form-group">
                                                 <label for="email" class="form-label">Email</label>
                                                 <input type="email"
@@ -160,6 +174,7 @@
                                                     @endforeach --}}
                                                 </select>
                                             </div>
+
                                             <div class="col-lg-12 col-12 form-group">
                                                 <label for="alamat" class="form-label">Alamat Lengkap</label>
                                                 <textarea class="form-control" name="alamat" id="alamat" placeholder="Masukkan alamat lengkap dengan kode pos"
@@ -208,7 +223,14 @@
                                                 @enderror
                                             </div>
                                             <div class="submit-area">
-                                                <button type="submit" class="theme-btn submit-btn">Daftar</button>
+                                                <button type="submit" class="theme-btn submit-btn">Daftar</button> <br>
+                                                <br>
+                                                <small class="text-warning"><i class="fas fa-info-circle"></i> pastikan
+                                                    anda sudah
+                                                    mengisi seluruh
+                                                    formulir
+                                                    (kecuali passpor)
+                                                    dengan benar sebelum melanjutkan pendaftaran</small>
                                             </div>
                                         </div>
                                     </div>

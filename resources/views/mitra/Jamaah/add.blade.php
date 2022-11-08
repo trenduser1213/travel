@@ -11,7 +11,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <form action="{{route('mitraDashboard.store')}}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('mitraDashboard.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('post')
                 {{ csrf_field() }}
@@ -44,7 +44,8 @@
                                 <label for="HP" class="form-label">No. HP</label>
                                 <input type="tel" name="HP" id="HP"
                                     class="form-control @error('HP') is-invalid @enderror"
-                                    placeholder="Masukkan nomor HP/WA" value="{{ old('HP') }}" required>
+                                    placeholder="Masukkan nomor HP/WA (cth : 62812312341234)" value="{{ old('HP') }}"
+                                    required>
                                 @error('HP')
                                     <small class="text-danger"> {{ $message }}</small>
                                 @enderror
@@ -63,8 +64,8 @@
                                     Kependudukan)</label>
 
                                 <input type="number" class="form-control @error('NIK') is-invalid @enderror" name="NIK"
-                                    id="NIK" placeholder="Masukkan NIK sesuai KTP" value="{{ old('NIK') }}"
-                                    required>
+                                    id="NIK" placeholder="Masukkan NIK sesuai KTP (min. 16 digit)"
+                                    value="{{ old('NIK') }}" required>
                                 @error('NIK')
                                     <small class="text-danger"> {{ $message }}</small>
                                 @enderror

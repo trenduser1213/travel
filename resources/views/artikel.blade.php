@@ -57,7 +57,7 @@
                         <div class="col col-md-4">
                             <div class="wpo-blog-sidebar">
                                 <div class="widget search-widget">
-                                    <form action="/artikel">
+                                    <form action="/{{ $mitra->username }}/artikel">
                                         <div>
                                             <input type="text" class="form-control" placeholder="Masukkan keyword..."
                                                 name="search" value="{{ request('search') }}">

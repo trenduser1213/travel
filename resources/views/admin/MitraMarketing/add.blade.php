@@ -46,8 +46,8 @@
 
                                 <div class="form-group">
                                     <label for="wa">Nomor WhatsApp</label>
-                                    <input type="tel" class="form-control" id="wa" name="wa"
-                                        placeholder="Masukkan Nomor WhatsApp" value="" required>
+                                    <input type="tel" class="form-control" id="wa" name="wa" value="62"
+                                        placeholder="Masukkan No. Whatsapp di awali dengan 62 (cth : 6281212341234)"required>
                                     @error('wa')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror

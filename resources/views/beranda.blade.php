@@ -29,22 +29,23 @@
         </div>
     </section>
     <!-- end of hero slider -->
-    <script>
-        let start = 0;
-        otomatis();
-
-        function otomatis() {
-            const slide = document.querySelectorAll(".slide");
-            const slick = document.querySelectorAll(".slick-next")
-
-
-            slide[start].style.display = "block";
-            start++;
-
-            setTimeout(slick, 2000);
-
-        }
-    </script>
+    {{-- <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            @foreach ($slider as $slider)
+                <div class="carousel-item" data-bs-interval="2000">
+                    <img src="{{ asset('assets/') }}../../{{ $slider->gambar }}" class="d-block w-100" alt="...">
+                </div>
+            @endforeach
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div> --}}
     <!-- about-area start -->
 
     <div class="wpo-about-area-3 section-padding">
@@ -489,15 +490,18 @@
                         <form>
                             <div class="form-group">
                                 <label for="nama" class="col-form-label">Nama</label>
-                                <input type="text" class="form-control" id="nama" name="nama" required>
+                                <input type="text" class="form-control" id="nama" name="nama"
+                                    placeholder="Masukkan nama anda" required>
                             </div>
                             <div class="form-group">
                                 <label for="hp" class="col-form-label">No.HP/WhatsApp</label>
-                                <input type="number" class="form-control" id="hp" name="hp" required>
+                                <input type="number" class="form-control" id="hp" name="hp" value="62"
+                                    placeholder="Masukkan No. Whatsapp di awali dengan 62 (cth : 6285845591668)" required>
                             </div>
                             <div class="form-group">
                                 <label for="email" class="col-form-label">Email</label>
-                                <input type="text" class="form-control" id="email" name="email">
+                                <input type="text" class="form-control" id="email" name="email"
+                                    placeholder="Masukkan email anda (tidak wajib)">
                             </div>
                         </form>
                     </div>
