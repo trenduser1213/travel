@@ -21,19 +21,6 @@ class userseeder extends Seeder
      */
     public function run()
     {
-        $admin_nama ='Safari Admin';
-        $admin_email ='safariglobalperkasa.pt@gmail.com';
-        $admin_pass = Hash::make('adminSafari');
-        $admin_username = 'Safari';
-        $admin =  User::create([
-            'name' => $admin_nama,
-            'email' => $admin_email,
-            'password' => $admin_pass,
-            'username' => $admin_username
-        ]);
-        $admin->assignRole('admin');
-
-
         $mitra1_nama = 'Safari Mitra';
         $mitra1_username = 'Safari';
         $mitra1 = User::create([
@@ -50,9 +37,9 @@ class userseeder extends Seeder
             'hp' => '081232324112', 
             'wa' => '6281232324112',
             'alamat' => 'Jl. Pemuda 108 - 116 Lt. 1 No. 07',
-            'kota' => '',
-            'provinsi' => '',
-            'jabatan' => '',
+            'kota' => '3578',
+            'provinsi' => '35',
+            'jabatan' => 'Marketing',
             'status' => '1', 
         ]);
 
@@ -72,9 +59,9 @@ class userseeder extends Seeder
             'hp' => '081252397285', 
             'wa' => '6281252397285',
             'alamat' => 'Jl Karah 83 RT 1RW 06 Karah Jambangan',
-            'kota' => '',
-            'provinsi' => '',
-            'jabatan' => '',
+            'kota' => '3578',
+            'provinsi' => '35',
+            'jabatan' => 'Marketing',
             'status' => '1', 
         ]);
 
@@ -94,9 +81,9 @@ class userseeder extends Seeder
             'hp' => '081234044195', 
             'wa' => '6281234044195',
             'alamat' => 'Jl Saidani Tambak Sumur Waru',
-            'kota' => '',
-            'provinsi' => '',
-            'jabatan' => '',
+            'kota' => '3515',
+            'provinsi' => '35',
+            'jabatan' => 'Marketing',
             'status' => '1', 
         ]);
 
@@ -116,9 +103,9 @@ class userseeder extends Seeder
             'hp' => '081259424480', 
             'wa' => '6281259424480',
             'alamat' => 'Perum Bumi Cabean Asri E32 Candi',
-            'kota' => '',
-            'provinsi' => '',
-            'jabatan' => '',
+            'kota' => '3515',
+            'provinsi' => '35',
+            'jabatan' => 'Marketing',
             'status' => '1', 
         ]);
 
@@ -138,9 +125,9 @@ class userseeder extends Seeder
             'hp' => '081295741965', 
             'wa' => '6281295741965',
             'alamat' => 'Ngeni Permai Gang 212, Waru',
-            'kota' => '',
-            'provinsi' => '',
-            'jabatan' => '',
+            'kota' => '3515',
+            'provinsi' => '35',
+            'jabatan' => 'Marketing',
             'status' => '1', 
         ]);
 
@@ -160,9 +147,9 @@ class userseeder extends Seeder
             'hp' => '082244556209', 
             'wa' => '6282244556209',
             'alamat' => 'JL Anyelir No 42 Tulungrejo',
-            'kota' => '',
-            'provinsi' => '',
-            'jabatan' => '',
+            'kota' => '3515',
+            'provinsi' => '35',
+            'jabatan' => 'Marketing',
             'status' => '1', 
         ]);
 
@@ -182,13 +169,24 @@ class userseeder extends Seeder
             'hp' => '081232324112', 
             'wa' => '6281232324112',
             'alamat' => 'Jl Ngeni Permai 212',
-            'kota' => '',
-            'provinsi' => '',
-            'jabatan' => '',
+            'kota' => '3515',
+            'provinsi' => '35',
+            'jabatan' => 'Marketing',
             'status' => '1', 
         ]);
 
-
+        $admin_nama ='Safari Admin';
+        $admin_email ='safariglobalperkasa.pt@gmail.com';
+        $admin_pass = Hash::make('adminSafari');
+        $admin_username = 'Safari';
+        $admin =  User::create([
+            'id' => 999,
+            'name' => $admin_nama,
+            'email' => $admin_email,
+            'password' => $admin_pass,
+            'username' => $admin_username
+        ]);
+        $admin->assignRole('admin');
 
     }
 }

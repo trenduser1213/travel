@@ -10,15 +10,24 @@ use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Str;
 use Nette\Utils\Random;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 
 class adminMitraMarketingController extends Controller
 {
     public function index()
-    {
+    {   
+        $mitra = DB::table('mitra_marketings')
+        ->join('provinces', 'mitra_marketings.provinsi', '=', 'provinces.id')
+        ->join('regencies', 'mitra_marketings.kota', '=', 'regencies.id')
+        ->select('mitra_marketings.*', 'provinces.name as nama_provinsi', 'regencies.name as nama_kabupaten')
+        ->get();
+        
+        // dd($mitra);
+
         $data = [
-            'MitraMarketing' => MitraMarketing::all()     
+            'MitraMarketing' => $mitra     
         ];
         return view('admin.MitraMarketing.index', $data);
     }
@@ -70,11 +79,12 @@ class adminMitraMarketingController extends Controller
         $input->hp= $request->hp ;
         $input->wa = $request->wa ;
         $input->alamat = $request->alamat ;
+        $input->email = $request->email ;
         $input->kota = $request->kabupaten ;
         $input->provinsi = $request->provinsi ;
         $input->jabatan = $request->jabatan ;
         $input->status = 1 ;
-        $input->username = $username ;        
+        $input->username = $username;        
         $input->foto = $namePath;
         $input->save();
 
@@ -131,6 +141,10 @@ class adminMitraMarketingController extends Controller
         if(isset($request->nama)){
             $input->nama = $request->nama;
             $inputUser->name = $request->nama;
+        }
+        if(isset($request->email)){
+            $input->email = $request->email;
+            $inputUser->email = $request->email;
         }        
         if(isset($request->hp)){
             $input->hp =$request->hp;

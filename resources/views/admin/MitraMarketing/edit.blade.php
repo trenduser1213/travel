@@ -16,10 +16,11 @@
 
     <div class="row">
         <div class="col-md-12">
-            <form action="{{ route('adminMitraMarketing.update',$MitraMarketing->id) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('adminMitraMarketing.update', $MitraMarketing->id) }}" method="POST"
+                enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
-                @method("PUT")
+                @method('PUT')
                 {{ csrf_field() }}
                 <div class="card">
 
@@ -88,6 +89,14 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" class="form-control" id="email" name="email"
+                                        placeholder="Masukkan email" value="{{ $MitraMarketing->email }}" required>
+                                    @error('email')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
                                     <label for="provinsi">Provinsi</label>
                                     <select name="provinsi" id="provinsi" class="form-control" required>
                                         <option value="-" selected disabled>Pilih Provinsi</option>
@@ -105,7 +114,7 @@
                                     <label for="kabupaten">Kabupaten</label>
                                     <select name="kabupaten" id="kabupaten" class="form-control" required>
                                         <option value="-" selected disabled>Pilih Kabupaten</option>
-                                        
+
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -149,29 +158,33 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script>
-        $(function () {
+        $(function() {
             $.ajaxSetup({
-                headers : {'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')}
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
             });
         });
-        $(function(){
-            
-            $('#provinsi').on('change',function(){
+        $(function() {
+
+            $('#provinsi').on('change', function() {
                 let id_provinsi = $('#provinsi').val();
                 console.log(id_provinsi);
                 $.ajax({
-                    url : "{{route('postkabupaten')}}",
-                    type : 'POST',
-                    data : {"id_prov" : id_provinsi},
-                    cache : false,
+                    url: "{{ route('postkabupaten') }}",
+                    type: 'POST',
+                    data: {
+                        "id_prov": id_provinsi
+                    },
+                    cache: false,
 
-                    success: function(data ){
+                    success: function(data) {
                         console.log(data);
                         // console.log(data);
-                        $('#kabupaten').html(data); 
+                        $('#kabupaten').html(data);
                     },
-                    error: function(data){
-                        console.log('error:',data);
+                    error: function(data) {
+                        console.log('error:', data);
                     }
                 })
             })

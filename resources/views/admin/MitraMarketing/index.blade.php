@@ -46,7 +46,7 @@
                                         <td>{{ $n++ }}</td>
                                         <td>{{ $MitraMarketing->username }}</td>
                                         <td>{{ $MitraMarketing->nama }}</td>
-                                        <td>{{ $MitraMarketing->kota }}</td>
+                                        <td>{{ $MitraMarketing->nama_kabupaten }}</td>
                                         <td>{{ $MitraMarketing->jabatan }}</td>
                                         <td>
                                             <button class="btn btn-info btn-sm" style="margin: 5px" data-toggle="modal"
@@ -125,14 +125,14 @@
                                                             <label for="Nama" class="col-md-4">Provinsi
                                                             </label>
                                                             <div class="col-md-8">
-                                                                <span>{{ $MitraMarketing->provinsi }}</span>
+                                                                <span>{{ $MitraMarketing->nama_provinsi }}</span>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row" style="margin-bottom: -15px">
                                                             <label for="Nama" class="col-md-4">Kota/Kabupaten
                                                             </label>
                                                             <div class="col-md-8">
-                                                                <span>{{ $MitraMarketing->kota }}</span>
+                                                                <span>{{ $MitraMarketing->nama_kabupaten }}</span>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row" style="margin-bottom: -15px">
