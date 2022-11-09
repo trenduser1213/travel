@@ -59,7 +59,7 @@ class adminGaleriVideoController extends Controller
         $input->kategori_galeri = $kategori_galeri ;
         $input->is_tampil_di_beranda= $request->is_tampil_di_beranda ;
         $input->is_tampil_di_galeri = $request->is_tampil_di_galeri ;
-        $input->link = $request->link;
+        $input->link = '<iframe '.$request->link.' title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
         $input->save();
         // Alert::success('Congrats', 'You\'ve Successfully Registered');
         return redirect()->route('adminGaleri.index')
@@ -114,9 +114,10 @@ class adminGaleriVideoController extends Controller
             $input->is_tampil_di_galeri=$request->is_tampil_di_galeri;
         }
         if (isset($request->link)) {
-            $input->link = $request->link;
+            $input->link = '<iframe '.$request->link.' title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
         }
         $input->update();
+        
         return redirect()->route('adminGaleri.index');
 
     }

@@ -105,7 +105,7 @@
                             <div class="form-group">
                                 <label for="foto">Ganti Foto</label>
                                 <input type="file" class="form-control file-input @error('gambar2') is-invalid @enderror"
-                                    accept=".jfif,.jpg,.jpeg,.png,.gif" id="image" name="gambar2">
+                                    accept=".jfif,.jpg,.jpeg,.png,.gif" id="image2" name="gambar2">
                                 <img id="preview-image-before-upload" alt="preview image"
                                     style="max-width:100%; margin-top:10px"> <br>
                                 <small class="text-danger"><i class="fa fa-info-circle"></i> Masukkan foto
@@ -115,6 +115,7 @@
                                         <li>ukuran maksimal 2 MB</li>
                                         <li>Resolusi 770x500 px (1:1) </li>
                                     </ul>
+                                    Foto memang tidak di preview, namun perubahan akan tetap tersimpan
                                 </small>
                                 @error('gambar2')
                                     <div class="alert alert-danger">{{ $message }}</div>
@@ -153,9 +154,8 @@
                                 <label for="foto">Ganti Foto</label>
                                 <input type="file"
                                     class="form-control file-input @error('gambar3') is-invalid @enderror"
-                                    accept=".jfif,.jpg,.jpeg,.png,.gif" id="image" name="gambar3">
-                                <img id="preview-image-before-upload" alt="preview image"
-                                    style="max-width:50%; margin-top:10px"> <br>
+                                    accept=".jfif,.jpg,.jpeg,.png,.gif" id="image3" name="gambar3">
+
                                 <small class="text-danger"><i class="fa fa-info-circle"></i> Masukkan foto
                                     dengan
                                     ketentuan :
@@ -163,6 +163,7 @@
                                         <li>ukuran maksimal 2 MB</li>
                                         <li>Resolusi 770x500 px (1:1) </li>
                                     </ul>
+                                    Foto memang tidak di preview, namun perubahan akan tetap tersimpan
                                 </small>
                                 @error('gambar3')
                                     <div class="alert alert-danger">{{ $message }}</div>

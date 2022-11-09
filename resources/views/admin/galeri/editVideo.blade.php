@@ -18,9 +18,9 @@
 
     <div class="row">
         <div class="col-md-12">
-            <form action="{{ route('adminGaleriVideo.store') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('adminGaleriVideo.update', $video->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
-                @method('post')
+                @method('put')
                 {{ csrf_field() }}
 
                 <div class="card">
@@ -36,12 +36,16 @@
                                 <div class="form-group">
                                     <label for="link">Link Video</label>
                                     <textarea name="link" id="link" rows="3" class="form-control" required>{{ $video->link }}</textarea>
-
+                                    <small class="text-warning">Jika ingin mengganti link video, silahkan ganti link src nya
+                                        saja. contoh :
+                                        src="https://www.youtube.com/embed/hxz0wnyBfT8" menjadi
+                                        src="https://www.youtube.com/embed/sdhj08XQfD8"</small>
                                     <button class="btn btn-primary btn-sm mt-2" type="button" data-toggle="collapse"
                                         data-target="#collapseInfoVideo" aria-expanded="false"
                                         aria-controls="collapseExample">
                                         Bagaimana cara mendapatkan link Video?
                                     </button>
+
                                     <div class="collapse" id="collapseInfoVideo">
                                         <div class="card card-body">
                                             1. Kunjungi video yang anda ingin masukkan dari youtube <br>

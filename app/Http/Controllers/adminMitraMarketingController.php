@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\DB;
 use App\Models\MitraMarketing;
 use App\Models\Province;
 use App\Models\Regency;
