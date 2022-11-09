@@ -29,7 +29,7 @@
                                 <div class="form-group">
                                     <label for="nama">Nama</label>
                                     <input type="text" class="form-control" id="nama" name="nama"
-                                        placeholder="Masukkan Nama Produk" value="" required>
+                                        placeholder="Masukkan Nama Mitra/Marketing" value="" required>
                                     @error('nama')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
