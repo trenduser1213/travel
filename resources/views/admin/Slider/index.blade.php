@@ -54,7 +54,7 @@
                                 @foreach ($Slider as $Slider)
                                     <tr>
                                         <td>{{ $n++ }}</td>
-                                        <td><img src="{{ $Slider->gambar }}" alt="{{ $Slider->judul }}"
+                                        <td><img src="{{ asset('assets/images/slider') }}/{{ $Slider->gambar }}" alt="{{ $Slider->judul }}"
                                                 style="max-height: 125px"></td>
                                         <td>
                                             <p class="mt-2 mb-2">{{ $Slider->teks1 }}</p>

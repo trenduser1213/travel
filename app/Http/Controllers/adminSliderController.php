@@ -50,13 +50,13 @@ class adminSliderController extends Controller
         $image = $request->file('gambar');
         $destinationPath = 'assets/images/slider';
         $profileImage = date('YmdHis') . uniqid()."." . $image->getClientOriginalExtension();
-        $namePath=$image->move($destinationPath, $profileImage);
+        $image->move($destinationPath, $profileImage);
 
         $input = new Slider;
         $input->teks1 = $request->teks1;
         $input->teks2 = $request->teks2;
         $input->is_tampil = $request->is_tampil ;
-        $input->gambar = $namePath ;
+        $input->gambar = $profileImage ;
         $input->save();
         Alert::success('Success', 'Sukses menambahkan slider');
         return redirect()->route('adminSlider.index');

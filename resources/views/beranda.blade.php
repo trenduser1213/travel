@@ -11,7 +11,7 @@
             @foreach ($slider as $slider)
                 <div class="slide">
                     <div class="container">
-                        <img src="{{ asset('assets/') }}../../{{ $slider->gambar }}" alt="{{ $slider->gambar }}"
+                        <img src="{{ asset('assets/images/slider') }}/{{ $slider->gambar }}" alt="{{ $slider->gambar }}"
                             class="slider-bg">
                         <div class="row">
                             <div class="col col-md-8 col-md-offset-2 slide-caption">

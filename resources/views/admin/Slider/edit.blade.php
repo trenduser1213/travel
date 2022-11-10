@@ -21,7 +21,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="old">Foto Sekarang</label> <br>
-                                    <img src="{{ '/assets' }}../../../{{ $Slider->gambar }}" alt="{{ $Slider->teks2 }}"
+                                    <img src="{{ asset('assets/images/slider') }}/{{ $Slider->gambar }}" alt="{{ $Slider->teks2 }}"
                                         style="max-width: 100%; border :1px black">
                                 </div>
                                 <div class="form-group">
