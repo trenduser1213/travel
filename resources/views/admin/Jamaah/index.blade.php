@@ -132,13 +132,13 @@
                                                                                 <option value="selesai">Selesai </option>
                                                                             @elseif($Jamaah->status === 'dikerjakan')
                                                                                 <option value="diterima">Diterima</option>
-                                                                                <option value="dikerjakan" selected>
-                                                                                    Dikerjakan
+                                                                                <option value="dikonfirmasi" selected>
+                                                                                    dikonfirmasi
                                                                                 </option>
                                                                                 <option value="selesai">Selesai </option>
                                                                             @elseif($Jamaah->status === 'selesai')
                                                                                 <option value="diterima">Diterima</option>
-                                                                                <option value="dikerjakan">Dikerjakan
+                                                                                <option value="dikonfirmasi">dikonfirmasi
                                                                                 </option>
                                                                                 <option value="selesai" selected>Selesai
                                                                                 </option>
