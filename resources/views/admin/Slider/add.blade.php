@@ -28,6 +28,13 @@
                                         <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
+                                <small class="text-danger"><i class="fa fa-info-circle"></i> Masukkan foto dengan
+                                    ketentuan :
+                                    <ul>
+                                        <li>ukuran maksimal 2 MB</li>
+                                        <li>resolusi 1920x1088x</li>
+                                    </ul>
+                                </small>
                                 <div class="form-group">
                                     <label for=""> Preview Foto</label> <br>
                                     <img id="preview-image-before-upload" alt="preview image" style="max-height:250px;">

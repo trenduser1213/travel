@@ -41,7 +41,7 @@
                                             <h3><a
                                                     href="{{ route('detailArtikel', ['post' => $artikel->slug, 'mitra' => $mitra->username]) }}">{{ $artikel->judul }}</a>
                                             </h3>
-                                            <p>{{ $artikel->excerpt }} ...</p>
+                                            {!! $artikel->excerpt !!} ...
                                             <div class="entry-bottom">
                                                 <a href="{{ route('detailArtikel', ['post' => $artikel->slug, 'mitra' => $mitra->username]) }}"
                                                     class="read-more">Baca

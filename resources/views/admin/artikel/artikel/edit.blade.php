@@ -85,10 +85,11 @@
                         </div>
                         <div class="form-group">
                             <label for="judul" class="col-md-4 col-md-offset-1 control-label">Tampilkan
-                                di Galeri?</label>
-                            <select class="form-control" name="is_tampil_di_galeri" id="is_tampil_di_galeri" required>
+                                di Halaman Artikel?</label>
+                            <select class="form-control" name="is_tampil_di_halaman_artikel"
+                                id="is_tampil_di_halaman_artikel" required>
                                 <option value="-" disabled selected>Pilih</option>
-                                @if ($Artikel->is_tampil_di_galeri === 'tidak')
+                                @if ($Artikel->is_tampil_di_halaman_artikel === 'tidak')
                                     <option value="ya">Ya</option>
                                     <option value="tidak" selected>Tidak</option>
                                 @else

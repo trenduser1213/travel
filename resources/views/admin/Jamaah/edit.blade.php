@@ -101,7 +101,7 @@
                                 <div class="file-drop-area">
                                     <input type="file" class="file-input @error('foto_KTP') is-invalid @enderror"
                                         accept=".jfif,.jpg,.jpeg,.png,.gif" style="font-size: small; ;margin-top:-25px;"
-                                        id="image" name="foto_KTP" required>
+                                        id="image" name="foto_KTP">
                                 </div>
                                 @error('foto_KTP')
                                     <small class="text-danger"> {{ $message }}</small>
@@ -117,7 +117,7 @@
                                 <div class="file-drop-area">
                                     <input type="file" class="file-input2 @error('foto_vaksin') is-invalid @enderror"
                                         accept=".jfif,.jpg,.jpeg,.png,.gif" style="font-size: small;margin-top:-25px;"
-                                        id="image2" name="foto_vaksin" required>
+                                        id="image2" name="foto_vaksin">
                                 </div>
                                 @error('foto_vaksin')
                                     <small class="text-danger"> {{ $message }}</small>
@@ -153,23 +153,14 @@
                                 </select>
                             </div>
                             <div class="col-lg-6 form-group clearfix">
-                                <label for="kabupaten" class="form-label">Kabupaten</label>
-                                <select class="form-control" aria-label="Default select example" name="kabupaten"
-                                    id="kabupaten" style="font-size: 14px;" required>
-                                    {{-- <option style="font-size: 14px;" disabled>Pilih Kabupaten
-                                    </option> --}}
-                                    {{-- <option value="{{ $kabupaten->id }}" disabled>{{ $kabupaten->name }}
-                                    </option> --}}
-                                    @foreach ($kabupaten as $kabupaten)
-                                        @if ($Jamaah->kabupaten === $kabupaten->id)
-                                            <option value="{{ $kabupaten->id }}" disabled>{{ $kabupaten->name }}
-                                            </option>
-                                        @else
-                                            <option value="{{ $kabupaten->id }}" hidden>{{ $kabupaten->name }}
-                                            </option>
-                                        @endif
-                                    @endforeach
+
+                                <label for="kabupaten">Kabupaten</label>
+                                <select name="kabupaten" id="kabupaten" class="form-control" required>
+                                    <option value="-" selected disabled>Pilih Kabupaten</option>
+
                                 </select>
+                                <small class="text-warning"><i class="fas fa-info-circle"></i> pilih provinsi terlebih
+                                    dahulu apabila kabupaten tidak muncul</small>
                             </div>
                             <div class="col-lg-12 col-12 form-group">
                                 <label for="alamat" class="form-label">Alamat Lengkap</label>
@@ -251,7 +242,7 @@
                                 <label for="setoran_awal" class="form-label">Setoran Awal</label>
                                 <input type="number" class="form-control  @error('setoran_awal') is-invalid @enderror"
                                     name="setoran_awal" id="setoran_awal" placeholder="Masukkan jumlah setoran pertama"
-                                    value="{{ old('setoran_awal') }}" required>
+                                    value="{{ $Jamaah->setoran_awal }}" required>
                                 @error('setoran_awal')
                                     <small class="text-danger"> {{ $message }}</small>
                                 @enderror
@@ -282,7 +273,7 @@
                 let id_provinsi = $('#provinsi').val();
                 console.log(id_provinsi);
                 $.ajax({
-                    url: "{{ route('kabupaten') }}",
+                    url: "{{ route('postkabupaten') }}",
                     type: 'POST',
                     data: {
                         "id_prov": id_provinsi
