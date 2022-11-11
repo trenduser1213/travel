@@ -35,7 +35,7 @@ use App\Http\Controllers\adminPeminatController;
 use App\Http\Controllers\mitraDashboardController;
 
 use App\Http\Controllers\RegionController;
-
+use Illuminate\Support\Facades\Auth;
 use App\Models\CategoryPost;
 use App\Models\KontakJamaah;
 use App\Models\Post;
@@ -110,7 +110,7 @@ Route::post('/{mitra:username}/daftar/{produk:slug}/store', [ProdukController::c
 // Route::get('/kabupaten/{id}', [RegionController::class,'dataKabupaten'])->name('getkabupaten');
 Route::post('/postkabupaten', [RegionController::class,'dataKabupaten'])->name('postkabupaten');
 
-// Auth::routes();
+Auth::routes();
 Route::get('/login', [LoginController::class,'show'])->name('show');
 Route::post('/login', [LoginController::class,'login'])->name('login');
 Route::post('/logout',[LoginController::class,'logout'])->name('logout');

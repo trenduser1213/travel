@@ -35,7 +35,7 @@
                                 </ul>
                             </div>
                             <h2>{{ $post->judul }}</h2>
-                            {{ $post->body }}
+                            {!! $post->body !!}
                         </div>
                     </div>
                 </div>
@@ -66,7 +66,6 @@
                                         <div class="img-holder">
                                             <img src="{{ asset('assets/') }}../../{{ $artikel->gambar }}"
                                                 alt="{{ $artikel->slug }}">
-
                                         </div>
                                         <div class="details">
                                             <h4><a href="#">{{ $artikel->judul }}</a></h4>

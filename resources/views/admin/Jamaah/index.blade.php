@@ -53,7 +53,7 @@
                                         <td>{{ $Jamaah->nama_provinsi }}</td>
                                         <td>{{ $Jamaah->nama_kabupaten }}</td>
                                         <td>
-                                            {{ $Jamaah->nama_mitra}}
+                                            {{ $Jamaah->nama_mitra }}
                                         </td>
                                         <td>
                                             @if ($Jamaah->status === 'diterima')
@@ -110,7 +110,8 @@
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
-                                                    <form action="{{ route('adminJamaah.update', $Jamaah->id) }}" method="post">
+                                                    <form action="{{ route('adminJamaah.update', $Jamaah->id) }}"
+                                                        method="post">
                                                         @csrf
                                                         @method('PUT')
                                                         {{ csrf_field() }}
@@ -126,16 +127,19 @@
                                                                             @if ($Jamaah->status === 'diterima')
                                                                                 <option value="diterima" selected>Diterima
                                                                                 </option>
-                                                                                <option value="dikerjakan">Dikerjakan</option>
+                                                                                <option value="dikonfirmasi">Dikonfirmasi
+                                                                                </option>
                                                                                 <option value="selesai">Selesai </option>
                                                                             @elseif($Jamaah->status === 'dikerjakan')
                                                                                 <option value="diterima">Diterima</option>
-                                                                                <option value="dikerjakan" selected>Dikerjakan
+                                                                                <option value="dikonfirmasi" selected>
+                                                                                    dikonfirmasi
                                                                                 </option>
                                                                                 <option value="selesai">Selesai </option>
                                                                             @elseif($Jamaah->status === 'selesai')
                                                                                 <option value="diterima">Diterima</option>
-                                                                                <option value="dikerjakan">Dikerjakan</option>
+                                                                                <option value="dikonfirmasi">dikonfirmasi
+                                                                                </option>
                                                                                 <option value="selesai" selected>Selesai
                                                                                 </option>
                                                                             @endif

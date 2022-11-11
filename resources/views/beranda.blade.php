@@ -293,7 +293,7 @@
                 <div class="service-wrap">
                     <div class="row">
                         @foreach ($video as $video)
-                            <div class="col-lg-4 col-md-4 col-sm-6 custom-grid col-12">
+                            <div class="col-lg-4">
                                 <div class="service-single-item">
                                     <div class="service-single-img">
                                         <div class="h_iframe">

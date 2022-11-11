@@ -18,8 +18,8 @@ class PostController extends Controller
     }
 
     public function index(MitraMarketing $mitra){
-        $post = Post::where('is_tampil_di_halaman_artikel', 'ya')->latest();
-
+        $post = Post::where('is_tampil_di_halaman_artikel', 'ya')->orderBy('published_at', 'desc')->get();
+        // dd($post);
 
         if(request('search')){
             $post->where('judul', 'like', '%' . request('search') . '%')
@@ -27,7 +27,7 @@ class PostController extends Controller
             ->orWhere('excerpt', 'like', '%' . request('search') . '%');
         } 
         
-        $result = $post->get();
+        $result = $post;
 
         return view('artikel', [
             "title" => "Semua Artikel",
