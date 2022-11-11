@@ -56,12 +56,13 @@ class mitraDashboardController extends Controller
 
 public function create(){
 
-
+    $username = Auth::user()->username;
     $data = [
         "provinsi" => Province::all(),
         "kabupaten" => Regency::all(),
         "produk" => Produk::all(),
         'Mitra' => MitraMarketing::all(),
+        'username' => $username,
         // 'mitra' => MitraMarketing::where('username', $username_mitra)->first(),
     ];
     return view('mitra.Jamaah.add', $data);
@@ -78,7 +79,7 @@ public function store(Request $request)
         'jeniskelamin' => 'required',
         'HP'=> 'required',
         'email' => 'required',
-        'NIK'=> 'required',
+        'NIK'=> 'required|min:16',
         'no_paspor'=> 'required',
         'foto_KTP' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         'foto_vaksin' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
